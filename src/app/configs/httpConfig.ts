@@ -14,6 +14,7 @@ export const httpClient: AxiosInstance = axios.create({
 httpClient.interceptors.request.use(onRequest);
 httpClient.interceptors.response.use(onResponseSuccess, onResponseError);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function onRequest(req: InternalAxiosRequestConfig<any>) {
   const accessToken = localStorage.getItem('accessToken');
 
@@ -28,20 +29,21 @@ function onResponseSuccess(res: AxiosResponse) {
   return res.data;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function onResponseError(error: any) {
-  const originalRequest = error.config;
+  // const originalRequest = error.config;
 
   if (error.response.status !== 401) {
     throw error;
   }
 
-  try {
-    // const { accessToken } = await userAPI.refresh();
+  // try {
+  //   // const { accessToken } = await userAPI.refresh();
 
-    // localStorageService.set('accessToken', accessToken);
+  //   // localStorageService.set('accessToken', accessToken);
 
-    return httpClient.request(originalRequest);
-  } catch (err) {
-    throw err;
-  }
+  //   return httpClient.request(originalRequest);
+  // } catch (err) {
+  //   throw err;
+  // }
 }

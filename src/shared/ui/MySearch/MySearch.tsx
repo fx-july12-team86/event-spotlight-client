@@ -24,6 +24,7 @@ export const MySearch = () => {
   return (
     <div className="MySearch">
       <img src="icons/search_dark.svg" alt="search icon" />
+
       <input
         value={query}
         type="text"

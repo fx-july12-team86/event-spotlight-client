@@ -22,8 +22,7 @@ export default [
   {
     rules: {
       'react/react-in-jsx-scope': 'off',
-      'react/jsx-closing-bracket-location': ['warn', 'line-aligned'], // Ensures closing JSX tags are on separate lines
-      'react/jsx-closing-tag-location': ['warn', 'line-aligned'], // Ensures closing JSX tags are on separate lines
+      'react/prop-types': 'off',
       'react/jsx-newline': ['error'],
     },
   },

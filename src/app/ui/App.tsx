@@ -26,7 +26,9 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       <main className="App__main">main</main>
+
       <footer className="App__footer">footer</footer>
     </div>
   );

@@ -5,6 +5,7 @@ type Props = {
 };
 
 export const MyLogo: React.FC<Props> = ({ theme = 'light' }) => {
+  console.log(theme);
   return (
     <div className="Logo">
       <img
@@ -14,6 +15,7 @@ export const MyLogo: React.FC<Props> = ({ theme = 'light' }) => {
         width={32}
         height={32}
       />
+
       <p className="Logo__sitename">EventSpotlight</p>
     </div>
   );
