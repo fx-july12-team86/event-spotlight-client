@@ -1,0 +1,22 @@
+@import '../../styles/utils.scss';
+
+.Logo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  &__img {
+    background-color: gray;
+  }
+
+  &__sitename {
+    font-size: 32px;
+    font-weight: bold;
+    color: $color-font-light;
+    margin: 0;
+
+    &--dark {
+      color: $color-font-dark-strong;
+    }
+  }
+}

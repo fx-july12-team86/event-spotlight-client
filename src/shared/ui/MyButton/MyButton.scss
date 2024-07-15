@@ -1,0 +1,25 @@
+@import '../../styles/utils.scss';
+
+.MyButton {
+  font-size: 20px;
+  width: fit-content;
+  height: 48px;
+  border: 1px solid $color-primary;
+  background-color: $color-font-light;
+  border-radius: 24px;
+  padding-inline: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+
+  &--withIcon {
+    @extend .MyButton;
+
+    &::before {
+      content: url(icons/plus.svg);
+      margin-top: 5px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@import '../../../../../shared/styles/utils.scss';
+
+.HeaderSearch {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: 20px;
+
+  &__icon {
+    height: 26px;
+    cursor: pointer;
+    padding-inline: 26px;
+    border-right: 1px solid $color-border;
+  }
+}

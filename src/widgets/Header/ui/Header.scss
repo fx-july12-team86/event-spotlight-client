@@ -1,0 +1,40 @@
+@import '../../../shared/styles/utils.scss';
+
+.Header {
+  &__item {
+    grid-column: 1 / -1;
+
+    &--top {
+      height: fit-content;
+      background-color: $color-primary;
+    }
+  }
+
+  &__top-content {
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--left {
+      gap: 64px;
+    }
+  }
+
+  &__icon {
+    height: 26px;
+    cursor: pointer;
+    padding-inline: 26px;
+    border-right: 1px solid $color-border;
+  }
+
+  &__addBtn {
+    margin-left: 16px;
+  }
+}

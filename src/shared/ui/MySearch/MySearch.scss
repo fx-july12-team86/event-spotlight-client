@@ -1,0 +1,25 @@
+@import '../../styles/utils.scss';
+
+.MySearch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $color-font-light;
+  width: 100%;
+  padding-inline: 20px;
+  height: 44px;
+  gap: 10px;
+
+  &__input {
+    font-size: 20px;
+    flex-grow: 1;
+    height: 40px;
+    border: none;
+    outline: none;
+  }
+
+  &__clear {
+    padding: 10px;
+    cursor: pointer;
+  }
+}

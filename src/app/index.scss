@@ -1,1 +1,17 @@
 @import '../../node_modules//normalize.css/normalize.css';
+@import '../shared//styles//utils.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: Arial, 'sans-serif';
+  color: $color-primary;
+}
+
+.container {
+  padding-inline: 64px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
