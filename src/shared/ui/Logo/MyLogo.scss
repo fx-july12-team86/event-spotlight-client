@@ -4,19 +4,32 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  cursor: pointer;
+  padding: 16px;
+  text-decoration: none;
+
+  &:hover {
+    .Logo__sitename {
+      color: $color-green;
+    }
+  }
 
   &__img {
-    background-color: gray;
+    background-color: $color-green;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
   }
 
   &__sitename {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: bold;
-    color: $color-font-light;
+    color: $color-white;
     margin: 0;
+    transition: all ease-in-out $transition-duration;
 
     &--dark {
-      color: $color-font-dark-strong;
+      color: $color-black;
     }
   }
 }

@@ -1,0 +1,26 @@
+@import '../../../shared/styles/utils.scss';
+
+.Slider {
+  &__item {
+    display: flex;
+  }
+
+  &__img {
+    object-fit: cover;
+    object-position: center;
+    width: 50%;
+  }
+
+  &__right {
+    background-color: $color-black;
+    color: $color-white;
+    width: 50%;
+  }
+
+  &__title {
+    font-family: Oswald, 'sans-serif';
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}

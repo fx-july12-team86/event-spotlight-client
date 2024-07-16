@@ -1,5 +1,18 @@
+@import './variables.scss';
+
 @mixin grid {
   display: grid;
   grid-template-columns: repeat(8, minmax(60px, 100%));
   column-gap: 30px;
+}
+
+@mixin on-hover($property, $value) {
+  & {
+    transition: #{$property} ease-in-out $transition-duration;
+  }
+
+  &:hover {
+    cursor: pointer;
+    #{$property}: $value;
+  }
 }

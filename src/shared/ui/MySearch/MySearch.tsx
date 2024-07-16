@@ -2,7 +2,11 @@ import { useSearchParams } from 'react-router-dom';
 import './MySearch.scss';
 import { getSearchParamsWith } from '../../helpers/getSearchParamsWith';
 
-export const MySearch = () => {
+type Props = {
+  setShowSearch: (v: boolean) => void;
+};
+
+export const MySearch: React.FC<Props> = ({ setShowSearch }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
@@ -16,9 +20,14 @@ export const MySearch = () => {
   }
 
   function clearSearch() {
-    const newSearch = getSearchParamsWith({ query: null }, searchParams);
+    if (query) {
+      const newSearch = getSearchParamsWith({ query: null }, searchParams);
 
-    setSearchParams(newSearch);
+      setSearchParams(newSearch);
+      return;
+    }
+
+    setShowSearch(false);
   }
 
   return (

@@ -6,7 +6,7 @@
 
     &--top {
       height: fit-content;
-      background-color: $color-primary;
+      background-color: $color-black;
     }
   }
 
@@ -15,26 +15,54 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
   }
 
   &__controls {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
 
     &--left {
-      gap: 64px;
+      gap: 32px;
     }
   }
 
   &__icon {
-    height: 26px;
+    height: 64px;
+    width: 64px;
     cursor: pointer;
-    padding-inline: 26px;
-    border-right: 1px solid $color-border;
+    padding: 16px;
+
+    @include on-hover(background-color, $color-grey-70);
   }
 
   &__addBtn {
     margin-left: 16px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-other {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 16px 20px;
+
+      &::after {
+        content: url(icons/arrow-down.svg);
+      }
+
+      &:hover {
+        &::after {
+          content: url(icons/arrow-down-purple.svg);
+        }
+      }
+
+      @include on-hover(color, $color-purple);
+    }
   }
 }

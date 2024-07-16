@@ -4,6 +4,7 @@ import './App.scss';
 import { userApi } from '../../entities/User';
 import { useAppDispatch } from '../../shared/hooks/reduxHooks';
 import { userActions } from '../../entities/User';
+import { Slider } from '../../widgets/Slider';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -17,7 +18,7 @@ function App() {
 
     result
       .then((data) => {
-        const city = data.city.split(' ')[0] || '';
+        const city = data.stateProv.split(' ')[0] || '';
         dispatch(userActions.setUserLocation(city));
       })
       .catch((err) => console.log(err));
@@ -27,7 +28,9 @@ function App() {
     <div className="App">
       <Header />
 
-      <main className="App__main">main</main>
+      <main className="App__main container">
+        <Slider />
+      </main>
 
       <footer className="App__footer">footer</footer>
     </div>

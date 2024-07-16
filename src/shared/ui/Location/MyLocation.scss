@@ -2,10 +2,14 @@
 
 .MyLocation {
   font-size: 24px;
-  color: $color-font-light;
+  color: $color-white;
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin: 0;
+  padding: 16px;
+
+  @include on-hover(background-color, $color-grey-70);
 
   &::before {
     content: url(icons/location.svg);

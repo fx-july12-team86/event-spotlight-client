@@ -8,13 +8,15 @@ export const HeaderSearch = () => {
   return (
     <div className="HeaderSearch">
       {showSearch ? (
-        <MySearch />
+        <MySearch setShowSearch={setShowSearch} />
       ) : (
         <img
           src="icons/search.svg"
           alt="calendar"
           className="HeaderSearch__icon"
           onClick={() => setShowSearch(!showSearch)}
+          height={64}
+          width={64}
         />
       )}
     </div>

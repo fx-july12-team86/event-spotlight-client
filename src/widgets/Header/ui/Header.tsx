@@ -1,5 +1,6 @@
 import { useAppSelector } from '../../../shared/hooks/reduxHooks';
 import { MyButton, MyLocation, MyLogo } from '../../../shared/ui';
+import { HeaderNavList } from './components/HeaderNavList/HeaderNavList';
 import { HeaderSearch } from './components/HeaderSearch/HeaderSearch';
 import './Header.scss';
 
@@ -24,16 +25,20 @@ export const Header = () => {
                 src="icons/calendar.svg"
                 alt="calendar"
                 className="Header__icon"
+                height={64}
+                width={64}
               />
 
               <img
-                src="icons/profile.svg"
-                alt="profile"
+                height={64}
+                width={64}
+                src="icons/account.svg"
+                alt="account"
                 className="Header__icon"
               />
 
               <div className="Header__addBtn">
-                <MyButton icon={true}>Додати івент</MyButton>
+                <MyButton>Додати подію</MyButton>
               </div>
             </div>
           </div>
@@ -41,7 +46,13 @@ export const Header = () => {
       </div>
 
       <div className="container">
-        <div className="Header__item"></div>
+        <div className="Header__item">
+          <nav className="Header__nav">
+            <HeaderNavList />
+
+            <div className="Header__nav-other">Інше</div>
+          </nav>
+        </div>
       </div>
     </header>
   );
