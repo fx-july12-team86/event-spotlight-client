@@ -3,10 +3,14 @@ import './MySearch.scss';
 import { getSearchParamsWith } from '../../helpers/getSearchParamsWith';
 
 type Props = {
-  setShowSearch: (v: boolean) => void;
+  setShowSearch?: (v: boolean) => void;
+  height?: string;
 };
 
-export const MySearch: React.FC<Props> = ({ setShowSearch }) => {
+export const MySearch: React.FC<Props> = ({
+  setShowSearch = () => {},
+  height,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
@@ -31,7 +35,7 @@ export const MySearch: React.FC<Props> = ({ setShowSearch }) => {
   }
 
   return (
-    <div className="MySearch">
+    <div className="MySearch" style={{ height }}>
       <img src="icons/search_dark.svg" alt="search icon" />
 
       <input

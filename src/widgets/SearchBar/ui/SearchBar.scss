@@ -1,0 +1,43 @@
+@import '../../../shared/styles/utils.scss';
+
+.SearchBar {
+  height: 112px;
+  padding: 24px;
+  background-color: $color-black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+
+  &__left {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 158px 114px;
+    gap: 6px;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 100%;
+    font-size: 20px;
+    font-weight: 500;
+
+    &::before {
+      content: url(icons/filter.svg);
+      margin-top: 4px;
+    }
+  }
+  &__location {
+    @extend .SearchBar__filters;
+
+    &::before {
+      content: url(icons/location_black.svg);
+      margin-top: 4px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import '../../styles/utils.scss';
+
+.MyButtonGreen {
+  font-size: 20px;
+  font-weight: 500;
+  width: 248px;
+  height: 64px;
+  border: 1px solid $color-green;
+  background-color: $color-green;
+  color: $color-black;
+  padding-inline: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  @include on-hover(color, $color-green);
+  @include on-hover(background-color, $color-black);
+}

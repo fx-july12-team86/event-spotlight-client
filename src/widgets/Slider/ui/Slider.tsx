@@ -16,22 +16,22 @@ export const Slider = () => {
             />
 
             <div className="Slider__right">
-              <div className="Slider__event">Майстер-клас</div>
+              <div className="Slider__right-top">
+                <div className="Slider__event">Майстер-клас</div>
 
-              <h2 className="Slider__title">Halloween party для дорослих</h2>
+                <h2 className="Slider__title">Halloween party для дорослих</h2>
+              </div>
 
-              <ul className="Slider__oprions">
-                <li className="Slider__oprions Slider__oprions--date">
-                  24 липня 2024 19:30
+              <ul className="Slider__options">
+                <li className="Slider__option Slider__option--date">
+                  24 липня 2024 <span /> 19:30
                 </li>
 
-                <li className="Slider__oprions Slider__oprions--place">
+                <li className="Slider__option Slider__option--place">
                   Art studio “Lila”, Львів
                 </li>
 
-                <li className="Slider__oprions Slider__oprions--price">
-                  350 ₴
-                </li>
+                <li className="Slider__option Slider__option--price">350 ₴</li>
               </ul>
             </div>
           </div>

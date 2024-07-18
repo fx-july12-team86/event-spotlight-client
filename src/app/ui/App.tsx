@@ -4,7 +4,7 @@ import './App.scss';
 import { userApi } from '../../entities/User';
 import { useAppDispatch } from '../../shared/hooks/reduxHooks';
 import { userActions } from '../../entities/User';
-import { Slider } from '../../widgets/Slider';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -29,7 +29,7 @@ function App() {
       <Header />
 
       <main className="App__main container">
-        <Slider />
+        <Outlet />
       </main>
 
       <footer className="App__footer">footer</footer>
