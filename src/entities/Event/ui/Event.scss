@@ -1,0 +1,136 @@
+@import '../../../shared/styles/utils.scss';
+
+.Event {
+  border: 1px solid $color-grey-60;
+  cursor: pointer;
+  height: 675px;
+  text-decoration: none;
+  color: inherit;
+
+  @include on-hover(outline, 2px solid $color-purple);
+
+  &__img {
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    height: 314px;
+    width: 300px;
+
+    @include on-hover(transform, scale(1.1));
+
+    animation: sceleton 1.5s infinite;
+    background: linear-gradient(-75deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+
+    @keyframes sceleton {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+  }
+
+  &__img-box {
+    overflow: hidden;
+  }
+
+  &__descr {
+    padding: 24px;
+  }
+
+  &__title-box {
+    height: 254px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 500;
+    font-family: Oswald, 'sans-serif';
+  }
+
+  &__category {
+    color: $color-grey-70;
+    border-radius: 24px;
+    border: 1px solid $color-grey-70;
+    padding: 12px 24px;
+
+    @include on-hover(background-color, $color-purple);
+    @include on-hover(color, $color-white);
+  }
+
+  &__category-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &__favorite {
+    padding: 5px;
+    cursor: pointer;
+
+    @include on-hover(transform, scale(1.2));
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+
+    $options:
+      'price' 'money_black',
+      'date' 'calendar_black',
+      'place' 'location_black';
+
+    @each $option, $icon in $options {
+      &--#{$option}::before {
+        content: url(/icons/#{$icon}.svg);
+        margin-top: 4px;
+        height: 20px;
+        width: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    &--sceleton {
+      height: 16px;
+      width: 100%;
+      @include sceleton;
+    }
+  }
+
+  &__sceleton {
+    height: 16px;
+    width: 100%;
+
+    &-title {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      & :last-child {
+        width: 80%;
+      }
+    }
+
+    @include sceleton;
+  }
+}

@@ -15,4 +15,13 @@
   &__title span {
     color: $color-purple;
   }
+
+  &__productList {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__searchBar {
+    margin-bottom: 56px;
+  }
 }
