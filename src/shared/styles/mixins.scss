@@ -31,3 +31,50 @@
     }
   }
 }
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(100%);
+}
+
+@mixin button-large {
+  font-size: 20px;
+  font-weight: 500;
+  width: 248px;
+  height: 64px;
+  padding-inline: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+@mixin button-large-purple {
+  color: $color-purple;
+  background-color: $color_white;
+  border-color: $color-purple;
+  width: 312px;
+
+  @include button-large;
+  @include on-hover(color, $color_white);
+  @include on-hover(background-color, $color_purple);
+}
+
+@mixin button-large-purple-filled {
+  color: $color_white;
+  background-color: $color_purple;
+  width: 312px;
+
+  @include button-large;
+  @include on-hover(color, $color_purple);
+  @include on-hover(border-color, $color_purple);
+  @include on-hover(background-color, $color_white);
+}

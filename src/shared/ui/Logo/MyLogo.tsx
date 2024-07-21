@@ -1,4 +1,6 @@
 import './MyLogo.scss';
+import cn from 'classnames';
+
 import { Link } from 'react-router-dom';
 
 type Props = {
@@ -11,7 +13,13 @@ export const MyLogo: React.FC<Props> = ({ theme = 'light' }) => {
     <Link to="/" className="Logo">
       <div className="Logo__img" />
 
-      <p className="Logo__sitename">EventSpotlight</p>
+      <p
+        className={cn('Logo__sitename', {
+          'Logo__sitename--dark': theme === 'dark',
+        })}
+      >
+        EventSpotlight
+      </p>
     </Link>
   );
 };

@@ -5,6 +5,7 @@ import { userApi } from '../../entities/User';
 import { useAppDispatch } from '../../shared/hooks/reduxHooks';
 import { userActions } from '../../entities/User';
 import { Outlet } from 'react-router-dom';
+import { Footer } from '../../widgets/Footer';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -32,7 +33,7 @@ function App() {
         <Outlet />
       </main>
 
-      <footer className="App__footer">footer</footer>
+      <Footer />
     </div>
   );
 }

@@ -16,20 +16,8 @@
     height: 314px;
     width: 300px;
 
+    @include sceleton;
     @include on-hover(transform, scale(1.1));
-
-    animation: sceleton 1.5s infinite;
-    background: linear-gradient(-75deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
-    background-size: 200% 100%;
-
-    @keyframes sceleton {
-      0% {
-        background-position: 200% 0;
-      }
-      100% {
-        background-position: -200% 0;
-      }
-    }
   }
 
   &__img-box {
@@ -120,6 +108,8 @@
     height: 16px;
     width: 100%;
 
+    @include sceleton;
+
     &-title {
       width: 100%;
       display: flex;
@@ -130,7 +120,5 @@
         width: 80%;
       }
     }
-
-    @include sceleton;
   }
 }

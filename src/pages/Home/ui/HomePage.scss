@@ -1,27 +1,54 @@
 @import '../../../shared/styles/utils.scss';
 
 .HomePage {
-  &__slider {
-    margin-bottom: 112px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 124px;
+  align-items: center;
+  justify-content: start;
 
   &__title {
-    font-family: Oswald, 'sens-serif';
-    font-size: 80px;
-    font-weight: bold;
     margin-bottom: 64px;
+
+    span {
+      color: $color-purple;
+    }
   }
 
-  &__title span {
-    color: $color-purple;
+  &__title--h2 {
+    margin-bottom: 24px;
+    align-self: flex-start;
+
+    span {
+      color: $color-purple;
+    }
   }
 
   &__productList {
     display: flex;
     justify-content: center;
+    margin-bottom: 124px;
+  }
+
+  &__toplist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+
+  &__closestlist {
+    @extend .HomePage__toplist;
+
+    margin-bottom: 124px;
   }
 
   &__searchBar {
     margin-bottom: 56px;
+  }
+
+  &__btn--purple {
+    @include button-large-purple;
   }
 }

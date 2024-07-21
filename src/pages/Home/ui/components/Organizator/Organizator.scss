@@ -1,0 +1,50 @@
+@import '../../../../../shared/styles/utils.scss';
+
+.Organizator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 104px;
+
+  &__box {
+    width: 490px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__subtitle {
+    margin-bottom: 32px;
+  }
+
+  &__btn {
+    @include button-large-purple-filled;
+  }
+
+  &__list {
+    position: relative;
+    height: 100%;
+    height: 230px;
+    flex-grow: 1;
+  }
+
+  &__img {
+    position: absolute;
+    border-radius: 50%;
+    @include sceleton;
+
+    $items:
+      '1' '0',
+      '2' '25%',
+      '3' '50%',
+      '4' '75%';
+
+    @each $i, $value in $items {
+      &--#{$i} {
+        right: #{$value};
+      }
+    }
+  }
+}

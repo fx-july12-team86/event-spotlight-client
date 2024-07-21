@@ -1,5 +1,5 @@
 import { MySearch } from '../../../shared/ui';
-import { MyButtonGreen } from '../../../shared/ui/MyButtonGreen/MyButtonGreen';
+import { MyButtonLarge } from '../../../shared/ui/MyButtonLarge/MyButtonLarge';
 import './SearchBar.scss';
 
 export const SearchBar = () => {
@@ -14,7 +14,7 @@ export const SearchBar = () => {
       </div>
 
       <div className="SearchBar__right">
-        <MyButtonGreen>Пошук</MyButtonGreen>
+        <MyButtonLarge className="SearchBar__btn">Пошук</MyButtonLarge>
       </div>
     </div>
   );

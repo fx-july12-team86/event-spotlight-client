@@ -32,6 +32,7 @@
       margin-top: 4px;
     }
   }
+
   &__location {
     @extend .SearchBar__filters;
 
@@ -39,5 +40,14 @@
       content: url(icons/location_black.svg);
       margin-top: 4px;
     }
+  }
+
+  &__btn {
+    background-color: $color-green;
+
+    @include button-large;
+    @include on-hover(color, $color-green);
+    @include on-hover(background-color, $color-black);
+    @include on-hover(border-color, $color-green);
   }
 }
