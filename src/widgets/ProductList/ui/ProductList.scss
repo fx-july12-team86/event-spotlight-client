@@ -1,7 +1,11 @@
 @import '../../../shared/styles/utils.scss';
 
 .ProductList {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 300px);
-  gap: 38px;
+  column-gap: 10px;
+  row-gap: 28px;
+  justify-items: center;
+  justify-content: space-between;
 }

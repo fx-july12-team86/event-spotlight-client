@@ -93,7 +93,7 @@
   width: 64px;
   height: 64px;
   position: relative;
-  left: 96px;
+  left: 90px;
   opacity: 1 !important;
   filter: none !important;
   background-image: url(icons/arrow_right.svg);
@@ -106,7 +106,7 @@
 .carousel-control-prev-icon {
   @extend .carousel-control-next-icon;
 
-  left: -100px;
+  left: -90px;
   background-image: url(icons/arrow_left.svg);
 }
 

@@ -2,16 +2,16 @@ import './HeaderNavList.scss';
 
 export const HeaderNavList = () => {
   return (
-    <ul className="HeaderNavList">
-      <li className="HeaderNavList__item">Концерти</li>
+    <nav className="HeaderNavList">
+      <div className="HeaderNavList__item">Концерти</div>
 
-      <li className="HeaderNavList__item">Майстер-класи</li>
+      <div className="HeaderNavList__item">Майстер-класи</div>
 
-      <li className="HeaderNavList__item">Фестивалі</li>
+      <div className="HeaderNavList__item">Фестивалі</div>
 
-      <li className="HeaderNavList__item">Виставки</li>
+      <div className="HeaderNavList__item">Виставки</div>
 
-      <li className="HeaderNavList__item">Для дітей</li>
-    </ul>
+      <div className="HeaderNavList__item">Для дітей</div>
+    </nav>
   );
 };

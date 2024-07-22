@@ -6,17 +6,19 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.page__content {
+.page {
   font-family: Inter, Oswald, 'sans-serif';
   font-size: 16px;
   color: $color-black;
 }
 
 .container {
-  padding-inline: 64px;
   max-width: 1440px;
   width: 100%;
+  padding-inline: 64px;
   margin: 0 auto;
 }

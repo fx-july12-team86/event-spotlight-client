@@ -7,13 +7,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
+  gap: 10px;
 
   &__left {
     flex-grow: 1;
     display: grid;
     grid-template-columns: 1fr 158px 114px;
-    gap: 6px;
+    gap: 2px;
     align-items: center;
     height: 100%;
   }
@@ -26,6 +26,8 @@
     height: 100%;
     font-size: 20px;
     font-weight: 500;
+    background-color: $color-grey-10;
+    border: 1px solid $color-grey-10;
 
     &::before {
       content: url(icons/filter.svg);
@@ -43,9 +45,11 @@
   }
 
   &__btn {
-    background-color: $color-green;
-
     @include button-large;
+
+    background-color: $color-green;
+    width: 146px;
+
     @include on-hover(color, $color-green);
     @include on-hover(background-color, $color-black);
     @include on-hover(border-color, $color-green);

@@ -45,8 +45,8 @@ export const Header = () => {
         </div>
       </div>
 
-      <div className="container">
-        <div className="Header__item">
+      <div className="Header__item">
+        <div className="container">
           <nav className="Header__nav">
             <HeaderNavList />
 

@@ -5,5 +5,5 @@ type Props = {
 };
 
 export const MyLocation: React.FC<Props> = ({ city = '' }) => {
-  return <p className="MyLocation">{city}</p>;
+  return <div className="MyLocation">{city}</div>;
 };

@@ -23,7 +23,7 @@ const events: EventType[] = [
     },
   },
   {
-    id: 1,
+    id: 2,
     category: 'Майстер-класс',
     favorite: false,
     title: 'Майстер-клас з миловаріння',
@@ -37,7 +37,7 @@ const events: EventType[] = [
     },
   },
   {
-    id: 1,
+    id: 3,
     category: 'Майстер-класс',
     favorite: false,
     title: 'Майстер-клас з миловаріння',
@@ -51,7 +51,7 @@ const events: EventType[] = [
     },
   },
   {
-    id: 1,
+    id: 4,
     category: 'Майстер-класс',
     favorite: false,
     title: 'Майстер-клас з миловаріння',
@@ -65,7 +65,7 @@ const events: EventType[] = [
     },
   },
   {
-    id: 1,
+    id: 5,
     category: 'Майстер-класс',
     favorite: false,
     title: 'Майстер-клас з миловаріння',
@@ -79,7 +79,7 @@ const events: EventType[] = [
     },
   },
   {
-    id: 1,
+    id: 6,
     category: 'Майстер-класс',
     favorite: false,
     title: 'Майстер-клас з миловаріння',
@@ -93,7 +93,7 @@ const events: EventType[] = [
     },
   },
   {
-    id: 1,
+    id: 7,
     category: 'Майстер-класс',
     favorite: false,
     title: 'Майстер-клас з миловаріння',
@@ -107,7 +107,7 @@ const events: EventType[] = [
     },
   },
   {
-    id: 1,
+    id: 8,
     category: 'Майстер-класс',
     favorite: false,
     title: 'Майстер-клас з миловаріння',
@@ -138,7 +138,7 @@ const eventsToр: EventType[] = [
     },
   },
   {
-    id: 1,
+    id: 2,
     category: 'Майстер-класс',
     favorite: false,
     title: 'Майстер-клас з миловаріння',
@@ -152,7 +152,7 @@ const eventsToр: EventType[] = [
     },
   },
   {
-    id: 1,
+    id: 3,
     category: 'Майстер-класс',
     favorite: false,
     title: 'Майстер-клас з миловаріння',
@@ -166,7 +166,7 @@ const eventsToр: EventType[] = [
     },
   },
   {
-    id: 1,
+    id: 4,
     category: 'Майстер-класс',
     favorite: false,
     title: 'Майстер-клас з миловаріння',

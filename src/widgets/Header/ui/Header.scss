@@ -1,8 +1,10 @@
 @import '../../../shared/styles/utils.scss';
 
 .Header {
+  width: 100%;
+
   &__item {
-    grid-column: 1 / -1;
+    width: 100%;
 
     &--top {
       height: fit-content;
@@ -12,17 +14,15 @@
 
   &__top-content {
     height: 96px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
   }
 
   &__controls {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 10px;
 
     &--left {
       gap: 32px;
