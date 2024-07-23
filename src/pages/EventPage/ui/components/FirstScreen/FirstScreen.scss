@@ -1,0 +1,108 @@
+@import '../../../../../shared/styles/utils.scss';
+
+.FirstScreen {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    background-color: $color-black;
+    color: $color-white;
+    padding-inline: 44px;
+  }
+
+  &__favorite {
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      cursor: pointer;
+
+      @include on-hover(transform, scale(1.2));
+    }
+  }
+
+  &__right {
+    &-top {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 44px;
+    }
+  }
+
+  &__event {
+    width: fit-content;
+    border: 2px solid $color-white;
+    border-radius: 24px;
+    padding: 12px 24px;
+  }
+
+  &__title {
+    font-family: Oswald, 'sans-serif';
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    $options:
+      'price' 'money',
+      'date' 'calendar',
+      'place' 'location';
+
+    @each $option, $icon in $options {
+      &--#{$option}::before {
+        content: url(/icons/#{$icon}.svg);
+        margin-top: 4px;
+      }
+    }
+  }
+
+  &__option span {
+    border-left: 1px solid $color-grey-60;
+    height: 10px;
+    width: 2px;
+  }
+
+  &__bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btn {
+    @include button-large;
+
+    width: fit-content;
+    background-color: $color-green;
+  }
+
+  &__share {
+    cursor: pointer;
+    border-bottom: 1px solid $color-white;
+    padding-bottom: 3px;
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,34 @@
+@import '../../../../../../shared/styles/utils.scss';
+
+.EventDetails {
+  margin: 0 auto;
+  width: 70%;
+  display: flex;
+  gap: 44px;
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    min-width: 260px;
+
+    &-item {
+      border: none;
+      background: none;
+      font-family: Oswald, 'sans-serif';
+      font-size: 48px;
+      color: $color-grey-50;
+      text-transform: uppercase;
+
+      @include on-hover(color, $color-purple);
+      &--active {
+        color: $color-black;
+      }
+    }
+  }
+
+  &__items {
+    max-width: 600px;
+  }
+}

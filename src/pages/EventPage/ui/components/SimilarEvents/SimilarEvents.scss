@@ -1,0 +1,19 @@
+@import '../../../../../shared/styles/utils.scss';
+
+.SimilarEvents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 124px;
+
+  &__title--h2 {
+    margin-bottom: 24px;
+    align-self: flex-start;
+  }
+
+  &__btn--purple {
+    @include button-large-purple;
+  }
+}

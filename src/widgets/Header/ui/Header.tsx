@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../../shared/hooks/reduxHooks';
 import { MyButton, MyLocation, MyLogo } from '../../../shared/ui';
 import { HeaderNavList } from './components/HeaderNavList/HeaderNavList';
@@ -6,6 +7,7 @@ import './Header.scss';
 
 export const Header = () => {
   const { location } = useAppSelector((state) => state.user);
+  const { pathname } = useLocation();
 
   return (
     <header className="Header">
@@ -45,15 +47,17 @@ export const Header = () => {
         </div>
       </div>
 
-      <div className="Header__item">
-        <div className="container">
-          <nav className="Header__nav">
-            <HeaderNavList />
+      {pathname === '/' && (
+        <div className="Header__item">
+          <div className="container">
+            <nav className="Header__nav">
+              <HeaderNavList />
 
-            <div className="Header__nav-other">Інше</div>
-          </nav>
+              <div className="Header__nav-other">Інше</div>
+            </nav>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };
