@@ -1,0 +1,78 @@
+@import '../../../shared/styles/utils.scss';
+
+@mixin calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-items: center;
+  gap: 2px;
+}
+
+.DateRangePicker {
+  display: flex;
+  justify-content: space-between;
+
+  &__calendar {
+    width: 480px;
+    margin-inline: 32px;
+  }
+
+  &__calendar-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
+  &__calendar-weeks {
+    @include calendar-grid();
+    margin-bottom: 24px;
+  }
+
+  &__calendar-weeks-day {
+    font-weight: 500;
+  }
+
+  &__calendar-days {
+    @include calendar-grid();
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &__calendar-weeks-day {
+    height: 54px;
+    width: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-hover(background-color, $color-grey-30);
+
+    &--selected {
+      @extend .DateRangePicker__calendar-weeks-day;
+      background-color: $color-purple;
+      color: $color-white;
+    }
+
+    &--inactive {
+      @extend .DateRangePicker__calendar-weeks-day;
+      color: $color-grey-30;
+    }
+  }
+
+  &__currentDate {
+    color: $color-grey-70;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  &__arrow {
+    cursor: pointer;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    padding: 22px;
+
+    @include on-hover(background-color, $color-grey-30);
+  }
+}

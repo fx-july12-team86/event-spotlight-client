@@ -96,7 +96,7 @@
   left: 90px;
   opacity: 1 !important;
   filter: none !important;
-  background-image: url(icons/arrow_right.svg);
+  background-image: url(/icons/arrow_right.svg);
   background-size: 20%;
 
   @include on-hover(color, $color-grey-30);
@@ -107,7 +107,7 @@
   @extend .carousel-control-next-icon;
 
   left: -90px;
-  background-image: url(icons/arrow_left.svg);
+  background-image: url(/icons/arrow_left.svg);
 }
 
 .carousel-control-next,

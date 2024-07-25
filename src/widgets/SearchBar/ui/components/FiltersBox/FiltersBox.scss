@@ -1,0 +1,46 @@
+@import './../../../../../shared/styles/utils.scss';
+
+.FiltersBox {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__filters {
+    background-color: $color-white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  &__title {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 20px;
+
+    &-name {
+      font-size: 28px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $color-white;
+    }
+
+    &-counter {
+      font-size: 18px;
+      color: $color-white;
+    }
+
+    &--sm {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__selectedList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 16px;
+    width: 70%;
+  }
+}

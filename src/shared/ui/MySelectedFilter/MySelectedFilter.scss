@@ -1,0 +1,22 @@
+@import '../../../shared/styles/utils.scss';
+
+.MySelectedFilter {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 28px;
+  border: 1px solid $color-white;
+  border-radius: 25px;
+  width: fit-content;
+  cursor: pointer;
+
+  &__name {
+    font-size: 18px;
+    color: $color-white;
+  }
+
+  &__remove {
+    @include on-hover(transform, scale(1.3));
+  }
+}
