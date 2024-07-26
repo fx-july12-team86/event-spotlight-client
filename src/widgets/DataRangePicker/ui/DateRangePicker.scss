@@ -57,6 +57,14 @@
     &--inactive {
       @extend .DateRangePicker__calendar-weeks-day;
       color: $color-grey-30;
+
+      @include on-hover(color, $color-white);
+      @include on-hover(background-color, $color-grey-30);
+    }
+
+    &--today {
+      @extend .DateRangePicker__calendar-weeks-day;
+      border: 1px solid $color-green;
     }
   }
 
