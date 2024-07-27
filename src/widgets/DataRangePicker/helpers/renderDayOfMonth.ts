@@ -1,27 +1,29 @@
-import { Day } from "../types";
+import { Day } from '../types';
 
-export function renderDayOfMonth(currentYear: number, currentMonth: number) {
+type RenderFunction = (v1: number, v2: number) => Day[];
+
+export const renderDayOfMonth: RenderFunction = (currentYear, currentMonth) => {
   const days: Day[] = [];
 
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getUTCDay();
 
-  const lastDateOfMonth = new Date(
-    currentYear,
-    currentMonth + 1,
-    0
-  ).getDate();
+  const lastDateOfMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-  const lastDayOfMonth = new Date(currentYear, currentMonth, lastDateOfMonth).getUTCDay();
-
-  const lastDateOfLastMonth = new Date(
+  const lastDayOfMonth = new Date(
     currentYear,
     currentMonth,
-    0
-  ).getDate();
+    lastDateOfMonth
+  ).getUTCDay();
+
+  const lastDateOfLastMonth = new Date(currentYear, currentMonth, 0).getDate();
 
   for (let i = firstDayOfMonth; i > 0; i--) {
     days.push({
-      fullDate: new Date(currentYear, currentMonth - 1, lastDateOfLastMonth - i + 1),
+      fullDate: new Date(
+        currentYear,
+        currentMonth - 1,
+        lastDateOfLastMonth - i + 1
+      ),
       date: lastDateOfLastMonth - i + 1,
       active: false,
     });
@@ -35,7 +37,12 @@ export function renderDayOfMonth(currentYear: number, currentMonth: number) {
       currentDate.getFullYear() === currentYear &&
       currentDate.getMonth() === currentMonth;
 
-    days.push({ fullDate: new Date(currentYear, currentMonth, i), date: i, active: true, isToday });
+    days.push({
+      fullDate: new Date(currentYear, currentMonth, i),
+      date: i,
+      active: true,
+      isToday,
+    });
   }
 
   for (let i = lastDayOfMonth; i < 6; i++) {
@@ -47,4 +54,4 @@ export function renderDayOfMonth(currentYear: number, currentMonth: number) {
   }
 
   return days;
-}
+};

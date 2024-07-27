@@ -1,3 +1,5 @@
+import { Period } from '../types';
+
 const DAY_OF_WEEK = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'нд'];
 const MONTHS = [
   'Січень',
@@ -14,4 +16,12 @@ const MONTHS = [
   'Грудень',
 ];
 
-export { DAY_OF_WEEK, MONTHS }
+const PERIODS: Period[] = [
+  'На сьогодні',
+  'На завтра',
+  'На вихідні',
+  'На тиждень',
+  'На місяць',
+];
+
+export { DAY_OF_WEEK, MONTHS, PERIODS };

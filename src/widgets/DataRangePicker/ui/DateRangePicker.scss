@@ -10,6 +10,7 @@
 .DateRangePicker {
   display: flex;
   justify-content: space-between;
+  min-height: 563px;
 
   &__calendar {
     width: 480px;
@@ -37,6 +38,7 @@
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+    margin-bottom: 40px;
   }
 
   &__calendar-weeks-day {
@@ -82,5 +84,41 @@
     padding: 22px;
 
     @include on-hover(background-color, $color-grey-30);
+  }
+
+  &__periods {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__period {
+    height: 50px;
+    width: 200px;
+    background-color: $color-grey-10;
+    font-size: 18px;
+    border: none;
+    padding: 12px 20px;
+
+    @include on-hover(color, $color-white);
+    @include on-hover(background-color, $color-purple);
+
+    &--selected {
+      color: $color-white;
+      background-color: $color-purple;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__btn-select {
+    @include button-large-purple-filled;
+  }
+
+  &__btn-clear {
+    @include button-large-purple;
   }
 }

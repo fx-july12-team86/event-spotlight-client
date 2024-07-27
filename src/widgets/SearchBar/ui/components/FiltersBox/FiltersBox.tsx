@@ -1,5 +1,7 @@
+import { MyEventTypeFilter } from '../../../../../shared/ui/MyEventTypeFilter/MyEventTypeFilter';
 import { MySelectedFilter } from '../../../../../shared/ui/MySelectedFilter/MySelectedFilter';
 import { DateRangePicker } from '../../../../DataRangePicker';
+import { EVENT_TYPES } from '../../../consts';
 import './FiltersBox.scss';
 
 const filters = [
@@ -29,6 +31,12 @@ export const FiltersBox = () => {
       <div className="FiltersBox__filters">
         <div className="FiltersBox__filters-top">
           <p className="FiltersBox__title--sm">Тип події</p>
+
+          <ul className="FiltersBox__event-list">
+            {EVENT_TYPES.map((ev) => (
+              <MyEventTypeFilter filter={ev} key={ev} />
+            ))}
+          </ul>
         </div>
 
         <div className="FiltersBox__filters__bottom">
@@ -38,8 +46,6 @@ export const FiltersBox = () => {
             <div className="FilterBox__calendar-left">
               <DateRangePicker />
             </div>
-
-            <div className="FiltersBox__calendar-right"></div>
           </div>
         </div>
       </div>

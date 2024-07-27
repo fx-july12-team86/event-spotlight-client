@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import cn from 'classnames';
 
 import './DateRangePicker.scss';
-import { DAY_OF_WEEK, MONTHS } from '../consts/calendar';
+import { DAY_OF_WEEK, MONTHS, PERIODS } from '../consts/calendar';
 import { Day } from '../types';
-import { renderDayOfMonth } from '../helpers/renderDayOfMonth';
+import { MyButtonLarge } from '../../../shared/ui/MyButtonLarge/MyButtonLarge';
+import { isSelected } from '../helpers/isSelected';
+import { selectRange } from '../helpers/selectRange';
+import { changeMonth } from '../helpers/changeMonth';
+import { changeRange } from '../helpers/changeRange';
+import { useRenderCalendar } from '../hooks/useRenderCalendar';
 
 type Range = Day[];
 
@@ -14,62 +19,14 @@ export const DateRangePicker = () => {
   const [currentYear, setCurrentYear] = useState(2024);
   const [range, setRange] = useState<Range>([]);
 
-  function changeMonth(e: React.MouseEvent) {
-    const id = (e.target as HTMLImageElement).id;
-    const newMonth = id === 'prev' ? currentMonth - 1 : currentMonth + 1;
-
-    if (newMonth < 0 || newMonth > 11) {
-      const date = new Date(currentYear, newMonth);
-      setCurrentYear(date.getFullYear());
-      setCurrentMonth(date.getMonth());
-    } else {
-      setCurrentMonth(newMonth);
-    }
-  }
-
-  function changeRange(day: Day) {
-    const selectedDay = day;
-
-    if (range[0] === undefined) {
-      setRange([selectedDay]);
-    } else {
-      setRange((range) =>
-        [range[0], selectedDay].sort(
-          (a, b) => a.fullDate.getTime() - b.fullDate.getTime()
-        )
-      );
-    }
-  }
-
-  function isSelected(day: Day) {
-    if (!range.length) {
-      return false;
-    }
-
-    const candidat = day.fullDate.getTime();
-    const firstDay = range[0].fullDate.getTime();
-
-    if (range.length === 1) {
-      return candidat === firstDay;
-    }
-
-    const lastDay = range[1].fullDate.getTime();
-    return firstDay <= candidat && lastDay >= candidat;
-  }
-
-  useEffect(() => {
-    if (!daysOfMonth.length) {
-      const currentDate = new Date();
-      setCurrentYear(currentDate.getFullYear());
-      setCurrentMonth(currentDate.getMonth());
-
-      setDaysOfMonth(renderDayOfMonth(currentYear, currentMonth));
-
-      return;
-    }
-
-    setDaysOfMonth(renderDayOfMonth(currentYear, currentMonth));
-  }, [currentMonth]);
+  useRenderCalendar(
+    daysOfMonth,
+    setCurrentYear,
+    setCurrentMonth,
+    setDaysOfMonth,
+    currentYear,
+    currentMonth
+  );
 
   return (
     <div className="DateRangePicker">
@@ -82,7 +39,15 @@ export const DateRangePicker = () => {
             height={24}
             width={24}
             id="prev"
-            onClick={changeMonth}
+            onClick={(e) =>
+              changeMonth(
+                e,
+                currentMonth,
+                currentYear,
+                setCurrentMonth,
+                setCurrentYear
+              )
+            }
           />
 
           <p className="DateRangePicker__currentDate">
@@ -96,7 +61,15 @@ export const DateRangePicker = () => {
             height={24}
             width={24}
             id="next"
-            onClick={changeMonth}
+            onClick={(e) =>
+              changeMonth(
+                e,
+                currentMonth,
+                currentYear,
+                setCurrentMonth,
+                setCurrentYear
+              )
+            }
           />
         </div>
 
@@ -115,18 +88,45 @@ export const DateRangePicker = () => {
               className={cn('DateRangePicker__calendar-weeks-day', {
                 'DateRangePicker__calendar-weeks-day--inactive': !day.active,
                 'DateRangePicker__calendar-weeks-day--today': day.isToday,
-                'DateRangePicker__calendar-weeks-day--selected':
-                  isSelected(day),
+                'DateRangePicker__calendar-weeks-day--selected': isSelected(
+                  day,
+                  range
+                ),
               })}
-              onClick={() => changeRange(day)}
+              onClick={() => changeRange(day, range, setRange)}
             >
               {day.date}
             </li>
           ))}
         </ul>
+
+        <div className="DateRangePicker__buttons">
+          <MyButtonLarge className="DateRangePicker__btn-select">
+            Вибрати
+          </MyButtonLarge>
+
+          <MyButtonLarge
+            className="DateRangePicker__btn-clear"
+            onClick={() => setRange([])}
+          >
+            Очістити
+          </MyButtonLarge>
+        </div>
       </div>
 
-      <div className="DateRangePicker__periods"></div>
+      <div className="DateRangePicker__periods">
+        {PERIODS.map((p) => (
+          <button
+            className="DateRangePicker__period"
+            key={p}
+            onClick={() =>
+              selectRange(p, daysOfMonth, setRange, currentYear, currentMonth)
+            }
+          >
+            {p}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

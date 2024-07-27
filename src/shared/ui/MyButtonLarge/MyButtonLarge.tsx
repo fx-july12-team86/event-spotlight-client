@@ -4,6 +4,7 @@ type Props = {
   children: React.ReactNode;
   style?: { [key: string]: string };
   className?: string;
+  onClick?: () => void;
 };
 
 export const MyButtonLarge: React.FC<Props> = ({ children, ...props }) => {

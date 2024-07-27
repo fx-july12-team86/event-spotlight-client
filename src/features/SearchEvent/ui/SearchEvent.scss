@@ -1,0 +1,48 @@
+@import '../../../shared/styles/utils.scss';
+
+.SearchEvent {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 158px 114px 156px;
+  gap: 2px;
+  align-items: center;
+  height: 100%;
+
+  &__filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: $color-grey-10;
+    border: 1px solid $color-grey-10;
+
+    &::before {
+      content: url(icons/filter.svg);
+      margin-top: 4px;
+    }
+  }
+
+  &__location {
+    @extend .SearchEvent__filters;
+
+    &::before {
+      content: url(icons/location_black.svg);
+      margin-top: 4px;
+    }
+  }
+
+  &__btn {
+    @include button-large;
+    border: 1px solid $color-green;
+    background-color: $color-green;
+    width: 146px;
+    margin-left: 10px;
+
+    @include on-hover(color, $color-green);
+    @include on-hover(background-color, $color-black);
+    @include on-hover(border-color, $color-green);
+  }
+}
