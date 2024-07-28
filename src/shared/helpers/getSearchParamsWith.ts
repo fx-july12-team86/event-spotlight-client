@@ -1,11 +1,10 @@
 import { Params } from '../types/searchParams';
-('');
+
 export function getSearchParamsWith(
   params: Params,
   searchParams: URLSearchParams | string
 ) {
   const newParams = new URLSearchParams(searchParams);
-
   const entries = Object.entries(params);
 
   entries.forEach((entry) => {

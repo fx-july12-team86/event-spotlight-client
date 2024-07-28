@@ -17,4 +17,14 @@
   &__name {
     font-size: 18px;
   }
+
+  &--selected {
+    @extend .MyEventTypeFilter;
+
+    background-color: $color-purple;
+    color: $color-white;
+
+    @include on-hover(color, $color-purple);
+    @include on-hover(background-color, $color-white);
+  }
 }

@@ -42,18 +42,21 @@ export function selectRange(
     }
 
     case 'На вихідні': {
+      let nextSaturdayIndex: number = todayIndex;
+
       const nextSaturday = daysOfMonth.find((day, i) => {
         if (i < todayIndex) {
           return false;
         }
 
         const dayOfWeek = day.fullDate.getDay();
+        nextSaturdayIndex = i;
 
         return dayOfWeek === 6;
       });
 
       const nextSanday = daysOfMonth.find((day, i) => {
-        if (i < todayIndex) {
+        if (i < nextSaturdayIndex) {
           return false;
         }
 

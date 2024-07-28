@@ -24,4 +24,7 @@ const PERIODS: Period[] = [
   'На місяць',
 ];
 
-export { DAY_OF_WEEK, MONTHS, PERIODS };
+const REGEXP_DAY_RANGE =
+  /^(\d{2})\.(\d{2})\.(\d{4})-(\d{2})\.(\d{2})\.(\d{4})$/;
+
+export { DAY_OF_WEEK, MONTHS, PERIODS, REGEXP_DAY_RANGE };

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 
 import './DateRangePicker.scss';
@@ -10,14 +10,23 @@ import { selectRange } from '../helpers/selectRange';
 import { changeMonth } from '../helpers/changeMonth';
 import { changeRange } from '../helpers/changeRange';
 import { useRenderCalendar } from '../hooks/useRenderCalendar';
+import { useSearchParams } from 'react-router-dom';
+import { getSearchParamsWith } from '../../../shared/helpers/getSearchParamsWith';
+import { formatDate } from '../helpers/formatDate';
 
 type Range = Day[];
 
-export const DateRangePicker = () => {
+type Props = {
+  clear: () => void;
+};
+
+export const DateRangePicker: React.FC<Props> = ({ clear }) => {
   const [daysOfMonth, setDaysOfMonth] = useState<Day[]>([]);
   const [currentMonth, setCurrentMonth] = useState(0);
   const [currentYear, setCurrentYear] = useState(2024);
   const [range, setRange] = useState<Range>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [selectedPeriod, setSelectedPeriod] = useState('');
 
   useRenderCalendar(
     daysOfMonth,
@@ -27,6 +36,43 @@ export const DateRangePicker = () => {
     currentYear,
     currentMonth
   );
+
+  useEffect(() => {
+    let from: string | null = '';
+    let to: string | null = '';
+
+    if (!range.length) {
+      from = to = null;
+    }
+
+    if (range.length === 1) {
+      from = formatDate(range[0].fullDate);
+      to = from;
+    }
+
+    if (range.length === 2) {
+      from = formatDate(range[0].fullDate);
+      to = formatDate(range[1].fullDate);
+    }
+
+    const newParams = getSearchParamsWith({ from, to }, searchParams);
+    setSearchParams(newParams);
+  }, [range]);
+
+  useEffect(() => {
+    const from = searchParams.get('from');
+
+    if (!from) {
+      setRange([]);
+      setSelectedPeriod('');
+    }
+  }, [searchParams]);
+
+  function clearFilters() {
+    setRange([]);
+    setSelectedPeriod('');
+    clear();
+  }
 
   return (
     <div className="DateRangePicker">
@@ -107,7 +153,7 @@ export const DateRangePicker = () => {
 
           <MyButtonLarge
             className="DateRangePicker__btn-clear"
-            onClick={() => setRange([])}
+            onClick={clearFilters}
           >
             Очістити
           </MyButtonLarge>
@@ -117,11 +163,14 @@ export const DateRangePicker = () => {
       <div className="DateRangePicker__periods">
         {PERIODS.map((p) => (
           <button
-            className="DateRangePicker__period"
+            className={cn('DateRangePicker__period', {
+              'DateRangePicker__period--selected': p === selectedPeriod,
+            })}
             key={p}
-            onClick={() =>
-              selectRange(p, daysOfMonth, setRange, currentYear, currentMonth)
-            }
+            onClick={() => {
+              setSelectedPeriod(p);
+              selectRange(p, daysOfMonth, setRange, currentYear, currentMonth);
+            }}
           >
             {p}
           </button>

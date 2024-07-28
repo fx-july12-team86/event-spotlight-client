@@ -23,6 +23,12 @@
       content: url(icons/filter.svg);
       margin-top: 4px;
     }
+
+    @include on-hover(color, $color-purple);
+
+    &:hover::before {
+      content: url(icons/filter_purple.svg);
+    }
   }
 
   &__location {
@@ -31,6 +37,10 @@
     &::before {
       content: url(icons/location_black.svg);
       margin-top: 4px;
+    }
+
+    &:hover::before {
+      content: url(icons/location_purple.svg);
     }
   }
 

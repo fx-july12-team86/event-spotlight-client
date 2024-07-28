@@ -46,23 +46,71 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 14px;
+    color: #181a23;
+  }
 
-    &-other {
-      font-size: 20px;
-      font-weight: bold;
+  &__other {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    &-lable {
+      display: flex;
+      align-items: center;
+      gap: 5px;
       padding: 16px 20px;
-
-      &::after {
-        content: url(icons/arrow-down.svg);
-      }
-
-      &:hover {
-        &::after {
-          content: url(icons/arrow-down-purple.svg);
-        }
-      }
+      background-color: $color-white;
+      position: relative;
 
       @include on-hover(color, $color-purple);
+
+      &:after {
+        position: absolute;
+        content: '';
+        display: block;
+        background-color: #fff;
+        height: 33px;
+        width: 115px;
+        top: 41px;
+        z-index: 10;
+        left: 1px;
+      }
+    }
+
+    &-drop {
+      position: absolute;
+      background-color: $color-white;
+      background-color: #fff;
+      z-index: 2;
+      top: 61px;
+      left: -356px;
+      width: 472px;
+      box-shadow: -1px 0px 21px -6px rgba(0, 0, 0, 0.75);
+      overflow: hidden;
+      transition: height ease-in-out $transition-duration;
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 40px;
+      column-gap: 20px;
+      transition: transform ease-in-out $transition-duration;
+    }
+
+    &-item {
+      font-size: 18px;
+      font-weight: normal;
+      padding: 12px;
+      color: $color-black;
+      text-decoration: none;
+
+      @include on-hover(color, $color-white);
+      @include on-hover(background-color, $color-purple);
     }
   }
 }

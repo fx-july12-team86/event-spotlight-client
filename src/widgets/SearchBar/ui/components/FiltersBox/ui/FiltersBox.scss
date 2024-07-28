@@ -1,4 +1,4 @@
-@import './../../../../../shared/styles/utils.scss';
+@import './../../../../../../shared/styles/utils.scss';
 
 .FiltersBox {
   display: flex;
@@ -6,12 +6,20 @@
   gap: 32px;
   width: 70%;
 
+  &__drop {
+    position: relative;
+    overflow: hidden;
+    transition: height ease-in-out $transition-duration;
+  }
+
   &__filters {
     background-color: $color-white;
     padding: 40px;
     display: flex;
     flex-direction: column;
     gap: 48px;
+    transition: transform ease-in-out $transition-duration;
+    position: relative;
   }
 
   &__title {
@@ -37,6 +45,11 @@
     }
   }
 
+  &__title--sm {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
   &__selectedList {
     display: flex;
     flex-wrap: wrap;
@@ -50,5 +63,13 @@
     justify-content: start;
     flex-wrap: wrap;
     gap: 12px;
+  }
+
+  &__icon-close {
+    position: absolute;
+    right: 41px;
+    top: 48px;
+
+    @include on-hover(transform, scale(1.2));
   }
 }

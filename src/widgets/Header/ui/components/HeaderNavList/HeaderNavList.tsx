@@ -1,17 +1,28 @@
+import { Link } from 'react-router-dom';
 import './HeaderNavList.scss';
 
 export const HeaderNavList = () => {
   return (
     <nav className="HeaderNavList">
-      <div className="HeaderNavList__item">Концерти</div>
+      <Link to="catalog?category=concert" className="HeaderNavList__item">
+        Концерти
+      </Link>
 
-      <div className="HeaderNavList__item">Майстер-класи</div>
+      <Link to="catalog?category=master" className="HeaderNavList__item">
+        Майстер-класи
+      </Link>
 
-      <div className="HeaderNavList__item">Фестивалі</div>
+      <Link to="catalog?category=festivals" className="HeaderNavList__item">
+        Фестивалі
+      </Link>
 
-      <div className="HeaderNavList__item">Виставки</div>
+      <Link to="catalog?category=exhibitions" className="HeaderNavList__item">
+        Виставки
+      </Link>
 
-      <div className="HeaderNavList__item">Для дітей</div>
+      <Link to="catalog?category=children" className="HeaderNavList__item">
+        Для дітей
+      </Link>
     </nav>
   );
 };
