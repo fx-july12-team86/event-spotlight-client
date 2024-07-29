@@ -9,5 +9,5 @@ export function useGetHeight(
     if (ref.current) {
       setHeight(ref.current.offsetHeight);
     }
-  }, []);
+  }, [ref.current]);
 }

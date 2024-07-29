@@ -17,7 +17,7 @@ import { formatDate } from '../helpers/formatDate';
 type Range = Day[];
 
 type Props = {
-  clear: () => void;
+  clear?: () => void;
 };
 
 export const DateRangePicker: React.FC<Props> = ({ clear }) => {
@@ -71,7 +71,9 @@ export const DateRangePicker: React.FC<Props> = ({ clear }) => {
   function clearFilters() {
     setRange([]);
     setSelectedPeriod('');
-    clear();
+    if (clear) {
+      clear();
+    }
   }
 
   return (

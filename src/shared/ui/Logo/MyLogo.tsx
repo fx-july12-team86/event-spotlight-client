@@ -8,7 +8,6 @@ type Props = {
 };
 
 export const MyLogo: React.FC<Props> = ({ theme = 'light' }) => {
-  console.log(theme);
   return (
     <Link to="/" className="Logo">
       <div className="Logo__img" />

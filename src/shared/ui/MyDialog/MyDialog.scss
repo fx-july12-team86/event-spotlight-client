@@ -1,0 +1,28 @@
+@import '../../../shared/styles/utils.scss';
+
+.MyDialog {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    position: relative;
+    padding: 40px;
+    background-color: $color-white;
+    max-width: 788px;
+    width: 100%;
+  }
+
+  &__close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+  }
+}
+
+@include animation-scale-in-center;
+@include animation-scale-out-center;

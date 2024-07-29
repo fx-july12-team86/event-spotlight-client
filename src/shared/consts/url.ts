@@ -1,3 +1,3 @@
-const USER_POSITION_API = 'https://api.db-ip.com/v2/free/self';
+const USER_POSITION_API = 'https://ipinfo.io/json';
 
 export { USER_POSITION_API };

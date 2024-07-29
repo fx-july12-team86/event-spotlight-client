@@ -6,7 +6,7 @@ export interface UserState {
 }
 
 export const initialState: UserState = {
-  location: '',
+  location: 'Oбрати місто',
 };
 
 export const userSlice = createSlice({

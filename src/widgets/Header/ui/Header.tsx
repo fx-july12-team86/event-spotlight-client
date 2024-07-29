@@ -3,11 +3,13 @@ import { useRef, useState } from 'react';
 import { useAppSelector } from '../../../shared/hooks/reduxHooks';
 
 import './Header.scss';
-import { MyButton, MyLocation, MyLogo } from '../../../shared/ui';
+import { MyButton, MyLocation, MyLogo, MyDropIcon } from '../../../shared/ui';
 import { HeaderNavList } from './components/HeaderNavList/HeaderNavList';
 import { HeaderSearch } from './components/HeaderSearch/HeaderSearch';
 import { useHideDrop } from '../../../shared/hooks/useHideDrop';
 import { useGetHeight } from '../../../shared/hooks/useGetHeight';
+import { ProfileDrop } from './components/ProfileDrop/ProfileDrop';
+import { DateRangePicker } from '../../DataRangePicker';
 
 const OTHER_CATEGORY = ['Вечірки', 'Театр', 'Кіно', 'Спорт', 'Конференції'];
 
@@ -36,21 +38,13 @@ export const Header = () => {
             <HeaderSearch />
 
             <div className="Header__controls">
-              <img
-                src="icons/calendar.svg"
-                alt="calendar"
-                className="Header__icon"
-                height={64}
-                width={64}
-              />
+              <MyDropIcon openedIcon="calendar_black" closedIcon="calendar">
+                <DateRangePicker />
+              </MyDropIcon>
 
-              <img
-                height={64}
-                width={64}
-                src="icons/account.svg"
-                alt="account"
-                className="Header__icon"
-              />
+              <MyDropIcon openedIcon="account_black" closedIcon="account">
+                <ProfileDrop />
+              </MyDropIcon>
 
               <div className="Header__addBtn">
                 <MyButton>Додати подію</MyButton>

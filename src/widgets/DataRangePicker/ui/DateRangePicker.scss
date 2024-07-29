@@ -11,6 +11,8 @@
   display: flex;
   justify-content: space-between;
   min-height: 563px;
+  background-color: $color-white;
+  padding: 40px;
 
   &__calendar {
     width: 480px;
