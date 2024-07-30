@@ -1,5 +1,5 @@
 import { EventType } from '../../../entities/Event/types';
-import { MyBreadCrubms } from '../../../shared/ui/MyBreadCrumbs/MyBreadCrumbs';
+import { BreadcrumbsEvent } from './components/Breadcrumbs/BreadcrumbsEvent';
 import { EventDetails } from './components/EventDetails/ui/EventDetails';
 import { FirstScreen } from './components/FirstScreen/FirstScreen';
 import { SimilarEvents } from './components/SimilarEvents/SimilarEvents';
@@ -68,7 +68,7 @@ export const EventPage = () => {
   return (
     <div className="EventPage">
       <div className="EventPage__breadCrumbs">
-        <MyBreadCrubms />
+        <BreadcrumbsEvent title={'Майстер-клас з миловаріння'} />
       </div>
 
       <div className="EventPage__firstScreen">

@@ -144,3 +144,43 @@
     }
   }
 }
+
+@mixin breadcrumps {
+  display: flex;
+
+  &__item {
+    padding-inline: 16px;
+    font-size: 18px;
+    color: $color-grey-60;
+    display: flex;
+    text-decoration: none;
+    background-color: $color-white;
+    border: none;
+
+    &::after {
+      display: block;
+      content: '';
+      width: 2px;
+      height: 70%;
+      background-color: $color-grey-60;
+      position: relative;
+      top: 5px;
+      left: 16px;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+
+    &:last-child:hover {
+      color: $color-grey-60;
+      cursor: auto;
+    }
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    @include on-hover(color, $color-purple);
+  }
+}

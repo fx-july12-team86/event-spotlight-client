@@ -1,0 +1,42 @@
+@import '../../styles/utils.scss';
+
+.MyPagination {
+  margin: 0 auto;
+}
+
+.MuiPaginationItem-root {
+  width: 64px;
+  height: 64px !important;
+  background-color: $color-grey-10 !important;
+  border: none !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+
+  & :last-child {
+    border-radius: 50% !important;
+  }
+}
+
+.MuiPagination-ul {
+  gap: 5px;
+}
+
+.MuiPaginationItem-root[aria-current='true'] {
+  background-color: $color-green !important;
+}
+
+.MuiPaginationItem-ellipsis {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.MuiPaginationItem-previousNext {
+  border-radius: 50% !important;
+  transition: all ease-in-out $transition-duration;
+
+  &:hover {
+    color: $color-white;
+    background-color: $color-grey-70 !important;
+  }
+}

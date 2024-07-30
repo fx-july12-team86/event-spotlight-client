@@ -2,4 +2,15 @@
   &__breadcrumbs {
     margin-block: 20px;
   }
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    margin-bottom: 72px;
+  }
 }
