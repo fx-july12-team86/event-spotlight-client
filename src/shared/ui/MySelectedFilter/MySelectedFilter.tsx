@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import './MySelectedFilter.scss';
 
 type Props = {
@@ -6,8 +8,9 @@ type Props = {
 };
 
 export const MySelectedFilter: React.FC<Props> = ({ filter, addFilter }) => {
+  const [animation, setAnimation] = useState('scale-in-center');
   return (
-    <li className="MySelectedFilter">
+    <li className={`MySelectedFilter ${animation}`}>
       <p className="MySelectedFilter__name">{filter}</p>
 
       <img
@@ -16,7 +19,12 @@ export const MySelectedFilter: React.FC<Props> = ({ filter, addFilter }) => {
         height={24}
         width={24}
         className="MySelectedFilter__remove"
-        onClick={addFilter}
+        onClick={() => {
+          setAnimation('scale-out-center');
+          setTimeout(() => {
+            addFilter();
+          }, 300);
+        }}
       />
     </li>
   );

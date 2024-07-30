@@ -1,20 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import './MyBreadCrumbs.scss';
 
-export const MyBreadCrubms = () => {
+type Breadcrumb = { title: string; path: string };
+
+type Props = {
+  breadcrumbs: Breadcrumb[];
+};
+
+export const MyBreadCrubms: React.FC<Props> = ({ breadcrumbs }) => {
   return (
     <nav className="MyBreadCrumbs">
-      <NavLink to="/" className="MyBreadCrumbs__item">
-        Всі події
-      </NavLink>
-
-      <NavLink to="/" className="MyBreadCrumbs__item">
-        Події Київ
-      </NavLink>
-
-      <NavLink to="/" className="MyBreadCrumbs__item">
-        Майстер-клас з миловаріння
-      </NavLink>
+      {breadcrumbs.map((b) => (
+        <NavLink key={b.title} to={b.path} className="MyBreadCrumbs__item">
+          {b.title}
+        </NavLink>
+      ))}
     </nav>
   );
 };

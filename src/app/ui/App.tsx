@@ -3,10 +3,10 @@ import './App.scss';
 
 import { Outlet } from 'react-router-dom';
 import { Footer } from '../../widgets/Footer';
-import { useGetUserSity } from '../hooks/useGetUserSity';
+import { useGetUserCity } from '../hooks/useGetUserCity';
 
 function App() {
-  useGetUserSity();
+  useGetUserCity();
 
   return (
     <div className="App">

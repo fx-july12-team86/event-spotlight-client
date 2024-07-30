@@ -60,7 +60,7 @@ export const MyLocation: React.FC<Props> = ({ city = '' }) => {
 
       {showDialog && (
         <MyDialog onClose={setShowDialog}>
-          <SelectCity />
+          <SelectCity handleOnClose={() => {}} />
         </MyDialog>
       )}
     </div>

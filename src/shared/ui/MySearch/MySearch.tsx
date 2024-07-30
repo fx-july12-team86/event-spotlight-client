@@ -1,6 +1,9 @@
 import { useSearchParams } from 'react-router-dom';
+import debounce from 'lodash.debounce';
+
 import './MySearch.scss';
 import { getSearchParamsWith } from '../../helpers/getSearchParamsWith';
+import { useCallback, useEffect, useState } from 'react';
 
 type Props = {
   setShowSearch?: (v: boolean) => void;
@@ -12,22 +15,34 @@ export const MySearch: React.FC<Props> = ({
   height,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query') || '';
+  const [query, setQuery] = useState('');
+  const appliedQuery = searchParams.get('query') || '';
+
+  useEffect(() => {}, []);
+
+  const setAppliedSearch = useCallback(
+    debounce((value) => {
+      const newSearch = getSearchParamsWith(
+        { query: value || null },
+        searchParams
+      );
+
+      setSearchParams(newSearch);
+    }, 1000),
+    []
+  );
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const newSearch = getSearchParamsWith(
-      { query: e.target.value || null },
-      searchParams
-    );
-
-    setSearchParams(newSearch);
+    setQuery(e.target.value);
+    setAppliedSearch(e.target.value);
   }
 
   function clearSearch() {
-    if (query) {
+    if (appliedQuery) {
       const newSearch = getSearchParamsWith({ query: null }, searchParams);
 
       setSearchParams(newSearch);
+      setQuery('');
       return;
     }
 

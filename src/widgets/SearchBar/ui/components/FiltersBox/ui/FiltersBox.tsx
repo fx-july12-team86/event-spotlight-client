@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { MyEventTypeFilter } from '../../../../../../shared/ui/MyEventTypeFilter/MyEventTypeFilter';
 import { MySelectedFilter } from '../../../../../../shared/ui/MySelectedFilter/MySelectedFilter';
 import { DateRangePicker } from '../../../../../DataRangePicker';
@@ -7,6 +7,7 @@ import './FiltersBox.scss';
 import { useSearchParams } from 'react-router-dom';
 import { toggleEventFilter } from '../helpers/toggleEventFilter';
 import { useSetRangeFilter } from '../hooks/useSetRangeFilter';
+import { useGetHeight } from '../../../../../../shared/hooks/useGetHeight';
 
 type Props = {
   showFilters: boolean;
@@ -19,42 +20,48 @@ export const FiltersBox: React.FC<Props> = ({
 }) => {
   const [filters, setFilters] = useState<string[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [filtersHeight, setFiltersHeight] = useState(0);
+  const filtersRef = useRef<HTMLDivElement>(null);
 
   useSetRangeFilter(searchParams, filters, setFilters);
+  useGetHeight(filtersRef, setFiltersHeight);
 
   return (
     <div className="FiltersBox">
-      <div className="FiltersBox__selected">
-        <div className="FiltersBox__title">
-          <p className="FiltersBox__title-name">ФІЛЬТРИ</p>
+      {!!filters.length && (
+        <div className="FiltersBox__selected">
+          <div className="FiltersBox__title">
+            <p className="FiltersBox__title-name">ФІЛЬТРИ</p>
 
-          <p className="FiltersBox__title-counter">{`(${filters.length})`}</p>
+            <p className="FiltersBox__title-counter">{`(${filters.length})`}</p>
+          </div>
+
+          <ul className="FiltersBox__selectedList">
+            {filters.map((filter) => (
+              <MySelectedFilter
+                key={filter}
+                filter={filter}
+                addFilter={() =>
+                  toggleEventFilter(
+                    filter,
+                    filters,
+                    setFilters,
+                    searchParams,
+                    setSearchParams
+                  )
+                }
+              />
+            ))}
+          </ul>
         </div>
-
-        <ul className="FiltersBox__selectedList">
-          {filters.map((filter) => (
-            <MySelectedFilter
-              key={filter}
-              filter={filter}
-              addFilter={() =>
-                toggleEventFilter(
-                  filter,
-                  filters,
-                  setFilters,
-                  searchParams,
-                  setSearchParams
-                )
-              }
-            />
-          ))}
-        </ul>
-      </div>
+      )}
 
       <div
         className="FiltersBox__drop"
-        style={{ height: showFilters ? '950px' : '0' }}
+        style={{ height: showFilters ? filtersHeight : '0' }}
       >
         <div
+          ref={filtersRef}
           className="FiltersBox__filters"
           style={{
             transform: showFilters ? 'translateY(0)' : 'translateY(-100%)',

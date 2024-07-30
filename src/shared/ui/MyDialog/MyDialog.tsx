@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Children, cloneElement, useState } from 'react';
 import './MyDialog.scss';
 
 type Props = {
@@ -9,15 +9,19 @@ type Props = {
 export const MyDialog: React.FC<Props> = ({ children, onClose }) => {
   const [animation, setAnimation] = useState('scale-in-center');
 
-  function handleOnClose() {
+  function handleOnClose(e?: React.MouseEvent) {
+    e?.stopPropagation();
+
     setAnimation('scale-out-center');
+
     setTimeout(() => {
       onClose(false);
     }, 300);
   }
+
   return (
-    <div className={`MyDialog ${animation}`}>
-      <div className="MyDialog__content" onClick={(e) => e.stopPropagation()}>
+    <div className={`MyDialog ${animation}`} onClick={handleOnClose}>
+      <div className="MyDialog__content">
         <img
           src="icons/close_black.svg"
           alt="close icon"
@@ -27,7 +31,11 @@ export const MyDialog: React.FC<Props> = ({ children, onClose }) => {
           onClick={handleOnClose}
         />
 
-        {children}
+        {Children.map(children, (child) =>
+          cloneElement(child as React.ReactElement, {
+            handleOnClose,
+          })
+        )}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { userActions, userApi } from '../../entities/User';
 import { useAppDispatch } from '../../shared/hooks/reduxHooks';
 import { translate } from '../../shared/helpers/translator';
 
-export function useGetUserSity() {
+export function useGetUserCity() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {

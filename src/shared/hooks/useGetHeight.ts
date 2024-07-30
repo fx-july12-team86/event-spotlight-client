@@ -7,6 +7,7 @@ export function useGetHeight(
 ) {
   useEffect(() => {
     if (ref.current) {
+      console.log(ref.current)
       setHeight(ref.current.offsetHeight);
     }
   }, [ref.current]);
