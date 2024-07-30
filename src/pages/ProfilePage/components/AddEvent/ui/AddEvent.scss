@@ -1,0 +1,24 @@
+@import '../../../../../shared/styles/utils.scss';
+
+.AddEvent {
+  &__breadcrumbs {
+    display: flex;
+    margin-block: 20px;
+
+    &-item {
+      @include breadcrumbs-item;
+
+      &:last-child {
+        align-self: center;
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 32px;
+  }
+
+  &__progress {
+    margin-bottom: 80px;
+  }
+}

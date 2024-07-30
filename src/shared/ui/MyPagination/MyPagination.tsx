@@ -7,8 +7,10 @@ export const MyPagination = () => {
   const [page, setPage] = useState(1);
 
   function handleOnChange(e: React.ChangeEvent<unknown>, currentPage: number) {
-    setPage(currentPage);
-    console.log(page);
+    if (e) {
+      setPage(currentPage);
+      console.log(page);
+    }
   }
 
   return (

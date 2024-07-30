@@ -42,7 +42,8 @@ export const MyDropIcon: React.FC<Props> = ({
         <div ref={contentRef}>
           {Children.map(children, (child) =>
             cloneElement(child as React.ReactElement, {
-              showDrop: showDrop,
+              showDrop,
+              setShowDrop,
             })
           )}
         </div>

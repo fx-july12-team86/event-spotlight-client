@@ -6,9 +6,13 @@ import './ProfileDrop.scss';
 
 type Props = {
   showDrop?: boolean;
+  setShowDrop?: (v: boolean) => void;
 };
 
-export const ProfileDrop: React.FC<Props> = ({ showDrop }) => {
+export const ProfileDrop: React.FC<Props> = ({
+  showDrop,
+  setShowDrop = () => {},
+}) => {
   const profileRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -19,14 +23,17 @@ export const ProfileDrop: React.FC<Props> = ({ showDrop }) => {
       })}
     >
       <nav className="ProfileDrop__nav">
-        <div className="ProfileDrop__nav-list">
-          <Link to="profile" className="ProfileDrop__nav-link">
+        <div
+          className="ProfileDrop__nav-list"
+          onClick={() => setShowDrop(false)}
+        >
+          <Link to="profile/settings" className="ProfileDrop__nav-link">
             <img src="icons/account_black.svg" alt="Мій профіль" />
 
             <p className="">Мій профіль</p>
           </Link>
 
-          <Link to="favorite" className="ProfileDrop__nav-link">
+          <Link to="profile/favorite" className="ProfileDrop__nav-link">
             <img
               src="icons/heart_black.svg"
               alt="Улюблене"
@@ -37,7 +44,7 @@ export const ProfileDrop: React.FC<Props> = ({ showDrop }) => {
             <p>Улюблене</p>
           </Link>
 
-          <Link to="my-events" className="ProfileDrop__nav-link">
+          <Link to="profile/my-events" className="ProfileDrop__nav-link">
             <img
               src="icons/star_black.svg"
               alt="Мої події"

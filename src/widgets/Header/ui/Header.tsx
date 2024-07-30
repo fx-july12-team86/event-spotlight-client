@@ -46,9 +46,9 @@ export const Header = () => {
                 <ProfileDrop />
               </MyDropIcon>
 
-              <div className="Header__addBtn">
+              <Link to="profile/add-event" className="Header__addBtn">
                 <MyButton>Додати подію</MyButton>
-              </div>
+              </Link>
             </div>
           </div>
         </div>
