@@ -1,0 +1,57 @@
+@import '../../../../../../../../../shared/styles/utils.scss';
+
+.NewEventForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__line {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__input {
+    position: relative;
+    width: 100%;
+
+    &--select {
+      height: 64px;
+    }
+
+    & span {
+      color: $color-error;
+      font-weight: bold;
+    }
+
+    &-label {
+      color: $color-grey-70;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    &-field {
+      height: 64px;
+      padding: 16px 24px;
+      width: 100%;
+      border: 1px solid $color-grey-70;
+      outline-color: $color-purple;
+      color: $color-black;
+      font-size: 18px;
+
+      &--invalid {
+        @extend .NewEventForm__input-field;
+
+        border-color: $color-error;
+      }
+    }
+
+    &-wr {
+      position: absolute;
+      width: 450px;
+      z-index: 1;
+    }
+  }
+}

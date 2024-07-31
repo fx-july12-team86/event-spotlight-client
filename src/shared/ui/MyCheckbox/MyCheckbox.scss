@@ -1,0 +1,19 @@
+@import '../../../shared/styles/utils.scss';
+
+.MyCheckbox {
+  height: 64px;
+  display: flex;
+  align-items: center;
+
+  &__input {
+    width: 24px;
+    height: 24px;
+    accent-color: $color-purple;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+
+  &__label {
+    cursor: pointer;
+  }
+}

@@ -1,13 +1,20 @@
 import { useState } from 'react';
 import './Step1.scss';
 import { useGetImageURL } from './hooks/useGetImageURL';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../../../../shared/hooks/reduxHooks';
+import { eventActions } from '../../../../../../../entities/Event';
 
 type Props = {
   setStep: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const Step1: React.FC<Props> = ({ setStep }) => {
-  const [images, setImages] = useState<(File | null)[]>([]);
+  const { eventImages } = useAppSelector((state) => state.event);
+  const dispatch = useAppDispatch();
+
   const [urls, setUrls] = useState<string[]>([]);
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -15,32 +22,21 @@ export const Step1: React.FC<Props> = ({ setStep }) => {
     const fileList = e.target.files;
 
     if (fileList) {
-      setImages((prevImages) => {
-        const newImages = [...prevImages];
-        newImages[id] = fileList[0];
-
-        return newImages;
-      });
+      dispatch(eventActions.setImage({ id, image: fileList[0] }));
     }
   }
 
   function removeImage(i: number) {
-    setImages((prev) => {
-      const newImages = [...prev];
-      newImages[i] = null;
-
-      return newImages;
-    });
+    dispatch(eventActions.removeImage(i));
 
     setUrls((prev) => {
       const newUrls = [...prev];
       newUrls[i] = '';
-
       return newUrls;
     });
   }
 
-  useGetImageURL(images, setUrls);
+  useGetImageURL(eventImages, setUrls);
 
   return (
     <section className="Step1">
@@ -65,7 +61,7 @@ export const Step1: React.FC<Props> = ({ setStep }) => {
               key={item}
               className="Step1__img"
               style={{
-                backgroundImage: images[item] ? `url(${urls[item]})` : '',
+                backgroundImage: eventImages[item] ? `url(${urls[item]})` : '',
               }}
             >
               <img

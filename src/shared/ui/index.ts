@@ -5,6 +5,8 @@ import { MySearch } from './MySearch/MySearch';
 import { MyDropIcon } from './MyDropIcon/MyDropIcon';
 import { MyDialog } from './MyDialog/MyDialog';
 import { MyPagination } from './MyPagination/MyPagination';
+import { MySelect } from './MySelect/MySelect';
+import { MyCheckbox } from './MyCheckbox/MyCheckbox';
 
 export {
   MyLogo,
@@ -14,4 +16,6 @@ export {
   MyDropIcon,
   MyDialog,
   MyPagination,
+  MySelect,
+  MyCheckbox,
 };

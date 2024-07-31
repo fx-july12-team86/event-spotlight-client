@@ -3,6 +3,7 @@ import './AddEvent.scss';
 import { Progress } from './components/Progress/Progress';
 import { useState } from 'react';
 import { Step1 } from './components/Step1/Step1';
+import { Step2 } from './components/Step2/Step2';
 
 export const AddEvent: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -23,7 +24,9 @@ export const AddEvent: React.FC = () => {
         <Progress step={step} setStep={setStep} />
       </div>
 
-      <Step1 setStep={setStep} />
+      {step === 1 && <Step1 setStep={setStep} />}
+
+      {step === 2 && <Step2 setStep={setStep} />}
     </div>
   );
 };

@@ -1,0 +1,54 @@
+@import '../../../shared/styles/utils.scss';
+
+.MySelect {
+  font-size: 18px;
+  padding: 16px 24px;
+  border: 1px solid $color-grey-70;
+  color: $color-black;
+  background-color: $color-white;
+  position: relative;
+  z-index: 1;
+
+  &__main {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &::after {
+      content: url(/icons/arrow-down-black.svg);
+      display: block;
+      transform: translateY(-5px);
+    }
+
+    &--opened {
+      margin-bottom: 20px;
+
+      &::after {
+        content: url(/icons/arrow-up-black.svg);
+        display: block;
+        transform: translateY(-5px);
+      }
+    }
+  }
+
+  &__drop {
+    overflow: hidden;
+    transition: height ease $transition-duration;
+
+    &-list {
+      transition: transform ease $transition-duration;
+
+      &--hidden {
+        transform: translateY(-110%);
+      }
+    }
+
+    &-item {
+      padding: 12px;
+
+      @include on-hover(color, $color-white);
+      @include on-hover(background-color, $color-purple);
+    }
+  }
+}
