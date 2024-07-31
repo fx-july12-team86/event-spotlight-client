@@ -131,7 +131,9 @@ export const CatalogPage = () => {
 
       <h1 className="CatalogPage__title">Події {location}</h1>
 
-      <SearchBar />
+      <div className="CatalogPage__search-bar">
+        <SearchBar />
+      </div>
 
       <section className="CatalogPage__main">
         <div className="CatalogPage__list">

@@ -13,4 +13,14 @@
     gap: 64px;
     margin-bottom: 72px;
   }
+
+  &__search-bar {
+    margin-bottom: 92px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
 }
