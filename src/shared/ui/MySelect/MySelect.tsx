@@ -5,12 +5,12 @@ import './MySelect.scss';
 import { useGetHeight } from '../../hooks/useGetHeight';
 
 type Props = {
-  title: string;
   list: string[];
+  setter: (v: string) => void;
+  value: string;
 };
 
-export const MySelect: React.FC<Props> = ({ title, list }) => {
-  const [value, setValue] = useState(title);
+export const MySelect: React.FC<Props> = ({ list, setter, value }) => {
   const [showDrop, setShowDrop] = useState(false);
   const [dropHeight, setDropHeight] = useState(0);
 
@@ -18,7 +18,7 @@ export const MySelect: React.FC<Props> = ({ title, list }) => {
   useGetHeight(dropRef, setDropHeight);
 
   function handleClick(v: string) {
-    setValue(v);
+    setter(v);
     setShowDrop(false);
   }
 

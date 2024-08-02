@@ -4,7 +4,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 6px;
 
   &__line {
     display: flex;
@@ -16,6 +16,28 @@
   &__input {
     position: relative;
     width: 100%;
+
+    $icons: 'location', 'money', 'calendar', 'time';
+
+    @each $i in $icons {
+      &--#{$i} {
+        &::before {
+          content: url(/icons/#{$i}_black.svg);
+          position: absolute;
+          top: 51px;
+          left: 26px;
+        }
+      }
+    }
+
+    &--money {
+      &::after {
+        content: url(/icons/uah.svg);
+        position: absolute;
+        top: 51px;
+        right: 26px;
+      }
+    }
 
     &--select {
       height: 64px;
@@ -40,11 +62,37 @@
       outline-color: $color-purple;
       color: $color-black;
       font-size: 18px;
+      cursor: pointer;
+
+      &--icon {
+        padding-inline: 54px;
+      }
 
       &--invalid {
         @extend .NewEventForm__input-field;
 
         border-color: $color-error;
+        outline-color: $color-error;
+      }
+
+      &--error {
+        color: $color-error;
+        font-size: 16px;
+        font-weight: 500;
+        height: 20px;
+        margin-bottom: 6px;
+      }
+
+      @include placeholder {
+        color: $color-grey-60;
+        opacity: 1;
+        transition: opacity $transition-duration;
+      }
+
+      &:focus {
+        @include placeholder {
+          opacity: 0;
+        }
       }
     }
 
@@ -52,6 +100,17 @@
       position: absolute;
       width: 450px;
       z-index: 1;
+    }
+
+    &-counter {
+      position: absolute;
+      top: 46px;
+      right: 20px;
+      color: $color-purple;
+
+      &--invalid {
+        color: $color-error;
+      }
     }
   }
 }
