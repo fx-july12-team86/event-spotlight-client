@@ -21,6 +21,11 @@
 
       color: $color-purple;
     }
+
+    &--disabled {
+      @extend .Progress__item;
+      @include on-hover(cursor, not-allowed);
+    }
   }
 
   &__lable {

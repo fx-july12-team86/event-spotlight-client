@@ -3,9 +3,10 @@ import './MyCheckbox.scss';
 type Props = {
   title: string;
   setter: (v: boolean) => void;
+  value: boolean;
 };
 
-export const MyCheckbox: React.FC<Props> = ({ title, setter }) => {
+export const MyCheckbox: React.FC<Props> = ({ title, setter, value }) => {
   return (
     <div className="MyCheckbox">
       <input
@@ -13,6 +14,7 @@ export const MyCheckbox: React.FC<Props> = ({ title, setter }) => {
         id="online"
         className="MyCheckbox__input"
         onChange={(e) => setter(e.target.checked)}
+        checked={value}
       />
 
       <label htmlFor="online" className="MyCheckbox__label">

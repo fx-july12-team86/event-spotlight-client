@@ -92,6 +92,7 @@ export const Step1: React.FC<Props> = ({ setStep }) => {
           <button
             className="Step1__footer-btn"
             onClick={() => setStep((step) => (step += 1))}
+            disabled={eventImages.length < 3}
           >
             Наступний крок
           </button>

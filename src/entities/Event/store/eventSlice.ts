@@ -12,19 +12,31 @@ export interface EventState {
   time: string;
   isOnline: boolean;
   isFree: boolean;
+  description: string;
+  phone: number | '';
+  email: string;
+  instagram: string;
+  telegram: string;
+  facebook: string;
 }
 
 export const initialState: EventState = {
   eventImages: [],
   title: '',
-  category: 'Обери категорію',
-  subCategory: 'Обери підкатегорію (за бажанням)',
+  category: '',
+  subCategory: '',
   address: '',
   price: '',
   date: '',
   time: '',
   isOnline: false,
   isFree: false,
+  description: '',
+  phone: '',
+  email: '',
+  instagram: '',
+  telegram: '',
+  facebook: '',
 };
 
 export const eventSlice = createSlice({
@@ -37,32 +49,14 @@ export const eventSlice = createSlice({
     removeImage: (state, action: PayloadAction<number>) => {
       state.eventImages[action.payload] = null;
     },
-    setTitle: (state, action: PayloadAction<string>) => {
-      state.title = action.payload;
-    },
-    setCategory: (state, action: PayloadAction<string>) => {
-      state.category = action.payload;
-    },
-    setSubCategory: (state, action: PayloadAction<string>) => {
-      state.subCategory = action.payload;
-    },
-    setAddress: (state, action: PayloadAction<string>) => {
-      state.address = action.payload;
-    },
-    setPrice: (state, action: PayloadAction<string>) => {
-      state.price = action.payload;
-    },
-    setDate: (state, action: PayloadAction<string>) => {
-      state.date = action.payload;
-    },
-    setTime: (state, action: PayloadAction<string>) => {
-      state.time = action.payload;
-    },
-    setIsOnline: (state, action: PayloadAction<boolean>) => {
-      state.isOnline = action.payload;
-    },
-    setIsFree: (state, action: PayloadAction<boolean>) => {
-      state.isFree = action.payload;
+    updateProperty: (
+      state,
+      action: PayloadAction<{
+        field: keyof EventState;
+        value: string | boolean | number;
+      }>
+    ) => {
+      state[action.payload.field] = action.payload.value as never;
     },
   },
 });
@@ -70,15 +64,22 @@ export const eventSlice = createSlice({
 export const {
   setImage,
   removeImage,
-  setTitle,
-  setCategory,
-  setSubCategory,
-  setAddress,
-  setPrice,
-  setDate,
-  setTime,
-  setIsOnline,
-  setIsFree
+  updateProperty,
+  // setTitle,
+  // setCategory,
+  // setSubCategory,
+  // setAddress,
+  // setPrice,
+  // setDate,
+  // setTime,
+  // setIsOnline,
+  // setIsFree,
+  // setDescription,
+  // setPhone,
+  // setEmail,
+  // setInstagram,
+  // setTelegram,
+  // setFacebook,
 } = eventSlice.actions;
 
 export default eventSlice.reducer;

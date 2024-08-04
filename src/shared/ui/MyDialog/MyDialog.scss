@@ -14,13 +14,14 @@
     padding: 40px;
     background-color: $color-white;
     max-width: 788px;
-    width: 100%;
+    width: fit-content;
   }
 
   &__close {
     position: absolute;
     top: 40px;
     right: 40px;
+    cursor: pointer;
   }
 }
 

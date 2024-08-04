@@ -1,3 +1,4 @@
+import { useAppSelector } from '../../../../../../../shared/hooks/reduxHooks';
 import { NewEventForm } from './components/NewEventForm/NewEventForm';
 import './Step2.scss';
 
@@ -6,6 +7,13 @@ type Props = {
 };
 
 export const Step2: React.FC<Props> = ({ setStep }) => {
+  const { title, category, subCategory, address, price, date, time } =
+    useAppSelector((state) => state.event);
+
+  const isFormValid = Boolean(
+    title && category && subCategory && address && date && time && price
+  );
+
   return (
     <section className="Step2">
       <div className="Step2__item">
@@ -38,6 +46,7 @@ export const Step2: React.FC<Props> = ({ setStep }) => {
           <button
             className="Step2__footer-btn"
             onClick={() => setStep((step) => (step += 1))}
+            disabled={!isFormValid}
           >
             Наступний крок
           </button>

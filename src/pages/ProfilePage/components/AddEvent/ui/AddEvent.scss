@@ -6,16 +6,7 @@
   margin: 0 auto;
 
   &__breadcrumbs {
-    display: flex;
-    margin-block: 20px;
-
-    &-item {
-      @include breadcrumbs-item;
-
-      &:last-child {
-        align-self: center;
-      }
-    }
+    @include breadcrumps;
   }
 
   &__title {

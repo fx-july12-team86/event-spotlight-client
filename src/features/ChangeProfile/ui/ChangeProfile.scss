@@ -1,0 +1,23 @@
+@import '/src/shared/styles/utils.scss';
+
+.ChangeProfile {
+  display: flex;
+  gap: 72px;
+  width: 100%;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &-item {
+      font-size: 40px;
+    }
+  }
+
+  &__item {
+    &:last-child {
+      flex-grow: 1;
+    }
+  }
+}

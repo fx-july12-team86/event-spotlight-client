@@ -1,0 +1,60 @@
+@import '/src/shared/styles/utils.scss';
+
+.ChangeProfileForm {
+  max-width: 410px;
+  width: 100%;
+
+  &__input {
+    position: relative;
+    width: 100%;
+
+    &-label {
+      color: $color-grey-70;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    &-field {
+      height: 64px;
+      padding: 16px 24px;
+      width: 100%;
+      border: 1px solid $color-grey-70;
+      outline-color: $color-purple;
+      color: $color-black;
+      font-size: 18px;
+      cursor: pointer;
+
+      &--invalid {
+        @extend .ChangeProfileForm__input-field;
+
+        border-color: $color-error;
+        outline-color: $color-error;
+      }
+
+      &--error {
+        color: $color-error;
+        font-size: 16px;
+        font-weight: 500;
+        height: 20px;
+        margin-bottom: 6px;
+      }
+
+      @include placeholder {
+        color: $color-grey-60;
+        opacity: 1;
+        transition: opacity $transition-duration;
+      }
+
+      &:focus {
+        @include placeholder {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &__btn {
+    @include button-large-purple;
+    width: 100%;
+  }
+}

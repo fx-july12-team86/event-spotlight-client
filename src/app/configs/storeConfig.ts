@@ -7,6 +7,13 @@ export const store = configureStore({
     user: userReducer,
     event: eventReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['event/setImage'],
+        ignoredPaths: ['event.eventImages'],
+      },
+    }),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

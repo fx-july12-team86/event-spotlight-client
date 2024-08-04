@@ -8,9 +8,15 @@ type Props = {
   list: string[];
   setter: (v: string) => void;
   value: string;
+  placeholder: string;
 };
 
-export const MySelect: React.FC<Props> = ({ list, setter, value }) => {
+export const MySelect: React.FC<Props> = ({
+  list,
+  setter,
+  value,
+  placeholder,
+}) => {
   const [showDrop, setShowDrop] = useState(false);
   const [dropHeight, setDropHeight] = useState(0);
 
@@ -30,7 +36,7 @@ export const MySelect: React.FC<Props> = ({ list, setter, value }) => {
         })}
         onClick={() => setShowDrop(!showDrop)}
       >
-        {value}
+        {value === '' ? placeholder : value}
       </div>
 
       <div

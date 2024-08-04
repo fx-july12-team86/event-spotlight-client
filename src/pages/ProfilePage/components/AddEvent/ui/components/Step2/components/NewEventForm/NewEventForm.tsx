@@ -17,9 +17,17 @@ type FormErrors = {
 
 export const NewEventForm = () => {
   const dispatch = useAppDispatch();
-  const { title, category, subCategory } = useAppSelector(
-    (state) => state.event
-  );
+  const {
+    title,
+    category,
+    subCategory,
+    address,
+    isOnline,
+    isFree,
+    price,
+    date,
+    time,
+  } = useAppSelector((state) => state.event);
 
   const [errors, setErrors] = useState<FormErrors>({});
 
@@ -33,15 +41,15 @@ export const NewEventForm = () => {
     }
 
     setErrors({ ...errors, title: '' });
-    dispatch(eventActions.setTitle(value));
+    dispatch(eventActions.updateProperty({ field: 'title', value }));
   }
 
   function setCategory(value: string) {
-    dispatch(eventActions.setCategory(value));
+    dispatch(eventActions.updateProperty({ field: 'category', value }));
   }
 
   function setSubCategory(value: string) {
-    dispatch(eventActions.setSubCategory(value));
+    dispatch(eventActions.updateProperty({ field: 'subCategory', value }));
   }
 
   return (
@@ -69,7 +77,12 @@ export const NewEventForm = () => {
 
       <div className="NewEventForm__line">
         <div className="NewEventForm__input NewEventForm__input--select">
-          <MySelect list={EVENT_TYPES} setter={setCategory} value={category} />
+          <MySelect
+            list={EVENT_TYPES}
+            setter={setCategory}
+            value={category}
+            placeholder="Обери категорію"
+          />
         </div>
 
         <div className="NewEventForm__input NewEventForm__input--select">
@@ -77,6 +90,7 @@ export const NewEventForm = () => {
             list={EVENT_TYPES}
             setter={setSubCategory}
             value={subCategory}
+            placeholder="Обери підкатегорію (за бажанням)"
           />
         </div>
       </div>
@@ -89,14 +103,27 @@ export const NewEventForm = () => {
             type="text"
             placeholder="вул. Добровольска 34а, Київ"
             className="NewEventForm__input-field NewEventForm__input-field--icon"
-            onChange={(e) => dispatch(eventActions.setAddress(e.target.value))}
+            onChange={(e) =>
+              dispatch(
+                eventActions.updateProperty({
+                  field: 'address',
+                  value: e.target.value,
+                })
+              )
+            }
+            value={address}
           />
         </div>
 
         <div className="NewEventForm__input">
           <MyCheckbox
             title="Онлайн"
-            setter={(v) => dispatch(eventActions.setIsOnline(v))}
+            setter={(v) =>
+              dispatch(
+                eventActions.updateProperty({ field: 'isOnline', value: v })
+              )
+            }
+            value={isOnline}
           />
         </div>
       </div>
@@ -109,14 +136,27 @@ export const NewEventForm = () => {
             type="number"
             placeholder="360"
             className="NewEventForm__input-field NewEventForm__input-field--icon"
-            onChange={(e) => dispatch(eventActions.setPrice(e.target.value))}
+            onChange={(e) =>
+              dispatch(
+                eventActions.updateProperty({
+                  field: 'price',
+                  value: e.target.value,
+                })
+              )
+            }
+            value={price}
           />
         </div>
 
         <div className="NewEventForm__input">
           <MyCheckbox
             title="Безкоштовно"
-            setter={(v) => dispatch(eventActions.setIsFree(v))}
+            setter={(v) =>
+              dispatch(
+                eventActions.updateProperty({ field: 'isFree', value: v })
+              )
+            }
+            value={isFree}
           />
         </div>
       </div>
@@ -131,9 +171,16 @@ export const NewEventForm = () => {
           <input
             type="date"
             id="date"
-            placeholder="22/22"
             className="NewEventForm__input-field NewEventForm__input-field--icon"
-            onChange={(e) => dispatch(eventActions.setDate(e.target.value))}
+            onChange={(e) =>
+              dispatch(
+                eventActions.updateProperty({
+                  field: 'date',
+                  value: e.target.value,
+                })
+              )
+            }
+            value={date}
           />
         </label>
 
@@ -143,7 +190,15 @@ export const NewEventForm = () => {
           <input
             type="time"
             className="NewEventForm__input-field NewEventForm__input-field--icon"
-            onChange={(e) => dispatch(eventActions.setTime(e.target.value))}
+            onChange={(e) =>
+              dispatch(
+                eventActions.updateProperty({
+                  field: 'time',
+                  value: e.target.value,
+                })
+              )
+            }
+            value={time}
           />
         </div>
       </div>

@@ -1,0 +1,41 @@
+@import 'src/shared/styles/utils.scss';
+@import '../Step1/Step1.scss';
+
+.Step4 {
+  @include step-common-style;
+
+  &__item {
+    & :last-child {
+      flex-grow: 1;
+    }
+  }
+
+  &__footer {
+    gap: 20px;
+
+    &-btn--save {
+      @include button-large-purple;
+    }
+
+    &-prev {
+      background: none;
+      border: none;
+      text-decoration: underline;
+      color: $color-grey-70;
+    }
+  }
+
+  &__success {
+    width: 460px;
+
+    &--title {
+      font-family: Oswald, 'sans-serif';
+      font-size: 40px;
+      margin-bottom: 40px;
+    }
+
+    &--text {
+      width: 100%;
+    }
+  }
+}

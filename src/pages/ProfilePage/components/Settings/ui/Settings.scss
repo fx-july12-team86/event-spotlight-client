@@ -1,2 +1,18 @@
+@import '/src/shared/styles/utils.scss';
+
 .Settings {
+  &__breadcrumbs {
+    @include breadcrumps;
+  }
+
+  &__title {
+    margin-bottom: 56px;
+    font-size: 64px;
+  }
+
+  &__form-box {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+  }
 }

@@ -1,7 +1,7 @@
-@import '../../../../../../../shared/styles/utils.scss';
+@import 'src/shared/styles/utils.scss';
 @import '../Step1/Step1.scss';
 
-.Step2 {
+.Step3 {
   @include step-common-style;
 
   &__item {
