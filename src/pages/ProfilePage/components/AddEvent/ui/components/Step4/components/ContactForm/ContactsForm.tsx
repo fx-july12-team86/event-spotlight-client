@@ -1,5 +1,3 @@
-import isEmail from 'validator/lib/isEmail';
-import { isMobilePhone } from 'validator';
 import cn from 'classnames';
 
 import {
@@ -9,37 +7,28 @@ import {
 import './ContactsForm.scss';
 import { eventActions } from '../../../../../../../../../entities/Event';
 import { useState } from 'react';
-
-type ErrorType = {
-  phone?: string;
-  email?: string;
-};
+import { validateField } from '../../../../../../../../../shared/helpers/validateFields';
+import { ErrorType } from '../../../../../../../../../shared/types/errorTypes';
+import { EventState } from '../../../../../../../../../entities/Event/store/eventSlice';
 
 export const ContactsForm = () => {
+  const dispatch = useAppDispatch();
   const { phone, email, instagram, telegram, facebook } = useAppSelector(
     (state) => state.event
   );
   const [errors, setErrors] = useState<ErrorType>({});
-  const dispatch = useAppDispatch();
 
-  function validateField(id: string) {
-    switch (id) {
-      case 'phone':
-        if (phone && !isMobilePhone(phone?.toString(), 'uk-UA')) {
-          setErrors({ ...errors, phone: 'Не дійсний телефон' });
-        } else {
-          setErrors({ ...errors, phone: '' });
-        }
-        break;
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    dispatch(
+      eventActions.updateProperty({
+        field: e.target.id as keyof EventState,
+        value: e.target.value,
+      })
+    );
+  }
 
-      case 'email':
-        if (!email && isEmail(email)) {
-          setErrors({ ...errors, email: 'Не дійсний еmail' });
-        } else {
-          setErrors({ ...errors, email: '' });
-        }
-        break;
-    }
+  function validate(e: React.FocusEvent<HTMLInputElement>) {
+    validateField({ id: e.target.id, phone, email, errors, setErrors });
   }
 
   return (
@@ -49,23 +38,15 @@ export const ContactsForm = () => {
 
         <input
           type="number"
+          id="phone"
           placeholder="+380990000000"
+          value={phone || ''}
+          onChange={handleChange}
+          onBlur={validate}
           className={cn(
             'ContactsForm__input-field ContactsForm__input-field--icon',
-            {
-              'ContactsForm__input-field--invalid': errors.phone,
-            }
+            { 'ContactsForm__input-field--invalid': errors.phone }
           )}
-          value={phone || ''}
-          onChange={(e) =>
-            dispatch(
-              eventActions.updateProperty({
-                field: 'phone',
-                value: e.target.value,
-              })
-            )
-          }
-          onBlur={() => validateField('phone')}
         />
 
         <p className="ContactsForm__input-field--error">{errors.phone}</p>
@@ -75,24 +56,16 @@ export const ContactsForm = () => {
         <p className="ContactsForm__input-label">E-mail</p>
 
         <input
+          id="email"
           type="text"
           placeholder="myemail@gmail.com"
+          value={email}
+          onChange={handleChange}
+          onBlur={validate}
           className={cn(
             'ContactsForm__input-field ContactsForm__input-field--icon',
-            {
-              'ContactsForm__input-field--invalid': errors.email,
-            }
+            { 'ContactsForm__input-field--invalid': errors.email }
           )}
-          value={email}
-          onBlur={() => validateField('email')}
-          onChange={(e) =>
-            dispatch(
-              eventActions.updateProperty({
-                field: 'email',
-                value: e.target.value,
-              })
-            )
-          }
         />
 
         <p className="ContactsForm__input-field--error">{errors.email}</p>
@@ -102,18 +75,12 @@ export const ContactsForm = () => {
         <p className="ContactsForm__input-label">Instagram</p>
 
         <input
+          id="instagram"
           type="text"
           placeholder="@instagram"
           className="ContactsForm__input-field ContactsForm__input-field--icon"
           value={instagram}
-          onChange={(e) =>
-            dispatch(
-              eventActions.updateProperty({
-                field: 'instagram',
-                value: e.target.value,
-              })
-            )
-          }
+          onChange={handleChange}
         />
       </div>
 
@@ -121,18 +88,12 @@ export const ContactsForm = () => {
         <p className="ContactsForm__input-label">Telegram</p>
 
         <input
+          id="telegram"
           type="text"
           placeholder="@telegram"
           className="ContactsForm__input-field ContactsForm__input-field--icon"
           value={telegram}
-          onChange={(e) =>
-            dispatch(
-              eventActions.updateProperty({
-                field: 'telegram',
-                value: e.target.value,
-              })
-            )
-          }
+          onChange={handleChange}
         />
       </div>
 
@@ -140,18 +101,12 @@ export const ContactsForm = () => {
         <p className="ContactsForm__input-label">Facebook</p>
 
         <input
-          type="email"
+          id="facebook"
+          type="text"
           placeholder="facebook.com"
           className="ContactsForm__input-field ContactsForm__input-field--icon"
           value={facebook}
-          onChange={(e) =>
-            dispatch(
-              eventActions.updateProperty({
-                field: 'facebook',
-                value: e.target.value,
-              })
-            )
-          }
+          onChange={handleChange}
         />
       </div>
     </form>

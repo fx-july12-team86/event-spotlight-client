@@ -13,7 +13,7 @@ export interface EventState {
   isOnline: boolean;
   isFree: boolean;
   description: string;
-  phone: number | '';
+  phone: number | null;
   email: string;
   instagram: string;
   telegram: string;
@@ -32,7 +32,7 @@ export const initialState: EventState = {
   isOnline: false,
   isFree: false,
   description: '',
-  phone: '',
+  phone: null,
   email: '',
   instagram: '',
   telegram: '',

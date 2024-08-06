@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { ChangeProfile } from '../../../../../features/ChangeProfile';
 import './Settings.scss';
+import { ChangeProfileForm } from '../../../../../features/ChangeProfile/ui/components/ChangeProfileForm/ChangeProfileForm';
+import { ChangePasswordForm } from '../../../../../features/ChangeProfile/ui/components/ChangePasswordForm/ChangePasswordForm';
 
 export const Settings: React.FC = () => {
   return (
@@ -18,9 +20,13 @@ export const Settings: React.FC = () => {
       <h1 className="Settings__title">Мій профіль</h1>
 
       <div className="Settings__form-box">
-        <ChangeProfile />
+        <ChangeProfile title="Iнформація">
+          <ChangeProfileForm />
+        </ChangeProfile>
 
-        <ChangeProfile />
+        <ChangeProfile title="Пароль">
+          <ChangePasswordForm />
+        </ChangeProfile>
       </div>
     </div>
   );

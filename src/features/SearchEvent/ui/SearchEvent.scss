@@ -46,12 +46,14 @@
   }
 
   &__btn {
-    @include button-large;
-    border: 1px solid $color-green;
-    background-color: $color-green;
-    width: 146px;
-    margin-left: 10px;
+    & {
+      border: 1px solid $color-green;
+      background-color: $color-green;
+      width: 146px;
+      margin-left: 10px;
+    }
 
+    @include button-large;
     @include on-hover(color, $color-green);
     @include on-hover(background-color, $color-black);
     @include on-hover(border-color, $color-green);

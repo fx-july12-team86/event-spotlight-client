@@ -46,22 +46,26 @@
 }
 
 @mixin button-large {
-  font-size: 20px;
-  font-weight: 500;
-  width: 248px;
-  height: 64px;
-  padding-inline: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
+  & {
+    font-size: 20px;
+    font-weight: 500;
+    width: 248px;
+    height: 64px;
+    padding-inline: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
 }
 
 @mixin button-large-purple {
-  color: $color-purple;
-  background-color: $color_white;
-  border-color: $color-purple;
-  width: 312px;
+  & {
+    color: $color-purple;
+    background-color: $color_white;
+    border-color: $color-purple;
+    width: 312px;
+  }
 
   @include button-large;
   @include on-hover(color, $color_white);

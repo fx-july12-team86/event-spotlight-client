@@ -1,8 +1,11 @@
 @import '/src/shared/styles/utils.scss';
 
-.ChangeProfileForm {
+@mixin profile-form {
   max-width: 410px;
-  width: 100%;
+
+  & {
+    width: 100%;
+  }
 
   &__input {
     position: relative;
@@ -36,7 +39,6 @@
         font-size: 16px;
         font-weight: 500;
         height: 20px;
-        margin-bottom: 6px;
       }
 
       @include placeholder {
@@ -55,6 +57,20 @@
 
   &__btn {
     @include button-large-purple;
-    width: 100%;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    & {
+      width: 100%;
+      transition: all ease $transition-duration;
+      margin-top: 22px;
+    }
   }
+}
+
+.ChangeProfileForm {
+  @include profile-form;
 }

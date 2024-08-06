@@ -1,6 +1,8 @@
 @import '/src/shared/styles/utils.scss';
 
 .Settings {
+  margin-bottom: 124px;
+
   &__breadcrumbs {
     @include breadcrumps;
   }
