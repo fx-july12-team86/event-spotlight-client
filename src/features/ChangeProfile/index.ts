@@ -1,3 +1,3 @@
-import { ChangeProfile } from "./ui/ChangeProfile";
+import { ChangeProfile } from './ui/ChangeProfile';
 
-export { ChangeProfile }
+export { ChangeProfile };

@@ -1,17 +1,24 @@
-import { isMobilePhone } from "validator";
-import { ErrorType } from "../types/errorTypes";
-import isEmail from "validator/lib/isEmail";
+import { isMobilePhone } from 'validator';
+import { ErrorType } from '../types/errorTypes';
+import isEmail from 'validator/lib/isEmail';
 
 type Args = {
-  id: string,
-  email?: string,
-  password?: string,
-  phone?: number | null,
-  errors: ErrorType,
-  setErrors: React.Dispatch<React.SetStateAction<ErrorType>>
-}
+  id: string;
+  email?: string;
+  password?: string;
+  phone?: number | null;
+  errors: ErrorType;
+  setErrors: React.Dispatch<React.SetStateAction<ErrorType>>;
+};
 
-export function validateField({ id, email, phone, password, errors, setErrors }: Args) {
+export function validateField({
+  id,
+  email,
+  phone,
+  password,
+  errors,
+  setErrors,
+}: Args) {
   switch (id) {
     case 'phone':
       if (phone && !isMobilePhone(phone?.toString(), 'uk-UA')) {

@@ -1,2 +1,15 @@
+@import '/src/shared/styles/utils.scss';
+
 .Favorite {
+  &__breadcrumbs {
+    @include breadcrumps;
+  }
+
+  &__title {
+    margin-bottom: 56px;
+  }
+
+  &__list {
+    margin-bottom: 124px;
+  }
 }
