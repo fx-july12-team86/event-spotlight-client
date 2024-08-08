@@ -5,6 +5,10 @@
 
   &__breadcrumbs {
     @include breadcrumps;
+
+    &-item {
+      @include breadcrumbs-item;
+    }
   }
 
   &__title {

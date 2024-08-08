@@ -3,6 +3,10 @@
 .Favorite {
   &__breadcrumbs {
     @include breadcrumps;
+
+    &-item {
+      @include breadcrumbs-item;
+    }
   }
 
   &__title {
