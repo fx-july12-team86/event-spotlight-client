@@ -95,8 +95,10 @@
   &__btn {
     @include button-large;
 
-    width: fit-content;
-    background-color: $color-green;
+    & {
+      width: fit-content;
+      background-color: $color-green;
+    }
   }
 
   &__share {

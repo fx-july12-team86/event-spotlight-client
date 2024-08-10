@@ -1,0 +1,66 @@
+@import '/src/shared/styles/utils.scss';
+
+.RegistrationForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 380px;
+  margin-top: 26px;
+
+  &__title {
+    @include form-title;
+  }
+
+  &__input {
+    position: relative;
+    width: 100%;
+
+    &-label {
+      @include input-lable;
+    }
+
+    &-field {
+      @include input-field;
+
+      &--invalid {
+        @include input-field-invalid;
+      }
+
+      &--error {
+        @include input-field-error;
+      }
+
+      @include placeholder {
+        color: $color-grey-60;
+        opacity: 1;
+        transition: opacity $transition-duration;
+      }
+
+      &:focus {
+        @include placeholder {
+          opacity: 0;
+        }
+      }
+    }
+
+    &__eye {
+      position: absolute;
+      top: 50px;
+      right: 17px;
+      cursor: pointer;
+    }
+  }
+
+  &__btn {
+    @include button-large-purple-filled;
+
+    & {
+      width: 100%;
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

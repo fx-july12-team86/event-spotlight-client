@@ -1,6 +1,8 @@
 import { isMobilePhone } from 'validator';
-import { ErrorType } from '../types/errorTypes';
 import isEmail from 'validator/lib/isEmail';
+
+import { ErrorType } from '../types/errorTypes';
+import { ERROR_MESSAGE } from '../consts/errorMessage';
 
 type Args = {
   id: string;
@@ -22,7 +24,7 @@ export function validateField({
   switch (id) {
     case 'phone':
       if (phone && !isMobilePhone(phone?.toString(), 'uk-UA')) {
-        setErrors({ ...errors, phone: 'Не дійсний телефон' });
+        setErrors({ ...errors, phone: ERROR_MESSAGE.WRONG_PHONE });
       } else {
         setErrors({ ...errors, phone: null });
       }
@@ -30,7 +32,7 @@ export function validateField({
 
     case 'email':
       if (email && !isEmail(email)) {
-        setErrors({ ...errors, email: 'Не дійсний еmail' });
+        setErrors({ ...errors, email: ERROR_MESSAGE.WRONG_EMAIL });
       } else {
         setErrors({ ...errors, email: '' });
       }
@@ -38,7 +40,7 @@ export function validateField({
 
     case 'password':
       if (password && password.length < 4) {
-        setErrors({ ...errors, password: 'Слабкий пароль' });
+        setErrors({ ...errors, password: ERROR_MESSAGE.WEAK_PASSWORD });
       } else {
         setErrors({ ...errors, password: '' });
       }

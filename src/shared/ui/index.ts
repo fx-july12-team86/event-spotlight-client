@@ -7,6 +7,7 @@ import { MyDialog } from './MyDialog/MyDialog';
 import { MyPagination } from './MyPagination/MyPagination';
 import { MySelect } from './MySelect/MySelect';
 import { MyCheckbox } from './MyCheckbox/MyCheckbox';
+import { MyPasswordInput } from './MyPasswordInput/MyPasswordInput';
 
 export {
   MyLogo,
@@ -18,4 +19,5 @@ export {
   MyPagination,
   MySelect,
   MyCheckbox,
+  MyPasswordInput,
 };

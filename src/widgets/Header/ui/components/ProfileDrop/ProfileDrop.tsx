@@ -1,8 +1,13 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import cn from 'classnames';
 import './ProfileDrop.scss';
+import { MyDialog } from '../../../../../shared/ui';
+import { RegistrationForm } from '../../../../../features/Registration';
+import { createPortal } from 'react-dom';
+import { useAppSelector } from '../../../../../shared/hooks/reduxHooks';
+import { LoginForm } from '../../../../../features/Login';
 
 type Props = {
   showDrop?: boolean;
@@ -14,6 +19,13 @@ export const ProfileDrop: React.FC<Props> = ({
   setShowDrop = () => {},
 }) => {
   const profileRef = useRef<HTMLDivElement>(null);
+  const [showDialog, setShowDialog] = useState(false);
+  const { user } = useAppSelector((state) => state.user);
+
+  function handleShowDialog() {
+    setShowDialog(!showDialog);
+    setShowDrop(false);
+  }
 
   return (
     <div
@@ -56,12 +68,24 @@ export const ProfileDrop: React.FC<Props> = ({
           </Link>
         </div>
 
-        <Link to="/" className="ProfileDrop__nav-link">
+        <Link
+          to="/"
+          className="ProfileDrop__nav-link"
+          onClick={handleShowDialog}
+        >
           <img src="icons/exit.svg" alt="Вийти" height={18} width={18} />
 
-          <p className="ProfileDrop__btn">Вийти</p>
+          <p className="ProfileDrop__btn">{user ? 'Вийти' : 'Увійти'}</p>
         </Link>
       </nav>
+
+      {showDialog &&
+        createPortal(
+          <MyDialog onClose={setShowDialog}>
+            {user ? <LoginForm /> : <RegistrationForm />}
+          </MyDialog>,
+          document.body
+        )}
     </div>
   );
 };

@@ -1,0 +1,61 @@
+@import '../variables.scss';
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(60px, 100%));
+  column-gap: 30px;
+}
+
+@mixin on-hover($property, $value) {
+  & {
+    transition: #{$property} ease-in-out $transition-duration;
+  }
+
+  &:not([disabled]):hover {
+    cursor: pointer;
+    #{$property}: $value;
+  }
+}
+
+@mixin sceleton {
+  animation: sceleton 1.5s infinite;
+  background: linear-gradient(-75deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+
+  @keyframes sceleton {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(100%);
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
