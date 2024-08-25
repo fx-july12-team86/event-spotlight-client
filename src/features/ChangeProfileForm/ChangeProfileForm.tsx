@@ -2,8 +2,8 @@ import { useState } from 'react';
 import cn from 'classnames';
 
 import './ChangeProfileForm.scss';
-import { validateField } from '../../../../../shared/helpers/validateFields';
-import { ErrorType } from '../../../../../shared/types/errorTypes';
+import { validateField } from '../../shared/helpers/validateFields';
+import { ErrorType } from '../../shared/types/errorTypes';
 
 const NAME_MAX_LENGTH = 50;
 

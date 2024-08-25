@@ -3,19 +3,32 @@ import { isEmail } from 'validator';
 import cn from 'classnames';
 
 import './LoginForm.scss';
-import { MyPasswordInput } from '../../../shared/ui';
+import { MyLoader, MyPasswordInput } from '../../../shared/ui';
 import { ErrorType } from '../../../shared/types/errorTypes';
 import { validateField } from '../../../shared/helpers/validateFields';
 import { ERROR_MESSAGE } from '../../../shared/consts/errorMessage';
+import { userActions, userApi } from '../../../entities/User';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../shared/hooks/reduxHooks';
 
 type Props = {
   handleOnClose?: () => void;
+  setFormType?: (v: string) => void;
 };
 
-export const LoginForm: React.FC<Props> = ({ handleOnClose }) => {
+export const LoginForm: React.FC<Props> = ({
+  handleOnClose,
+  setFormType = () => {},
+}) => {
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.user);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<ErrorType>({});
+  const [loaging, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState('');
 
   const isFormValid = !errors.email && !errors.password;
 
@@ -58,9 +71,17 @@ export const LoginForm: React.FC<Props> = ({ handleOnClose }) => {
     setErrors(errors);
 
     if (!Object.keys(errors).length) {
-      console.log({ password, email });
+      setLoading(true);
 
-      handleOnClose && handleOnClose();
+      userApi
+        .login({ password, email })
+        .then((res) => {
+          dispatch(userActions.setUser(res));
+
+          handleOnClose && handleOnClose();
+        })
+        .catch((err) => setLoginError(err.message))
+        .finally(() => setLoading(false));
     }
   }
 
@@ -94,15 +115,45 @@ export const LoginForm: React.FC<Props> = ({ handleOnClose }) => {
         title="Пароль"
       />
 
-      <button
-        className={cn('LoginForm__btn', {
-          'LoginForm__btn--disabled': !isFormValid,
-        })}
-        type="submit"
-        disabled={!isFormValid}
-      >
-        Увійти
-      </button>
+      {loaging ? (
+        <div className="LoginForm__loader">
+          <MyLoader />
+        </div>
+      ) : (
+        <button
+          className={cn('LoginForm__btn', {
+            'LoginForm__btn--disabled': !isFormValid,
+          })}
+          type="submit"
+          disabled={!isFormValid}
+        >
+          Увійти
+        </button>
+      )}
+
+      {loginError && (
+        <p className="LoginForm__input-field--error">{loginError}</p>
+      )}
+
+      <div className="LoginForm__footer">
+        {!user && (
+          <p
+            className="LoginForm__footer-text"
+            onClick={() => setFormType('password')}
+          >
+            Не пам’ятаю пароль
+          </p>
+        )}
+
+        <p className="LoginForm__footer-text">/</p>
+
+        <p
+          className="LoginForm__footer-text"
+          onClick={() => setFormType('reg')}
+        >
+          Реєстрація
+        </p>
+      </div>
     </form>
   );
 };

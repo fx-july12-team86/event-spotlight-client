@@ -3,20 +3,29 @@ import { isEmail } from 'validator';
 import cn from 'classnames';
 
 import './RegistrationForm.scss';
-import { MyPasswordInput } from '../../../shared/ui';
+import { MyLoader, MyPasswordInput } from '../../../shared/ui';
 import { ErrorType } from '../../../shared/types/errorTypes';
 import { validateField } from '../../../shared/helpers/validateFields';
 import { ERROR_MESSAGE } from '../../../shared/consts/errorMessage';
+import { userActions, userApi, userTypes } from '../../../entities/User';
+import { useAppDispatch } from '../../../shared/hooks/reduxHooks';
 
 type Props = {
   handleOnClose?: () => void;
+  setFormType?: (v: string) => void;
 };
 
-export const RegistrationForm: React.FC<Props> = ({ handleOnClose }) => {
+export const RegistrationForm: React.FC<Props> = ({
+  handleOnClose,
+  setFormType = () => {},
+}) => {
+  const dispatch = useAppDispatch();
   const [email, setEmail] = useState('');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<ErrorType>({});
+  const [loading, setLoaging] = useState(false);
+  const [reqErrror, setReqError] = useState('');
 
   const isFormValid = !errors.email && !errors.login && !errors.password;
 
@@ -58,6 +67,7 @@ export const RegistrationForm: React.FC<Props> = ({ handleOnClose }) => {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const errors: ErrorType = {};
+    setReqError('');
 
     if (!password || password.length < 4) {
       errors.password = ERROR_MESSAGE.WEAK_PASSWORD;
@@ -74,9 +84,24 @@ export const RegistrationForm: React.FC<Props> = ({ handleOnClose }) => {
     setErrors(errors);
 
     if (!Object.keys(errors).length) {
-      console.log({ login, email });
+      setLoaging(true);
 
-      handleOnClose && handleOnClose();
+      const data: userTypes.RegistrationRequest = {
+        userName: login,
+        email,
+        password,
+        repeatPassword: password,
+      };
+
+      userApi
+        .register(data)
+        .then((res) => {
+          dispatch(userActions.setUser(res));
+
+          handleOnClose && handleOnClose();
+        })
+        .catch((err) => setReqError(err.message))
+        .finally(() => setLoaging(false));
     }
   }
 
@@ -126,15 +151,38 @@ export const RegistrationForm: React.FC<Props> = ({ handleOnClose }) => {
         title="Пароль"
       />
 
-      <button
-        className={cn('RegistrationForm__btn', {
-          'RegistrationForm__btn--disabled': !isFormValid,
-        })}
-        type="submit"
-        disabled={!isFormValid}
-      >
-        Створити акаунт
-      </button>
+      {loading ? (
+        <div className="RegistrationForm__loader">
+          <MyLoader />
+        </div>
+      ) : (
+        <button
+          className={cn('RegistrationForm__btn', {
+            'RegistrationForm__btn--disabled': !isFormValid,
+          })}
+          type="submit"
+          disabled={!isFormValid}
+        >
+          Створити акаунт
+        </button>
+      )}
+
+      {reqErrror && (
+        <div className="RegistrationForm__errorbox scale-in-center">
+          <img src="icons/warning_green.svg" alt="error" />
+
+          <p className="RegistrationForm__errorbox-text">{reqErrror}</p>
+        </div>
+      )}
+
+      <div className="RegistrationForm__footer">
+        <p
+          className="RegistrationForm__footer-text"
+          onClick={() => setFormType('login')}
+        >
+          Є обліковий запис? Увійти
+        </p>
+      </div>
     </form>
   );
 };

@@ -29,6 +29,15 @@ export const Header = () => {
       <div className="Header__item Header__item--top">
         <div className="container">
           <div className="Header__top-content">
+            <button className="Header__burger">
+              <img
+                src="icons/burger_white.svg"
+                alt="бокове меню"
+                width={24}
+                height={24}
+              />
+            </button>
+
             <div className="Header__controls Header__controls--left">
               <MyLogo />
 
@@ -37,7 +46,7 @@ export const Header = () => {
 
             <HeaderSearch />
 
-            <div className="Header__controls">
+            <div className="Header__controls Header__controls--right">
               <MyDropIcon openedIcon="calendar_black" closedIcon="calendar">
                 <DateRangePicker />
               </MyDropIcon>

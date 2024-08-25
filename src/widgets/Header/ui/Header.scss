@@ -3,12 +3,30 @@
 .Header {
   width: 100%;
 
+  &__burger {
+    display: none;
+    border: none;
+    background: none;
+    width: 24px;
+    height: 24px;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   &__item {
     width: 100%;
 
     &--top {
       height: fit-content;
       background-color: $color-black;
+
+      @include on-tablet {
+        margin-bottom: 16px;
+      }
     }
   }
 
@@ -16,6 +34,11 @@
     height: 96px;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+
+    @include on-tablet {
+      grid-template-columns: 64px auto 64px;
+    }
   }
 
   &__controls {
@@ -26,6 +49,12 @@
 
     &--left {
       gap: 32px;
+    }
+
+    &--right {
+      @include on-tablet {
+        display: none;
+      }
     }
   }
 
@@ -52,6 +81,10 @@
     font-weight: bold;
     padding: 14px;
     color: #181a23;
+
+    @include on-tablet {
+      display: none;
+    }
   }
 
   &__other {

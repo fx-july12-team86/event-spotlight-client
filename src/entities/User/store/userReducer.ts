@@ -8,7 +8,7 @@ export interface UserState {
 
 export const initialState: UserState = {
   location: 'Oбрати місто',
-  user: {},
+  user: null,
 };
 
 export const userSlice = createSlice({
@@ -19,6 +19,8 @@ export const userSlice = createSlice({
       state.location = action.payload;
     },
     setUser: (state, action) => {
+      console.log('555')
+      console.log(action)
       state.user = action.payload;
     },
   },

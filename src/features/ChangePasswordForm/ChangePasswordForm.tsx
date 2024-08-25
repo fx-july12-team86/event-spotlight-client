@@ -1,14 +1,16 @@
 import { useState } from 'react';
 
 import './ChangePasswordForm.scss';
-import { validateField } from '../../../../../shared/helpers/validateFields';
-import { ErrorType } from '../../../../../shared/types/errorTypes';
-import { MyPasswordInput } from '../../../../../shared/ui/MyPasswordInput/MyPasswordInput';
+import { ErrorType } from '../../shared/types/errorTypes';
+import { validateField } from '../../shared/helpers/validateFields';
+import { MyPasswordInput } from '../../shared/ui';
+import { useLocation } from 'react-router-dom';
 
 export const ChangePasswordForm = () => {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [errors, setErrors] = useState<ErrorType>({});
+  const { pathname } = useLocation();
 
   function handleSetPassword(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
@@ -48,6 +50,10 @@ export const ChangePasswordForm = () => {
 
   return (
     <form className="ChangePasswordForm" onSubmit={handleSubmit}>
+      {pathname !== '/profile/settings' && (
+        <h2 className="ChangePasswordForm__title">Змінити пароль</h2>
+      )}
+
       <MyPasswordInput
         handleSetPassword={handleSetPassword}
         errors={errors}

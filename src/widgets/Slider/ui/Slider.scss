@@ -4,6 +4,11 @@
   &__item {
     display: flex;
     max-height: 548px;
+
+    @include on-tablet {
+      flex-direction: column;
+      height: 580px;
+    }
   }
 
   &__img {
@@ -13,6 +18,11 @@
     animation: sceleton 1.5s infinite;
     background: linear-gradient(-90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
     background-size: 200% 100%;
+
+    @include on-tablet {
+      width: 100%;
+      max-height: 325px;
+    }
   }
 
   @keyframes sceleton {
@@ -33,6 +43,10 @@
     color: $color-white;
     width: 50%;
     padding-inline: 80px;
+
+    @include on-tablet {
+      width: 100%;
+    }
 
     &-top {
       display: flex;
@@ -87,6 +101,10 @@
   }
 }
 
+.carousel.slide {
+  width: 100%;
+}
+
 .carousel-control-next-icon {
   background-color: $color-grey-20;
   border-radius: 50%;
@@ -114,4 +132,8 @@
 .carousel-control-prev {
   opacity: 1;
   @include on-hover(opacity, 1);
+
+  @include on-tablet {
+    display: none;
+  }
 }

@@ -27,7 +27,7 @@ export const MyLocation: React.FC<Props> = ({ city = '' }) => {
       onClick={() => setShowDrop(!showDrop)}
       ref={dropRef}
     >
-      {city}
+      <p className="MyLocation__header-text">{city}</p>
 
       <div
         className="MyLocation__drop"

@@ -187,7 +187,7 @@ export const HomePage = () => {
     <div className="HomePage">
       <Slider />
 
-      <section>
+      {/* <section>
         <h1 className="HomePage__title">
           ЗНАЙДИ <span>ПОДІЮ</span> ДЛЯ СЕБЕ
         </h1>
@@ -235,7 +235,7 @@ export const HomePage = () => {
         <MyButtonLarge className="HomePage__btn--purple">
           Більше подій
         </MyButtonLarge>
-      </section>
+      </section> */}
     </div>
   );
 };

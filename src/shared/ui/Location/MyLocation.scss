@@ -1,8 +1,6 @@
 @import '../../styles/utils.scss';
 
 .MyLocation {
-  font-size: 24px;
-  color: $color-white;
   display: flex;
   align-items: center;
   margin: 0;
@@ -17,6 +15,15 @@
     height: 24px;
     width: 24px;
     margin-right: 5px;
+  }
+
+  &__header-text {
+    font-size: 24px;
+    color: $color-white;
+
+    @include on-tablet {
+      display: none;
+    }
   }
 
   &__drop {

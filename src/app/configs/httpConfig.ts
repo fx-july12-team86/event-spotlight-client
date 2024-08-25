@@ -7,8 +7,8 @@ import axios, {
 // import localStorageService from '../../shared/services/localStorageService';
 
 export const httpClient: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL + '/api',
-  // withCredentials: true,
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  withCredentials: true,
 });
 
 httpClient.interceptors.request.use(onRequest);

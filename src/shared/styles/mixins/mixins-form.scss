@@ -27,6 +27,7 @@
   font-size: 16px;
   font-weight: 500;
   height: 20px;
+  margin-bottom: 4px;
 }
 
 @mixin input {
@@ -65,13 +66,12 @@
 @mixin form-title {
   font-family: Oswald, 'sans-serif';
   font-size: 40px;
+  margin-bottom: 24px;
 }
 
 @mixin profile-form {
-  max-width: 410px;
-
   & {
-    width: 100%;
+    width: 410px;
   }
 
   &__input {
@@ -91,5 +91,20 @@
       transition: all ease $transition-duration;
       margin-top: 22px;
     }
+  }
+}
+
+@mixin form-footer {
+  width: fit-content;
+  align-self: center;
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid $color-grey-70;
+
+  &-text {
+    color: $color-grey-70;
+    cursor: pointer;
+
+    @include on-hover(color, $color-purple);
   }
 }

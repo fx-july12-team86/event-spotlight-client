@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { ChangeProfile } from '../../../../../features/ChangeProfile';
 import './Settings.scss';
-import { ChangeProfileForm } from '../../../../../features/ChangeProfile/ui/components/ChangeProfileForm/ChangeProfileForm';
-import { ChangePasswordForm } from '../../../../../features/ChangeProfile/ui/components/ChangePasswordForm/ChangePasswordForm';
+import { ChangeProfileForm } from '../../../../../features/ChangeProfileForm/ChangeProfileForm';
+import { ChangePasswordForm } from '../../../../../features/ChangePasswordForm/ChangePasswordForm';
 
 export const Settings: React.FC = () => {
   return (

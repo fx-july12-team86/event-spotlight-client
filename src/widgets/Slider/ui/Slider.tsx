@@ -3,7 +3,7 @@ import './Slider.scss';
 
 export const Slider = () => {
   return (
-    <Carousel data-bs-theme="dark">
+    <Carousel data-bs-theme="dark" interval={null}>
       {[1, 2, 3].map((slide) => (
         <Carousel.Item key={slide}>
           <div className="Slider__item">

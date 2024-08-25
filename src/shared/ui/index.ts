@@ -8,6 +8,7 @@ import { MyPagination } from './MyPagination/MyPagination';
 import { MySelect } from './MySelect/MySelect';
 import { MyCheckbox } from './MyCheckbox/MyCheckbox';
 import { MyPasswordInput } from './MyPasswordInput/MyPasswordInput';
+import { MyLoader } from './MyLoader/MyLoader';
 
 export {
   MyLogo,
@@ -20,4 +21,5 @@ export {
   MySelect,
   MyCheckbox,
   MyPasswordInput,
+  MyLoader
 };

@@ -5,6 +5,10 @@
   align-items: center;
   justify-content: flex-end;
 
+  @include on-tablet {
+    justify-self: flex-end;
+  }
+
   &__icon {
     cursor: pointer;
     padding: 16px;

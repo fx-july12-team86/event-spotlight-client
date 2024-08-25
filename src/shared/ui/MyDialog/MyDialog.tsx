@@ -1,4 +1,4 @@
-import { Children, cloneElement, useState } from 'react';
+import { Children, cloneElement, useEffect, useState } from 'react';
 import './MyDialog.scss';
 
 type Props = {
@@ -19,9 +19,17 @@ export const MyDialog: React.FC<Props> = ({ children, onClose }) => {
     }, 300);
   }
 
+  useEffect(() => {
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      document.documentElement.style.overflow = 'auto';
+    };
+  }, []);
+
   return (
     <div className={`MyDialog ${animation}`} onClick={handleOnClose}>
-      <div className="MyDialog__content">
+      <div className="MyDialog__content" onClick={(e) => e.stopPropagation()}>
         <img
           src="icons/close_black.svg"
           alt="close icon"
