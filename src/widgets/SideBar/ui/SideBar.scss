@@ -1,0 +1,32 @@
+@import '/src/shared/styles/utils.scss';
+
+.SideBar {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  animation: open ease $transition-duration forwards;
+
+  &--close {
+    animation: close ease $transition-duration forwards;
+
+    @keyframes close {
+      0% {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      100% {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+  }
+
+  @keyframes open {
+    0% {
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    100% {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+}

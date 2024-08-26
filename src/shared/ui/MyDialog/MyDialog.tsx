@@ -1,5 +1,6 @@
 import { Children, cloneElement, useEffect, useState } from 'react';
 import './MyDialog.scss';
+import { createPortal } from 'react-dom';
 
 type Props = {
   children: React.ReactNode;
@@ -27,7 +28,13 @@ export const MyDialog: React.FC<Props> = ({ children, onClose }) => {
     };
   }, []);
 
-  return (
+  const dialogRoot = document.getElementById('dialog');
+  if (!dialogRoot) {
+    console.error('Dialog root element not found');
+    return null;
+  }
+
+  return createPortal(
     <div className={`MyDialog ${animation}`} onClick={handleOnClose}>
       <div className="MyDialog__content" onClick={(e) => e.stopPropagation()}>
         <img
@@ -45,6 +52,7 @@ export const MyDialog: React.FC<Props> = ({ children, onClose }) => {
           })
         )}
       </div>
-    </div>
+    </div>,
+    dialogRoot
   );
 };

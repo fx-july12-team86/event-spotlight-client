@@ -1,10 +1,9 @@
-import { Fragment, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import cn from 'classnames';
 import './ProfileDrop.scss';
 import { MyDialog } from '../../../../../shared/ui';
-import { createPortal } from 'react-dom';
 import {
   useAppDispatch,
   useAppSelector,
@@ -12,7 +11,6 @@ import {
 import { LoginForm } from '../../../../../features/Login';
 import { RegistrationForm } from '../../../../../features/Registration';
 import { userActions } from '../../../../../entities/User';
-import { ChangePasswordForm } from '../../../../../features/ChangePasswordForm/ChangePasswordForm';
 import { ResetPasswordForm } from '../../../../../features/ResetPasswordForm';
 
 type Props = {
@@ -101,32 +99,23 @@ export const ProfileDrop: React.FC<Props> = ({
         </div>
       </nav>
 
-      {showDialog &&
-        formType === 'login' &&
-        createPortal(
-          <MyDialog onClose={setShowDialog}>
-            <LoginForm setFormType={setFormType} />
-          </MyDialog>,
-          document.body
-        )}
+      {showDialog && formType === 'login' && (
+        <MyDialog onClose={setShowDialog}>
+          <LoginForm setFormType={setFormType} />
+        </MyDialog>
+      )}
 
-      {showDialog &&
-        formType === 'reg' &&
-        createPortal(
-          <MyDialog onClose={setShowDialog}>
-            <RegistrationForm setFormType={setFormType} />
-          </MyDialog>,
-          document.body
-        )}
+      {showDialog && formType === 'reg' && (
+        <MyDialog onClose={setShowDialog}>
+          <RegistrationForm setFormType={setFormType} />
+        </MyDialog>
+      )}
 
-      {showDialog &&
-        formType === 'password' &&
-        createPortal(
-          <MyDialog onClose={setShowDialog}>
-            <ResetPasswordForm />
-          </MyDialog>,
-          document.body
-        )}
+      {showDialog && formType === 'password' && (
+        <MyDialog onClose={setShowDialog}>
+          <ResetPasswordForm />
+        </MyDialog>
+      )}
     </div>
   );
 };

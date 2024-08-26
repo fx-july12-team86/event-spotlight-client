@@ -12,8 +12,10 @@ import { ProfileDrop } from './components/ProfileDrop/ProfileDrop';
 import { DateRangePicker } from '../../DataRangePicker';
 
 const OTHER_CATEGORY = ['Вечірки', 'Театр', 'Кіно', 'Спорт', 'Конференції'];
-
-export const Header = () => {
+type Props = {
+  openSidebar: () => void;
+};
+export const Header: React.FC<Props> = ({ openSidebar }) => {
   const { location } = useAppSelector((state) => state.user);
   const { pathname } = useLocation();
   const [showOther, setShowOther] = useState(false);
@@ -35,6 +37,7 @@ export const Header = () => {
                 alt="бокове меню"
                 width={24}
                 height={24}
+                onClick={() => openSidebar()}
               />
             </button>
 
