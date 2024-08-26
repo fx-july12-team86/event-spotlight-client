@@ -1,13 +1,11 @@
-@import '../../../shared/styles/utils.scss';
+@import '/src/shared/styles/utils.scss';
 
 .Slider {
   &__item {
     display: flex;
-    max-height: 548px;
 
     @include on-tablet {
       flex-direction: column;
-      height: 580px;
     }
   }
 
@@ -46,6 +44,7 @@
 
     @include on-tablet {
       width: 100%;
+      padding: 16px;
     }
 
     &-top {
@@ -53,6 +52,10 @@
       flex-direction: column;
       gap: 24px;
       margin-bottom: 44px;
+
+      @include on-tablet {
+        gap: 8px;
+      }
     }
   }
 
@@ -61,6 +64,10 @@
     border: 2px solid $color-white;
     border-radius: 24px;
     padding: 12px 24px;
+
+    @include on-tablet {
+      padding: 6px 12px;
+    }
   }
 
   &__title {
@@ -68,12 +75,20 @@
     font-size: 48px;
     font-weight: bold;
     text-transform: uppercase;
+
+    @include on-tablet {
+      font-size: 28px;
+    }
   }
 
   &__options {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include on-tablet {
+      gap: 0;
+    }
   }
 
   &__option {

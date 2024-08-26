@@ -14,7 +14,7 @@
     object-fit: cover;
     object-position: center;
     height: 314px;
-    width: 300px;
+    width: 100%;
 
     @include sceleton;
     @include on-hover(transform, scale(1.1));

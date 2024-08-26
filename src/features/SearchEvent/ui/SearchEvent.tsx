@@ -13,16 +13,18 @@ export const SearchEvent: React.FC<Props> = ({
 }) => {
   return (
     <div className="SearchEvent">
-      <MySearch height="64px" />
+      <div className="SearchEvent__wrapper">
+        <MySearch height="64px" />
 
-      <button
-        className="SearchEvent__filters"
-        onClick={() => setShowFilters(!showFilters)}
-      >
-        Фільтри
-      </button>
+        <button
+          className="SearchEvent__filters"
+          onClick={() => setShowFilters(!showFilters)}
+        >
+          <p>Фільтри</p>
+        </button>
 
-      <button className="SearchEvent__location">Київ</button>
+        <button className="SearchEvent__location">Київ</button>
+      </div>
 
       <MyButtonLarge className="SearchEvent__btn">Пошук</MyButtonLarge>
     </div>

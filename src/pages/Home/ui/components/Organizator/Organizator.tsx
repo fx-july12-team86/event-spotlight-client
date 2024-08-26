@@ -1,4 +1,5 @@
 import { MyButtonLarge } from '../../../../../shared/ui/MyButtonLarge/MyButtonLarge';
+import { PhotoList } from '../PhotoList/PhotoList';
 import './Organizator.scss';
 
 export const Organizator = () => {
@@ -7,6 +8,10 @@ export const Organizator = () => {
       <div className="Organizator__box">
         <h2 className="Organizator__title">ти організатор ?</h2>
 
+        <div className="Organizator__photolist--tab">
+          <PhotoList />
+        </div>
+
         <p className="Organizator__subtitle">
           Додай свою подію на наш сайт та залучи більше клієнтів на свою подію
         </p>
@@ -14,17 +19,8 @@ export const Organizator = () => {
         <MyButtonLarge className="Organizator__btn">Додати подію</MyButtonLarge>
       </div>
 
-      <div className="Organizator__list">
-        {[1, 2, 3, 4].map((img) => (
-          <img
-            key={img}
-            className={`Organizator__img Organizator__img--${img}`}
-            src={`organizators/${img}.png`}
-            alt="organizators"
-            height={230}
-            width={230}
-          />
-        ))}
+      <div className="Organizator__photolist">
+        <PhotoList />
       </div>
     </div>
   );

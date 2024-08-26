@@ -7,8 +7,16 @@
   align-items: center;
   justify-content: start;
 
-  & section {
+  @include on-tablet {
+    gap: 56px;
+  }
+
+  &__section {
     width: 100%;
+
+    &--first {
+      margin-bottom: 32px;
+    }
   }
 
   &__title {
@@ -16,6 +24,10 @@
 
     span {
       color: $color-purple;
+    }
+
+    @include on-tablet {
+      font-size: 40px;
     }
   }
 
@@ -25,6 +37,10 @@
 
     span {
       color: $color-purple;
+    }
+
+    @include on-tablet {
+      font-size: 40px;
     }
   }
 

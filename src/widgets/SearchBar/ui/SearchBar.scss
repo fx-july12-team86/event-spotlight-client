@@ -3,10 +3,14 @@
 .SearchBar {
   background-color: $color-black;
   padding: 24px;
-
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+
+  @include on-tablet {
+    padding: 12px;
+    margin-bottom: 28px;
+  }
 
   &__drop {
     overflow: hidden;

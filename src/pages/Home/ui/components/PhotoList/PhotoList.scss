@@ -1,0 +1,29 @@
+@import '/src/shared/styles/utils.scss';
+
+.PhotoList {
+  position: relative;
+  height: 230px;
+  flex-grow: 1;
+
+  &__img {
+    position: absolute;
+    border-radius: 50%;
+    @include sceleton;
+
+    &--1 {
+      left: 0;
+    }
+
+    &--2 {
+      left: 25%;
+    }
+
+    &--3 {
+      right: 25%;
+    }
+
+    &--4 {
+      right: 0;
+    }
+  }
+}

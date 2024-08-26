@@ -187,19 +187,19 @@ export const HomePage = () => {
     <div className="HomePage">
       <Slider />
 
-      {/* <section>
+      <section className="HomePage__section HomePage__section--first">
         <h1 className="HomePage__title">
           ЗНАЙДИ <span>ПОДІЮ</span> ДЛЯ СЕБЕ
         </h1>
 
-        <div className="HomePage__searchBar">
+        <div className="HomePage__section HomePage__searchBar">
           <SearchBar />
         </div>
 
         <ProductList events={events} />
       </section>
 
-      <section className="HomePage__toplist">
+      <section className="HomePage__section HomePage__toplist">
         <h2 className="HomePage__title--h2">
           TOП ПОДІЇ <span>КИЇВ</span>
         </h2>
@@ -211,7 +211,7 @@ export const HomePage = () => {
         </MyButtonLarge>
       </section>
 
-      <section className="HomePage__toplist">
+      <section className="HomePage__section HomePage__toplist">
         <h2 className="HomePage__title--h2">
           Онлайн <span>події</span>
         </h2>
@@ -225,7 +225,7 @@ export const HomePage = () => {
 
       <Organizator />
 
-      <section className="HomePage__closestlist">
+      <section className="HomePage__section HomePage__closestlist">
         <h2 className="HomePage__title--h2">
           <span>найближчі</span> події
         </h2>
@@ -235,7 +235,7 @@ export const HomePage = () => {
         <MyButtonLarge className="HomePage__btn--purple">
           Більше подій
         </MyButtonLarge>
-      </section> */}
+      </section>
     </div>
   );
 };

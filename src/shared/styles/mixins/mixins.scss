@@ -11,9 +11,23 @@
     transition: #{$property} ease-in-out $transition-duration;
   }
 
-  &:not([disabled]):hover {
-    cursor: pointer;
-    #{$property}: $value;
+  // &:not([disabled]):hover {
+  //   cursor: pointer;
+  //   #{$property}: $value;
+  // }
+
+  @media (hover: hover) {
+    &:not([disabled]):hover {
+      cursor: pointer;
+      #{$property}: $value;
+    }
+  }
+
+  @media (hover: none) {
+    &:not([disabled]):active {
+      cursor: pointer;
+      #{$property}: $value;
+    }
   }
 }
 

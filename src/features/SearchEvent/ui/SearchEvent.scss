@@ -7,6 +7,21 @@
   align-items: center;
   height: 100%;
 
+  @include on-tablet {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__wrapper {
+    display: contents;
+
+    @include on-tablet {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+  }
+
   &__filters {
     display: flex;
     align-items: center;
@@ -29,6 +44,12 @@
     &:hover::before {
       content: url(icons/filter_purple.svg);
     }
+
+    & p {
+      @include on-tablet {
+        display: none;
+      }
+    }
   }
 
   &__location {
@@ -42,6 +63,10 @@
 
     &:hover::before {
       content: url(icons/location_purple.svg);
+    }
+
+    @include on-tablet {
+      display: none;
     }
   }
 
@@ -57,5 +82,9 @@
     @include on-hover(color, $color-green);
     @include on-hover(background-color, $color-black);
     @include on-hover(border-color, $color-green);
+    @include on-tablet {
+      width: 100%;
+      margin-left: 0;
+    }
   }
 }

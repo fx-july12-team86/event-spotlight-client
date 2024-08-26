@@ -6,6 +6,10 @@
   gap: 32px;
   width: 70%;
 
+  @include on-tablet {
+    display: none;
+  }
+
   &__drop {
     position: relative;
     overflow: hidden;
