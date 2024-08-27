@@ -1,3 +1,3 @@
-import { ResetPasswordForm } from "./ui/ResetPasswordForm";
+import { ResetPasswordForm } from './ui/ResetPasswordForm';
 
-export { ResetPasswordForm }
+export { ResetPasswordForm };

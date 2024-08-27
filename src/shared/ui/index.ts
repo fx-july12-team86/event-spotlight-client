@@ -21,5 +21,5 @@ export {
   MySelect,
   MyCheckbox,
   MyPasswordInput,
-  MyLoader
+  MyLoader,
 };

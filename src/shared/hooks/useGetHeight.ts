@@ -6,7 +6,7 @@ export function useGetHeight(
   ref: React.RefObject<any>,
   setHeight: (v: number) => void
 ) {
-  const { user } = useAppSelector(state => state.user)
+  const { user } = useAppSelector((state) => state.user);
 
   useEffect(() => {
     if (ref.current) {

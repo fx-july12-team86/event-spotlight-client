@@ -4,11 +4,11 @@ import './App.scss';
 import { Outlet } from 'react-router-dom';
 import { Footer } from '../../widgets/Footer';
 import { useGetUserCity } from '../hooks/useGetUserCity';
-import { useState } from 'react';
 import { SideBar } from '../../widgets/SideBar';
+import { useState } from 'react';
 
 function App() {
-  const [showSidebar, setShowSidebar] = useState(false);
+  let [showSidebar, setShowSidebar] = useState(false);
   useGetUserCity();
 
   return (

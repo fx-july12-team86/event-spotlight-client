@@ -19,8 +19,8 @@ export const userSlice = createSlice({
       state.location = action.payload;
     },
     setUser: (state, action) => {
-      console.log('555')
-      console.log(action)
+      console.log('555');
+      console.log(action);
       state.user = action.payload;
     },
   },
