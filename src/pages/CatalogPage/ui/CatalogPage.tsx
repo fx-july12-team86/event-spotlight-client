@@ -129,7 +129,9 @@ export const CatalogPage = () => {
         <BreadcrumbsCatalog />
       </div>
 
-      <h1 className="CatalogPage__title">Події {location}</h1>
+      <h1 className="CatalogPage__title">
+        Події {location === 'Oбрати місто' ? '' : location}
+      </h1>
 
       <div className="CatalogPage__search-bar">
         <SearchBar />

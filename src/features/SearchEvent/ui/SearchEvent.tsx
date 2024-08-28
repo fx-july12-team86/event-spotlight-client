@@ -18,7 +18,9 @@ export const SearchEvent: React.FC<Props> = ({
 
         <button
           className="SearchEvent__filters"
-          onClick={() => setShowFilters(!showFilters)}
+          onClick={() => {
+            setShowFilters(!showFilters);
+          }}
         >
           <p>Фільтри</p>
         </button>

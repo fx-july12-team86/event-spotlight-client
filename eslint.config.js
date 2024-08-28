@@ -24,6 +24,8 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       'react/jsx-newline': ['error'],
+      'prefer-const': 'error',
+      'no-console': 'error',
     },
   },
 

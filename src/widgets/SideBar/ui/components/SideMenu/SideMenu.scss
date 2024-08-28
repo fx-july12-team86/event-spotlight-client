@@ -1,0 +1,93 @@
+@import '/src/shared/styles/utils.scss';
+
+.SideMenu {
+  position: relative;
+  width: 375px;
+  height: 100vh;
+  background-color: $color-white;
+  animation: exit $transition-duration ease forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-left: 60px;
+
+  &__close {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 12px;
+
+    @include on-hover(transform, scale(1.2));
+  }
+
+  &__logo {
+    margin-left: 30px;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    &-item {
+      padding-left: 52px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      text-decoration: none;
+      color: inherit;
+
+      @include on-hover(color, $color-purple);
+      $buttons: 'plus', 'calendar_black', 'search_dark';
+
+      @each $btn in $buttons {
+        &--#{$btn} {
+          &::before {
+            content: url(/icons/#{$btn}.svg);
+            margin-right: 20px;
+          }
+        }
+      }
+
+      &--plus::before {
+        margin-right: 15px;
+      }
+
+      &--location {
+        color: $color-purple;
+        display: flex;
+        justify-content: flex-start;
+
+        &::before {
+          content: url(/icons/location_purple.svg);
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes enter {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes exit {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}

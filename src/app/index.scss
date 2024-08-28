@@ -25,6 +25,10 @@
   padding-inline: 64px;
   margin: 0 auto;
 
+  @media (max-width: 1100px) {
+    padding-inline: 30px;
+  }
+
   @include on-tablet {
     padding-inline: 24px;
   }

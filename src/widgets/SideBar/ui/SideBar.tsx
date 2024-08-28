@@ -1,21 +1,25 @@
-import cn from 'classnames';
-import './SideBar.scss';
 import { useState } from 'react';
+import cn from 'classnames';
+
+import './SideBar.scss';
+import { SideMenu } from './components/SideMenu/SideMenu';
 
 type Props = {
   onClose: (v: boolean) => void;
-  open: boolean;
+  isOpen: boolean;
 };
 
-export const SideBar: React.FC<Props> = ({ onClose, open }) => {
-  const [defferedOpen, setDefferedOpen] = useState(open);
+export const SideBar: React.FC<Props> = ({ onClose }) => {
+  const [defferedOpen, setDefferedOpen] = useState(true);
 
   function closeSibebar() {
     setDefferedOpen(false);
+
     setTimeout(() => {
       onClose(false);
     }, 300);
   }
+
   return (
     <div
       className={cn('SideBar', {
@@ -23,7 +27,7 @@ export const SideBar: React.FC<Props> = ({ onClose, open }) => {
       })}
       onClick={() => closeSibebar()}
     >
-      <button onClick={() => closeSibebar()}>close</button>
+      <SideMenu isOpen={defferedOpen} onClose={closeSibebar} />
     </div>
   );
 };

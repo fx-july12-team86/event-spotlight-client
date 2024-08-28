@@ -52,9 +52,9 @@
 
   &__btn {
     @include button-large-purple-filled;
-    margin-bottom: 24px;
 
     & {
+      margin-bottom: 24px;
       width: 100%;
     }
 

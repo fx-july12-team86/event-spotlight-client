@@ -1,19 +1,21 @@
-import { Header } from '../../widgets/Header';
-import './App.scss';
-
+import { useCallback, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+
+import './App.scss';
+import { Header } from '../../widgets/Header';
 import { Footer } from '../../widgets/Footer';
-import { useGetUserCity } from '../hooks/useGetUserCity';
 import { SideBar } from '../../widgets/SideBar';
-import { useState } from 'react';
+import { useGetUserCity } from '../hooks/useGetUserCity';
 
 function App() {
-  let [showSidebar, setShowSidebar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
   useGetUserCity();
+
+  useCallback(setShowSidebar, []);
 
   return (
     <div className="App">
-      {showSidebar && <SideBar onClose={setShowSidebar} open={showSidebar} />}
+      {showSidebar && <SideBar onClose={setShowSidebar} isOpen={showSidebar} />}
 
       <Header openSidebar={() => setShowSidebar(true)} />
 
