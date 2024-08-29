@@ -8,6 +8,10 @@
   padding: 16px;
   text-decoration: none;
 
+  @include on-mobile {
+    padding: 10px;
+  }
+
   &:hover {
     .Logo__sitename {
       color: $color-green;
@@ -19,6 +23,11 @@
     border-radius: 50%;
     width: 32px;
     height: 32px;
+
+    @include on-mobile {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   &__sitename {
@@ -27,6 +36,10 @@
     color: $color-white;
     margin: 0;
     transition: all ease-in-out $transition-duration;
+
+    @include on-mobile {
+      font-size: 20px;
+    }
 
     &--dark {
       color: $color-black;

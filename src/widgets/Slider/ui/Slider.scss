@@ -56,6 +56,9 @@
       @include on-tablet {
         gap: 8px;
       }
+      @include on-mobile {
+        margin-bottom: 28px;
+      }
     }
   }
 

@@ -29,6 +29,10 @@
     @include on-tablet {
       font-size: 40px;
     }
+
+    @include on-mobile {
+      margin-bottom: 32px;
+    }
   }
 
   &__title--h2 {
@@ -41,6 +45,10 @@
 
     @include on-tablet {
       font-size: 40px;
+    }
+
+    @include on-mobile {
+      margin-bottom: 0;
     }
   }
 
@@ -62,10 +70,18 @@
     @extend .HomePage__toplist;
 
     margin-bottom: 124px;
+
+    @include on-mobile {
+      margin-bottom: 84px;
+    }
   }
 
   &__searchBar {
     margin-bottom: 56px;
+
+    @include on-mobile {
+      margin-bottom: 28px;
+    }
   }
 
   &__btn--purple {

@@ -5,10 +5,19 @@
   height: 230px;
   flex-grow: 1;
 
+  @include on-mobile {
+    height: calc(100vw / 3);
+  }
+
   &__img {
     position: absolute;
     border-radius: 50%;
     @include sceleton;
+
+    @include on-mobile {
+      width: calc(100vw / 3);
+      height: calc(100vw / 3);
+    }
 
     &--1 {
       left: 0;
@@ -16,10 +25,18 @@
 
     &--2 {
       left: 25%;
+
+      // @include on-mobile {
+      //   left: 28%;
+      // }
     }
 
     &--3 {
       right: 25%;
+
+      @include on-mobile {
+        // right: 20%;
+      }
     }
 
     &--4 {

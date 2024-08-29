@@ -8,7 +8,7 @@ export interface UserState {
 
 export const initialState: UserState = {
   location: 'Oбрати місто',
-  user: {},
+  user: null,
 };
 
 export const userSlice = createSlice({

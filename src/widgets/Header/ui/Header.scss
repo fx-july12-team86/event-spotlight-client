@@ -35,9 +35,15 @@
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
+    align-content: center;
 
     @include on-tablet {
       grid-template-columns: 64px auto 64px;
+    }
+
+    @include on-mobile {
+      grid-template-columns: 30px auto 36px;
+      height: 56px;
     }
   }
 
@@ -146,6 +152,12 @@
 
       @include on-hover(color, $color-white);
       @include on-hover(background-color, $color-purple);
+    }
+  }
+
+  &__location {
+    @include on-mobile-sm {
+      display: none;
     }
   }
 }

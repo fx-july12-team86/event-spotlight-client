@@ -1,11 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import { userReducer } from '../../entities/User';
 import { eventReducer } from '../../entities/Event';
+import dialogReducer from '../../shared/ui/MyDialog/store/dialogReducer';
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
     event: eventReducer,
+    dialog: dialogReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

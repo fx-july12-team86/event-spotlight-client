@@ -16,6 +16,7 @@
     top: 15px;
     left: 15px;
     padding: 12px;
+    border: none;
 
     @include on-hover(transform, scale(1.2));
   }
@@ -30,7 +31,7 @@
     align-items: flex-start;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
 
     &-item {
       padding-left: 52px;
@@ -41,9 +42,10 @@
       text-align: left;
       text-decoration: none;
       color: inherit;
+      border: none;
 
       @include on-hover(color, $color-purple);
-      $buttons: 'plus', 'calendar_black', 'search_dark';
+      $buttons: 'plus', 'calendar_black', 'search_dark', 'exit';
 
       @each $btn in $buttons {
         &--#{$btn} {

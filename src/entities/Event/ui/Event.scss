@@ -6,6 +6,12 @@
   height: 675px;
   text-decoration: none;
   color: inherit;
+  display: flex;
+  flex-direction: column;
+
+  @include on-mobile {
+    height: 434px;
+  }
 
   @include on-hover(outline, 2px solid $color-purple);
 
@@ -15,6 +21,10 @@
     object-position: center;
     height: 314px;
     width: 100%;
+
+    @include on-mobile {
+      height: 100%;
+    }
 
     @include sceleton;
     @include on-hover(transform, scale(1.1));
@@ -26,6 +36,10 @@
 
   &__descr {
     padding: 24px;
+
+    @include on-mobile {
+      padding: 16px;
+    }
   }
 
   &__title-box {
@@ -36,12 +50,21 @@
     justify-content: space-between;
     word-break: break-word;
     overflow-wrap: break-word;
+
+    @include on-mobile {
+      height: auto;
+    }
   }
 
   &__title {
     font-size: 32px;
     font-weight: 500;
     font-family: Oswald, 'sans-serif';
+
+    @include on-mobile {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
   }
 
   &__category {
@@ -49,6 +72,11 @@
     border-radius: 24px;
     border: 1px solid $color-grey-70;
     padding: 12px 24px;
+
+    @include on-mobile {
+      font-size: 14px;
+      padding: 6px 12px;
+    }
 
     @include on-hover(background-color, $color-purple);
     @include on-hover(color, $color-white);
@@ -59,6 +87,10 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
+
+    @include on-mobile {
+      margin-bottom: 0;
+    }
   }
 
   &__favorite {

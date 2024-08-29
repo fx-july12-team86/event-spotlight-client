@@ -4,12 +4,12 @@ import './Slider.scss';
 export const Slider = () => {
   return (
     <Carousel data-bs-theme="dark" interval={null}>
-      {[1, 2, 3].map((slide) => (
+      {['halloween', 'golf', 'concert', 'disco'].map((slide) => (
         <Carousel.Item key={slide}>
           <div className="Slider__item">
             <img
               className="Slider__img"
-              src="slider/halloween.webp"
+              src={`slider/${slide}.webp`}
               alt="First slide"
               height={548}
               width={648}

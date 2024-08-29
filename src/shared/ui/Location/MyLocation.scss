@@ -8,6 +8,10 @@
   width: max-content;
   position: relative;
 
+  @include on-mobile {
+    padding: 10px;
+  }
+
   @include on-hover(background-color, $color-grey-70);
 
   &::before {

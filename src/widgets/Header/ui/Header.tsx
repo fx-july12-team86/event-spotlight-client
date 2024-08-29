@@ -44,7 +44,9 @@ export const Header: React.FC<Props> = ({ openSidebar }) => {
             <div className="Header__controls Header__controls--left">
               <MyLogo />
 
-              <MyLocation city={location} />
+              <div className="Header__location">
+                <MyLocation city={location} />
+              </div>
             </div>
 
             <HeaderSearch />

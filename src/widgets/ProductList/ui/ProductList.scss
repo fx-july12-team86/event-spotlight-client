@@ -3,11 +3,16 @@
 .ProductList {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  grid-template-columns: repeat(auto-fit, minmax(260px, auto));
   column-gap: 10px;
   row-gap: 28px;
   justify-items: center;
   justify-content: space-between;
+
+  @include on-mobile {
+    justify-content: center;
+    row-gap: 16px;
+  }
 
   &__extra {
     background-color: $color-grey-30;

@@ -29,8 +29,8 @@ export const MyDialog: React.FC<Props> = ({ children, onClose }) => {
   }, []);
 
   const dialogRoot = document.getElementById('dialog');
+
   if (!dialogRoot) {
-    console.error('Dialog root element not found');
     return null;
   }
 

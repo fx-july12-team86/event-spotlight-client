@@ -32,4 +32,8 @@
   @include on-tablet {
     padding-inline: 24px;
   }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
 }

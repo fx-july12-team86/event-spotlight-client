@@ -77,7 +77,6 @@ export const LoginForm: React.FC<Props> = ({
         .login({ password, email })
         .then((res) => {
           dispatch(userActions.setUser(res));
-
           handleOnClose && handleOnClose();
         })
         .catch((err) => setLoginError(err.message))
