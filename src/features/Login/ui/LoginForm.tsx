@@ -101,6 +101,7 @@ export const LoginForm: React.FC<Props> = ({
           className="LoginForm__input-field"
           onChange={handleSetEmail}
           value={email}
+          autoComplete="email"
         />
 
         <p className="LoginForm__input-field--error">{errors.email}</p>

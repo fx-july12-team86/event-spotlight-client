@@ -50,10 +50,7 @@ export const MySearch: React.FC<Props> = ({
   }
 
   return (
-    <div
-      className="MySearch"
-      style={{ height: window.innerWidth > 740 ? height : '56px' }}
-    >
+    <div className="MySearch" style={{ height }}>
       <img src="icons/search_dark.svg" alt="search icon" />
 
       <input

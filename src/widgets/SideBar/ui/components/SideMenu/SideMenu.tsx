@@ -8,6 +8,7 @@ import {
   useAppSelector,
 } from '../../../../../shared/hooks/reduxHooks';
 import { dialogAction } from '../../../../../shared/ui/MyDialog';
+import { ProfileDrop } from '../../../../Header/ui/components/ProfileDrop/ProfileDrop';
 
 type Props = {
   isOpen: boolean;
@@ -44,53 +45,7 @@ export const SideMenu: React.FC<Props> = ({ isOpen, onClose }) => {
       >
         <div className="SideMenu__buttons" onClick={() => onClose()}>
           {user ? (
-            <nav className="ProfileDrop__nav">
-              {user && (
-                <div className="ProfileDrop__nav-list">
-                  <Link to="profile/settings" className="ProfileDrop__nav-link">
-                    <img
-                      src="icons/account_black.svg"
-                      alt="Мій профіль"
-                      height={18}
-                      width={18}
-                    />
-
-                    <p className="">Мій профіль</p>
-                  </Link>
-
-                  <Link to="profile/favorite" className="ProfileDrop__nav-link">
-                    <img
-                      src="icons/heart_black.svg"
-                      alt="Улюблене"
-                      height={18}
-                      width={18}
-                    />
-
-                    <p>Улюблене</p>
-                  </Link>
-
-                  <Link
-                    to="profile/my-events"
-                    className="ProfileDrop__nav-link"
-                  >
-                    <img
-                      src="icons/star_black.svg"
-                      alt="Мої події"
-                      height={18}
-                      width={18}
-                    />
-
-                    <p className="">Мої події</p>
-                  </Link>
-                </div>
-              )}
-
-              <div className="ProfileDrop__nav-link" onClick={() => {}}>
-                <img src="icons/exit.svg" alt="Вийти" height={18} width={18} />
-
-                <p className="ProfileDrop__btn">Вийти</p>
-              </div>
-            </nav>
+            <ProfileDrop showDrop={true} />
           ) : (
             <button
               className="SideMenu__buttons-item SideMenu__buttons-item--exit"
@@ -103,12 +58,14 @@ export const SideMenu: React.FC<Props> = ({ isOpen, onClose }) => {
       </div>
 
       <div className="SideMenu__buttons" onClick={() => onClose()}>
-        <Link
-          to="profile/add-event"
-          className="SideMenu__buttons-item SideMenu__buttons-item--plus"
-        >
-          Створити подію
-        </Link>
+        {user && (
+          <Link
+            to="profile/add-event"
+            className="SideMenu__buttons-item SideMenu__buttons-item--plus"
+          >
+            Створити подію
+          </Link>
+        )}
 
         <Link
           to="catalog"

@@ -7,7 +7,7 @@ import { Footer } from '../../widgets/Footer';
 import { SideBar } from '../../widgets/SideBar';
 import { LoginForm } from '../../features/Login';
 import { MyDialog } from '../../shared/ui';
-import { useGetUserCity } from '../hooks/useGetUserCity';
+// import { useGetUserCity } from '../hooks/useGetUserCity';
 import { useAppDispatch, useAppSelector } from '../../shared/hooks/reduxHooks';
 import { dialogAction } from '../../shared/ui/MyDialog';
 
@@ -16,7 +16,7 @@ function App() {
   const { showDialog } = useAppSelector((state) => state.dialog);
   const dispatch = useAppDispatch();
 
-  useGetUserCity();
+  // useGetUserCity();
 
   useCallback(setShowSidebar, []);
 

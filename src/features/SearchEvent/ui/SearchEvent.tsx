@@ -14,7 +14,7 @@ export const SearchEvent: React.FC<Props> = ({
   return (
     <div className="SearchEvent">
       <div className="SearchEvent__wrapper">
-        <MySearch height="64px" />
+        <MySearch height="56px" />
 
         <button
           className="SearchEvent__filters"

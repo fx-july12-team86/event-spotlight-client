@@ -33,6 +33,7 @@
   color: $color_white;
   background-color: $color_purple;
   width: 312px;
+  border: 2px solid $color_purple;
 
   @include button-large;
   @include on-hover(color, $color_purple);
