@@ -14,6 +14,7 @@ export const MyDropIcon: React.FC<Props> = ({
   children,
   openedIcon,
   closedIcon,
+  ...props
 }) => {
   const [showDrop, setShowDrop] = useState(false);
   const [dropHeight, setDropHeight] = useState(0);
@@ -24,7 +25,7 @@ export const MyDropIcon: React.FC<Props> = ({
   useHideDrop(MyDropIconRef, setShowDrop);
 
   return (
-    <div className="MyDropIcon" ref={MyDropIconRef}>
+    <div className="MyDropIcon" ref={MyDropIconRef} {...props}>
       <img
         src={showDrop ? `icons/${openedIcon}.svg` : `icons/${closedIcon}.svg`}
         alt="profile"

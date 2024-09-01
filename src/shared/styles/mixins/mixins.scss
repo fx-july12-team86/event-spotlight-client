@@ -32,16 +32,18 @@
 }
 
 @mixin sceleton {
-  animation: sceleton 1.5s infinite;
-  background: linear-gradient(-75deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
-  background-size: 200% 100%;
+  & {
+    animation: sceleton 1.5s infinite;
+    background: linear-gradient(-75deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
 
-  @keyframes sceleton {
-    0% {
-      background-position: 200% 0;
-    }
-    100% {
-      background-position: -200% 0;
+    @keyframes sceleton {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
     }
   }
 }

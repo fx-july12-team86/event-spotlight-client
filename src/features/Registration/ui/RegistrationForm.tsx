@@ -134,6 +134,7 @@ export const RegistrationForm: React.FC<Props> = ({
 
         <input
           type="text"
+          data-cy="username"
           placeholder="Аліса Ло"
           className="RegistrationForm__input-field"
           onChange={handleSetLogin}

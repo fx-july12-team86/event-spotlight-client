@@ -150,6 +150,7 @@ export const LoginForm: React.FC<Props> = ({
         <p
           className="LoginForm__footer-text"
           onClick={() => setFormType('reg')}
+          data-cy="registration"
         >
           Реєстрація
         </p>

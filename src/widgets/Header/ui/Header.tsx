@@ -56,7 +56,11 @@ export const Header: React.FC<Props> = ({ openSidebar }) => {
                 <DateRangePicker />
               </MyDropIcon>
 
-              <MyDropIcon openedIcon="account_black" closedIcon="account">
+              <MyDropIcon
+                openedIcon="account_black"
+                closedIcon="account"
+                data-cy="profile_btn"
+              >
                 <ProfileDrop />
               </MyDropIcon>
 
