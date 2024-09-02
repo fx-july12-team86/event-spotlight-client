@@ -35,7 +35,7 @@ async function onResponseError(error: any) {
   // const originalRequest = error.config;
 
   if (error.response.status !== 401) {
-    localStorageServise.set('accessTocken', null) //  !!TEMPORARY SOLUTION: WAIT REFRESH POINT
+    localStorageServise.set('accessTocken', null) //  !!TEMPORARY SOLUTION: WAIT REFRESH POINT!!
     throw error;
   }
 
