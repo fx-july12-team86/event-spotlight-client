@@ -5,7 +5,7 @@ import './MySelect.scss';
 import { useGetHeight } from '../../hooks/useGetHeight';
 
 type Props = {
-  list: string[];
+  list: { id: number; name: string }[];
   setter: (v: string) => void;
   value: string;
   placeholder: string;
@@ -54,10 +54,10 @@ export const MySelect: React.FC<Props> = ({
           {list.map((ev) => (
             <li
               className="MySelect__drop-item"
-              key={ev}
-              onClick={() => handleClick(ev)}
+              key={ev.id}
+              onClick={() => handleClick(ev.name)}
             >
-              {ev}
+              {ev.name}
             </li>
           ))}
         </ul>

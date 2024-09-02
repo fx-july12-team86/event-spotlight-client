@@ -1,23 +1,37 @@
 import { useState } from 'react';
+
+import './Step4.scss';
 import { useAppSelector } from '../../../../../../../shared/hooks/reduxHooks';
 import { ContactsForm } from './components/ContactForm/ContactsForm';
-import './Step4.scss';
 import { MyDialog } from '../../../../../../../shared/ui';
+import { eventApi } from '../../..';
 
 type Props = {
   setStep: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const Step4: React.FC<Props> = ({ setStep }) => {
-  const { phone, email, instagram, telegram, facebook } = useAppSelector(
-    (state) => state.event
-  );
+  const { phone, email, instagram, telegram, facebook, eventImages } =
+    useAppSelector((state) => state.event);
 
   const isFormValid = Boolean(
     phone || email || instagram || telegram || facebook
   );
 
   const [showDialog, setShowDialog] = useState(false);
+
+  function saveAndPublish() {
+    const formData = new FormData();
+
+    eventImages.forEach((image) => {
+      formData.append('photos', image);
+    });
+
+    eventApi
+      .uploadPhotos(formData)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
 
   return (
     <section className="Step4">
@@ -60,7 +74,7 @@ export const Step4: React.FC<Props> = ({ setStep }) => {
 
           <button
             className="Step4__footer-btn"
-            onClick={() => setShowDialog(true)}
+            onClick={saveAndPublish}
             disabled={!isFormValid}
           >
             Зберегти та опублікувати

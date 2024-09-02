@@ -12,6 +12,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '../../../shared/hooks/reduxHooks';
+import localStorageServise from '../../../shared/servises/localStorage.servise';
 
 type Props = {
   handleOnClose?: () => void;
@@ -72,15 +73,19 @@ export const LoginForm: React.FC<Props> = ({
 
     if (!Object.keys(errors).length) {
       setLoading(true);
-
+      debugger;
       userApi
         .login({ password, email })
         .then((res) => {
           dispatch(userActions.setUser(res));
+          localStorageServise.set('accessToken', res.token);
           handleOnClose && handleOnClose();
         })
         .catch((err) => setLoginError(err.message))
-        .finally(() => setLoading(false));
+        .finally(() => {
+          setLoading(false);
+          console.log(user);
+        });
     }
   }
 

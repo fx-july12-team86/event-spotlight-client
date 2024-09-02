@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 export function useGetImageURL(
-  images: (File | null)[],
+  images: (Blob | string)[],
   setUrls: React.Dispatch<React.SetStateAction<string[]>>
 ) {
   useEffect(() => {

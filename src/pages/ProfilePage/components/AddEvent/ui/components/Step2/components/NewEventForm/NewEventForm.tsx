@@ -1,14 +1,16 @@
 import cn from 'classnames';
+import { useEffect, useState } from 'react';
 
 import './NewEventForm.scss';
 import { MyCheckbox, MySelect } from '../../../../../../../../../shared/ui';
 import { EVENT_TYPES } from '../../../../../../../../../widgets/SearchBar/consts';
-import { useState } from 'react';
 import {
   useAppDispatch,
   useAppSelector,
 } from '../../../../../../../../../shared/hooks/reduxHooks';
 import { eventActions } from '../../../../../../../../../entities/Event';
+import { CategoryType } from '../../../../../../../../../entities/Category/types';
+import { categoryApi } from '../../../../../../../../../entities/Category';
 
 const TITLE_MAX_LENGTH = 55;
 type FormErrors = {
@@ -28,6 +30,14 @@ export const NewEventForm = () => {
     date,
     time,
   } = useAppSelector((state) => state.event);
+  const [categories, setCategories] = useState<CategoryType[]>([]);
+
+  useEffect(() => {
+    categoryApi
+      .getAll()
+      .then(setCategories)
+      .catch((err) => console.log(err));
+  }, []);
 
   const [errors, setErrors] = useState<FormErrors>({});
 
@@ -78,7 +88,7 @@ export const NewEventForm = () => {
       <div className="NewEventForm__line">
         <div className="NewEventForm__input NewEventForm__input--select">
           <MySelect
-            list={EVENT_TYPES}
+            list={categories}
             setter={setCategory}
             value={category}
             placeholder="Обери категорію"
@@ -87,7 +97,7 @@ export const NewEventForm = () => {
 
         <div className="NewEventForm__input NewEventForm__input--select">
           <MySelect
-            list={EVENT_TYPES}
+            list={categories}
             setter={setSubCategory}
             value={subCategory}
             placeholder="Обери підкатегорію (за бажанням)"

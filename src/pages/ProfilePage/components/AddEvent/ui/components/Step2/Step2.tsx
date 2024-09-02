@@ -1,6 +1,7 @@
+import './Step2.scss';
 import { useAppSelector } from '../../../../../../../shared/hooks/reduxHooks';
 import { NewEventForm } from './components/NewEventForm/NewEventForm';
-import './Step2.scss';
+import { categoryApi } from '../../../../../../../entities/Category';
 
 type Props = {
   setStep: React.Dispatch<React.SetStateAction<number>>;

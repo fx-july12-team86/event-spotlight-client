@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface EventState {
-  eventImages: (File | null)[];
+  eventImages: (Blob | string)[];
   title: string;
   category: string;
   subCategory: string;
@@ -47,7 +47,7 @@ export const eventSlice = createSlice({
       state.eventImages[action.payload.id] = action.payload.image;
     },
     removeImage: (state, action: PayloadAction<number>) => {
-      state.eventImages[action.payload] = null;
+      state.eventImages[action.payload] = '';
     },
     updateProperty: (
       state,
