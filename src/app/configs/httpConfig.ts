@@ -17,10 +17,11 @@ httpClient.interceptors.response.use(onResponseSuccess, onResponseError);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function onRequest(req: InternalAxiosRequestConfig<any>) {
+  debugger
   const accessToken = localStorage.getItem('accessToken');
 
   if (accessToken) {
-    req.headers['Authorization'] = `Bearer ${accessToken}`;
+    req.headers['Authorization'] = `Bearer ${JSON.parse(accessToken)}`;
   }
 
   return req;

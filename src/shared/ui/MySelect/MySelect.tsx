@@ -3,11 +3,12 @@ import cn from 'classnames';
 
 import './MySelect.scss';
 import { useGetHeight } from '../../hooks/useGetHeight';
+import { OptionType } from './types';
 
 type Props = {
-  list: { id: number; name: string }[];
-  setter: (v: string) => void;
-  value: string;
+  list: OptionType[];
+  setter: (v: OptionType) => void;
+  value: OptionType | null;
   placeholder: string;
 };
 
@@ -23,7 +24,7 @@ export const MySelect: React.FC<Props> = ({
   const dropRef = useRef<HTMLUListElement>(null);
   useGetHeight(dropRef, setDropHeight);
 
-  function handleClick(v: string) {
+  function handleClick(v: OptionType) {
     setter(v);
     setShowDrop(false);
   }
@@ -36,7 +37,7 @@ export const MySelect: React.FC<Props> = ({
         })}
         onClick={() => setShowDrop(!showDrop)}
       >
-        {value === '' ? placeholder : value}
+        {!value ? placeholder : value.name}
       </div>
 
       <div
@@ -55,7 +56,7 @@ export const MySelect: React.FC<Props> = ({
             <li
               className="MySelect__drop-item"
               key={ev.id}
-              onClick={() => handleClick(ev.name)}
+              onClick={() => handleClick(ev)}
             >
               {ev.name}
             </li>

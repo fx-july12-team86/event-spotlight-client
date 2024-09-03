@@ -53,11 +53,11 @@ export const NewEventForm = () => {
     dispatch(eventActions.updateProperty({ field: 'title', value }));
   }
 
-  function setCategory(value: string) {
+  function setCategory(value: CategoryType) {
     dispatch(eventActions.updateProperty({ field: 'category', value }));
   }
 
-  function setSubCategory(value: string) {
+  function setSubCategory(value: CategoryType) {
     dispatch(eventActions.updateProperty({ field: 'subCategory', value }));
   }
 

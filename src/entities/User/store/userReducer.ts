@@ -21,7 +21,6 @@ export const userSlice = createSlice({
     },
     setUser: (state, action: PayloadAction<User | null>) => {
       state.user = action.payload;
-      console.log(state.user)
     },
   },
 });
