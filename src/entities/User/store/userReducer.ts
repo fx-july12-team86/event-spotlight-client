@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { User } from '../types';
 
 export interface UserState {
   location: string;
-  user: null | object;
+  user: null | User;
 }
 
 export const initialState: UserState = {
@@ -18,7 +19,7 @@ export const userSlice = createSlice({
     setUserLocation: (state, action: PayloadAction<string>) => {
       state.location = action.payload;
     },
-    setUser: (state, action) => {
+    setUser: (state, action: PayloadAction<User | null>) => {
       state.user = action.payload;
       console.log(state.user)
     },

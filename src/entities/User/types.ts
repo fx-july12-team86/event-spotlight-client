@@ -1,3 +1,8 @@
+interface User {
+  email: string;
+  token: string
+}
+
 type RegistrationRequest = {
   userName: string;
   email: string;
@@ -20,4 +25,4 @@ type LoginRes = {
   token: string;
 };
 
-export type { RegistrationRequest, RegistrationResponce, LoginReq, LoginRes };
+export type { RegistrationRequest, RegistrationResponce, LoginReq, LoginRes, User };

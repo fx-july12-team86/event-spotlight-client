@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 
 import './NewEventForm.scss';
 import { MyCheckbox, MySelect } from '../../../../../../../../../shared/ui';
-import { EVENT_TYPES } from '../../../../../../../../../widgets/SearchBar/consts';
 import {
   useAppDispatch,
   useAppSelector,

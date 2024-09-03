@@ -16,7 +16,7 @@ type Props = {
   openSidebar: () => void;
 };
 export const Header: React.FC<Props> = ({ openSidebar }) => {
-  const { location } = useAppSelector((state) => state.user);
+  const { location, user } = useAppSelector((state) => state.user);
   const { pathname } = useLocation();
   const [showOther, setShowOther] = useState(false);
   const [otherHeight, setOtherHeight] = useState(300);
@@ -64,9 +64,11 @@ export const Header: React.FC<Props> = ({ openSidebar }) => {
                 <ProfileDrop />
               </MyDropIcon>
 
-              <Link to="profile/add-event" className="Header__addBtn">
-                <MyButton>Додати подію</MyButton>
-              </Link>
+              {user?.token && (
+                <Link to="profile/add-event" className="Header__addBtn">
+                  <MyButton>Додати подію</MyButton>
+                </Link>
+              )}
             </div>
           </div>
         </div>

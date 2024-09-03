@@ -12,6 +12,8 @@ import { LoginForm } from '../../../../../features/Login';
 import { RegistrationForm } from '../../../../../features/Registration';
 import { userActions } from '../../../../../entities/User';
 import { ResetPasswordForm } from '../../../../../features/ResetPasswordForm';
+import localStorageServise from '../../../../../shared/servises/localStorage.servise';
+import { ACCESS_TOKEN } from '../../../../../shared/consts/common';
 
 type Props = {
   showDrop?: boolean;
@@ -22,16 +24,18 @@ export const ProfileDrop: React.FC<Props> = ({
   showDrop,
   setShowDrop = () => {},
 }) => {
+  const { user } = useAppSelector((state) => state.user);
   const profileRef = useRef<HTMLDivElement>(null);
   const [showDialog, setShowDialog] = useState(false);
-  const { user } = useAppSelector((state) => state.user);
   const [formType, setFormType] = useState('login');
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   function handleShowDialog() {
-    if (user) {
+    if (user?.token) {
       dispatch(userActions.setUser(null));
+      localStorageServise.remove(ACCESS_TOKEN);
       setShowDrop(false);
       navigate('/');
       setFormType('login');
@@ -52,7 +56,7 @@ export const ProfileDrop: React.FC<Props> = ({
       })}
     >
       <nav className="ProfileDrop__nav">
-        {user && (
+        {user?.token && (
           <div
             className="ProfileDrop__nav-list"
             onClick={() => setShowDrop(false)}
@@ -95,7 +99,7 @@ export const ProfileDrop: React.FC<Props> = ({
         <div className="ProfileDrop__nav-link" onClick={handleShowDialog}>
           <img src="icons/exit.svg" alt="Вийти" height={18} width={18} />
 
-          <p className="ProfileDrop__btn">{user ? 'Вийти' : 'Увійти'}</p>
+          <p className="ProfileDrop__btn">{user?.token ? 'Вийти' : 'Увійти'}</p>
         </div>
       </nav>
 

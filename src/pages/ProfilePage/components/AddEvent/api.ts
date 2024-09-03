@@ -2,8 +2,7 @@ import { httpClient } from "../../../../app/configs/httpConfig";
 import { PHOTO_UPLOAD_MANY } from "../../../../shared/consts/url";
 
 class EventApi {
-  create(eventData: Event) {
-
+  create() {
   }
 
   uploadPhotos(photos: FormData): Promise<unknown> {

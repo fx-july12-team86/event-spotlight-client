@@ -4,6 +4,7 @@ describe('Name of the group', () => {
   beforeEach(() => {
     cy.visit('/')
   })
+
   it('should have title', () => {
     cy.get('h1').should('have.text', 'ЗНАЙДИ ПОДІЮ ДЛЯ СЕБЕ')
   });

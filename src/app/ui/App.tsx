@@ -1,5 +1,6 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 import './App.scss';
 import { Header } from '../../widgets/Header';
@@ -10,6 +11,9 @@ import { MyDialog } from '../../shared/ui';
 // import { useGetUserCity } from '../hooks/useGetUserCity';
 import { useAppDispatch, useAppSelector } from '../../shared/hooks/reduxHooks';
 import { dialogAction } from '../../shared/ui/MyDialog';
+import localStorageServise from '../../shared/servises/localStorage.servise';
+import { ACCESS_TOKEN } from '../../shared/consts/common';
+import { userActions } from '../../entities/User';
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -17,6 +21,15 @@ function App() {
   const dispatch = useAppDispatch();
 
   // useGetUserCity();
+
+  useEffect(() => {
+    const token = localStorageServise.get(ACCESS_TOKEN) as string;
+
+    if (token) {
+      const decoded = jwtDecode(token);
+      dispatch(userActions.setUser({ token, email: decoded.sub || '' }));
+    }
+  }, []);
 
   useCallback(setShowSidebar, []);
 
