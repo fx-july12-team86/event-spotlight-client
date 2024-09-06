@@ -1,5 +1,5 @@
 import { httpClient } from "../../../../app/configs/httpConfig";
-import { PHOTO_UPLOAD_MANY } from "../../../../shared/consts/url";
+import { PHOTO_UPLOAD_MANY } from "../../../../shared/lib/consts/url";
 
 class EventApi {
   create() {

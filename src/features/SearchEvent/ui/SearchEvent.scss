@@ -27,12 +27,13 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-    height: 56px;
+    height: 64px;
     padding-inline: 16px;
     font-size: 20px;
     font-weight: 500;
     background-color: $color-grey-10;
     border: 1px solid $color-grey-10;
+    margin-right: 6px;
 
     @include on-mobile {
       height: 56px;

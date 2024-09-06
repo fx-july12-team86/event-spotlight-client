@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { userActions, userApi } from '../../entities/User';
-import { useAppDispatch } from '../../shared/hooks/reduxHooks';
-import { translate } from '../../shared/helpers/translator';
+import { useAppDispatch } from '../../shared/lib/hooks/reduxHooks';
+import { translate } from '../../shared/lib/helpers/translator';
 
 export function useGetUserCity() {
   const dispatch = useAppDispatch();

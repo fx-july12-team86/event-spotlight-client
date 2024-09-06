@@ -3,20 +3,18 @@ import { isEmail } from 'validator';
 import cn from 'classnames';
 
 import './LoginForm.scss';
-import { MyLoader, MyPasswordInput } from '../../../shared/ui';
-import { ErrorType } from '../../../shared/types/errorTypes';
-import { validateField } from '../../../shared/helpers/validateFields';
-import { ERROR_MESSAGE } from '../../../shared/consts/errorMessage';
-import { userActions, userApi } from '../../../entities/User';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../shared/hooks/reduxHooks';
-import localStorageServise from '../../../shared/servises/localStorage.servise';
+import { MyLoader, MyPasswordInput } from 'src/shared/ui';
+import { ErrorType } from 'src/shared/lib/types/errorTypes';
+import { validateField } from 'src/shared/lib/helpers/validateFields';
+import { ERROR_MESSAGE } from 'src/shared/lib/consts/errorMessage';
+import { userActions, userApi } from 'src/entities/User';
+import { useAppDispatch } from 'src/shared/lib/hooks/reduxHooks';
+import localStorageServise from 'src/shared/lib/servises/localStorage.servise';
+import { FormType } from 'src/shared/lib/types/formTypes';
 
 type Props = {
   handleOnClose?: () => void;
-  setFormType?: (v: string) => void;
+  setFormType?: (v: FormType) => void;
 };
 
 export const LoginForm: React.FC<Props> = ({
@@ -24,7 +22,6 @@ export const LoginForm: React.FC<Props> = ({
   setFormType = () => {},
 }) => {
   const dispatch = useAppDispatch();
-  const { user } = useAppSelector((state) => state.user);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<ErrorType>({});
@@ -73,7 +70,7 @@ export const LoginForm: React.FC<Props> = ({
 
     if (!Object.keys(errors).length) {
       setLoading(true);
-      debugger;
+
       userApi
         .login({ password, email })
         .then((res) => {
@@ -84,7 +81,6 @@ export const LoginForm: React.FC<Props> = ({
         .catch((err) => setLoginError(err.message))
         .finally(() => {
           setLoading(false);
-          console.log(user);
         });
     }
   }
@@ -141,10 +137,10 @@ export const LoginForm: React.FC<Props> = ({
       )}
 
       <div className="LoginForm__footer">
-        {!user && (
+        {!localStorageServise.get('token') && (
           <p
             className="LoginForm__footer-text"
-            onClick={() => setFormType('password')}
+            onClick={() => setFormType(FormType.PASSWORD)}
           >
             Не пам’ятаю пароль
           </p>
@@ -154,8 +150,8 @@ export const LoginForm: React.FC<Props> = ({
 
         <p
           className="LoginForm__footer-text"
-          onClick={() => setFormType('reg')}
-          data-cy="registration"
+          onClick={() => setFormType(FormType.REGISTRATION)}
+          data-cy={FormType.REGISTRATION}
         >
           Реєстрація
         </p>

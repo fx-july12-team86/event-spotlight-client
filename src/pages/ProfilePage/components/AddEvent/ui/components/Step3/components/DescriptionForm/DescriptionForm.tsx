@@ -3,7 +3,7 @@ import cn from 'classnames';
 import {
   useAppDispatch,
   useAppSelector,
-} from '../../../../../../../../../shared/hooks/reduxHooks';
+} from '../../../../../../../../../shared/lib/hooks/reduxHooks';
 import './DescriptionForm.scss';
 import { eventActions } from '../../../../../../../../../entities/Event';
 

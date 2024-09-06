@@ -1,36 +1,50 @@
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import cn from 'classnames';
 import './ProfileDrop.scss';
-import { MyDialog } from '../../../../../shared/ui';
+
 import {
   useAppDispatch,
   useAppSelector,
-} from '../../../../../shared/hooks/reduxHooks';
-import { LoginForm } from '../../../../../features/Login';
-import { RegistrationForm } from '../../../../../features/Registration';
-import { userActions } from '../../../../../entities/User';
-import { ResetPasswordForm } from '../../../../../features/ResetPasswordForm';
-import localStorageServise from '../../../../../shared/servises/localStorage.servise';
-import { ACCESS_TOKEN } from '../../../../../shared/consts/common';
+} from 'src/shared/lib/hooks/reduxHooks';
+import { userActions } from 'src/entities/User';
+
+import { MyDialog, MySuccess } from 'src/shared/ui';
+import { LoginForm } from 'src/features/Login';
+import { RegistrationForm } from 'src/features/Registration';
+import { ResetPasswordForm } from 'src/features/ResetPasswordForm';
+
+import { ACCESS_TOKEN } from 'src/shared/lib/consts/common';
+import { FormType } from 'src/shared/lib/types/formTypes';
+import localStorageServise from 'src/shared/lib/servises/localStorage.servise';
 
 type Props = {
   showDrop?: boolean;
   setShowDrop?: (v: boolean) => void;
 };
 
-export const ProfileDrop: React.FC<Props> = ({
-  showDrop,
-  setShowDrop = () => {},
-}) => {
+export const ProfileDrop: React.FC<Props> = (props) => {
+  const { showDrop, setShowDrop = () => {} } = props;
   const { user } = useAppSelector((state) => state.user);
-  const profileRef = useRef<HTMLDivElement>(null);
   const [showDialog, setShowDialog] = useState(false);
-  const [formType, setFormType] = useState('login');
-
+  const [formType, setFormType] = useState<FormType>(FormType.LOGIN);
+  const profileRef = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const FormComponents: Record<FormType, JSX.Element> = {
+    [FormType.LOGIN]: <LoginForm setFormType={setFormType} />,
+    [FormType.REGISTRATION]: <RegistrationForm setFormType={setFormType} />,
+    [FormType.PASSWORD]: <ResetPasswordForm />,
+    [FormType.SUCCESS]: (
+      <MySuccess
+        title="Вітаємо"
+        text="Тепер ви будете перенаправлені на сторінку входу"
+      />
+    ),
+  };
+
+  const activeForm: JSX.Element = FormComponents[formType];
 
   function handleShowDialog() {
     if (user?.token) {
@@ -38,14 +52,14 @@ export const ProfileDrop: React.FC<Props> = ({
       localStorageServise.remove(ACCESS_TOKEN);
       setShowDrop(false);
       navigate('/');
-      setFormType('login');
+      setFormType(FormType.LOGIN);
 
       return;
     }
 
     setShowDialog(!showDialog);
     setShowDrop(false);
-    setFormType('login');
+    setFormType(FormType.LOGIN);
   }
 
   return (
@@ -103,22 +117,8 @@ export const ProfileDrop: React.FC<Props> = ({
         </div>
       </nav>
 
-      {showDialog && formType === 'login' && (
-        <MyDialog onClose={setShowDialog}>
-          <LoginForm setFormType={setFormType} />
-        </MyDialog>
-      )}
-
-      {showDialog && formType === 'reg' && (
-        <MyDialog onClose={setShowDialog}>
-          <RegistrationForm setFormType={setFormType} />
-        </MyDialog>
-      )}
-
-      {showDialog && formType === 'password' && (
-        <MyDialog onClose={setShowDialog}>
-          <ResetPasswordForm />
-        </MyDialog>
+      {showDialog && activeForm && (
+        <MyDialog onClose={setShowDialog}>{activeForm}</MyDialog>
       )}
     </div>
   );

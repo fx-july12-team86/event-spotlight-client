@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import './Progress.scss';
-import { useAppSelector } from '../../../../../../../shared/hooks/reduxHooks';
+import { useAppSelector } from '../../../../../../../shared/lib/hooks/reduxHooks';
 
 const PROGRESS = [
   { id: 1, title: 'Зображення' },
@@ -35,8 +35,8 @@ export const Progress: React.FC<Props> = ({ step, setStep }) => {
     if (
       id === 3 &&
       title === '' &&
-      category === '' &&
-      subCategory === '' &&
+      !category &&
+      !subCategory &&
       address === '' &&
       date === '' &&
       time === '' &&

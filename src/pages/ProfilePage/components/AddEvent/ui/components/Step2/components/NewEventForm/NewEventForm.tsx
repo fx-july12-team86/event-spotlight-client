@@ -6,7 +6,7 @@ import { MyCheckbox, MySelect } from '../../../../../../../../../shared/ui';
 import {
   useAppDispatch,
   useAppSelector,
-} from '../../../../../../../../../shared/hooks/reduxHooks';
+} from '../../../../../../../../../shared/lib/hooks/reduxHooks';
 import { eventActions } from '../../../../../../../../../entities/Event';
 import { CategoryType } from '../../../../../../../../../entities/Category/types';
 import { categoryApi } from '../../../../../../../../../entities/Category';

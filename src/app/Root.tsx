@@ -4,10 +4,13 @@ import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import App from './ui/App';
 import { CatalogPage } from '../pages/CatalogPage';
 import { ProfilePage } from '../pages/ProfilePage';
+import { ScrollToTop } from 'src/features/ScrollToTop';
 
 export const Root = () => {
   return (
     <Router>
+      <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="*" element={<h1>Page not found</h1>} />

@@ -3,7 +3,7 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from 'axios';
-import localStorageServise from '../../shared/servises/localStorage.servise';
+import localStorageServise from '../../shared/lib/servises/localStorage.servise';
 // import { userAPI } from '../../entities/User/api';
 // import localStorageService from '../../shared/services/localStorageService';
 
@@ -17,7 +17,6 @@ httpClient.interceptors.response.use(onResponseSuccess, onResponseError);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function onRequest(req: InternalAxiosRequestConfig<any>) {
-  debugger
   const accessToken = localStorage.getItem('accessToken');
 
   if (accessToken) {
@@ -36,7 +35,8 @@ async function onResponseError(error: any) {
   // const originalRequest = error.config;
 
   if (error.response.status !== 401) {
-    localStorageServise.set('accessTocken', null) //  !!TEMPORARY SOLUTION: WAIT REFRESH POINT!!
+    localStorageServise.remove('accessTocken') //  !!TEMPORARY SOLUTION: WAIT REFRESH POINT!!
+
     throw error;
   }
 

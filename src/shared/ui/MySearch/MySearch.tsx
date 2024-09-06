@@ -1,19 +1,17 @@
+import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 
 import './MySearch.scss';
-import { getSearchParamsWith } from '../../helpers/getSearchParamsWith';
-import { useCallback, useEffect, useState } from 'react';
+import { getSearchParamsWith } from 'src/shared/lib/helpers/getSearchParamsWith';
 
 type Props = {
   setShowSearch?: (v: boolean) => void;
-  height?: string;
+  style?: { [key: string]: string };
 };
 
-export const MySearch: React.FC<Props> = ({
-  setShowSearch = () => {},
-  height,
-}) => {
+export const MySearch: React.FC<Props> = (props) => {
+  const { setShowSearch = () => {}, ...otherProps } = props;
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState('');
   const appliedQuery = searchParams.get('query') || '';
@@ -50,7 +48,7 @@ export const MySearch: React.FC<Props> = ({
   }
 
   return (
-    <div className="MySearch" style={{ height }}>
+    <div className="MySearch" {...otherProps}>
       <img src="icons/search_dark.svg" alt="search icon" />
 
       <input

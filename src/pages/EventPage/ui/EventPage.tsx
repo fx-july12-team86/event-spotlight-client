@@ -1,9 +1,9 @@
-import { EventType } from '../../../entities/Event/types';
+import './EventPage.scss';
+import { EventType } from 'src/entities/Event/types';
 import { BreadcrumbsEvent } from './components/Breadcrumbs/BreadcrumbsEvent';
 import { EventDetails } from './components/EventDetails/ui/EventDetails';
 import { FirstScreen } from './components/FirstScreen/FirstScreen';
 import { SimilarEvents } from './components/SimilarEvents/SimilarEvents';
-import './EventPage.scss';
 
 const eventsToр: EventType[] = [
   {

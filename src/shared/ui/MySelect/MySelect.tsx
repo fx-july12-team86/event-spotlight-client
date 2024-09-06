@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import cn from 'classnames';
 
 import './MySelect.scss';
-import { useGetHeight } from '../../hooks/useGetHeight';
+import { useGetHeight } from '../../lib/hooks/useGetHeight';
 import { OptionType } from './types';
 
 type Props = {

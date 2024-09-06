@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import './ChangePasswordForm.scss';
-import { ErrorType } from '../../shared/types/errorTypes';
-import { validateField } from '../../shared/helpers/validateFields';
+import { ErrorType } from '../../shared/lib/types/errorTypes';
+import { validateField } from '../../shared/lib/helpers/validateFields';
 import { MyPasswordInput } from '../../shared/ui';
 import { useLocation } from 'react-router-dom';
 

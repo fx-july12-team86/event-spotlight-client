@@ -1,4 +1,4 @@
-import { MyButtonLarge } from '../../../../../shared/ui/MyButtonLarge/MyButtonLarge';
+import { MyButtonLarge } from 'src/shared/ui/MyButtonLarge/MyButtonLarge';
 import { PhotoList } from '../PhotoList/PhotoList';
 import './Organizator.scss';
 

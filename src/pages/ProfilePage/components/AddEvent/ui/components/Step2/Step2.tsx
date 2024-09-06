@@ -1,5 +1,5 @@
 import './Step2.scss';
-import { useAppSelector } from '../../../../../../../shared/hooks/reduxHooks';
+import { useAppSelector } from '../../../../../../../shared/lib/hooks/reduxHooks';
 import { NewEventForm } from './components/NewEventForm/NewEventForm';
 
 type Props = {

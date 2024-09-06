@@ -1,0 +1,33 @@
+@import '@styles';
+
+.otherCategoryDrop {
+  position: absolute;
+  background-color: $color-white;
+  background-color: #fff;
+  z-index: 2;
+  top: 61px;
+  left: -356px;
+  width: 472px;
+  box-shadow: -1px 0px 21px -6px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  transition: height ease-in-out $transition-duration;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 40px;
+  column-gap: 20px;
+  transition: transform ease-in-out $transition-duration;
+}
+
+.item {
+  font-size: 18px;
+  font-weight: normal;
+  padding: 12px;
+  color: $color-black;
+  text-decoration: none;
+
+  @include on-hover(color, $color-white);
+  @include on-hover(background-color, $color-purple);
+}

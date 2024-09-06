@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../../../../shared/hooks/reduxHooks';
+import { useAppSelector } from '../../../../../shared/lib/hooks/reduxHooks';
 import './BreadcrumbsEvent.scss';
 import { Link } from 'react-router-dom';
 

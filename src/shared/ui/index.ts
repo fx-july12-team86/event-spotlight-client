@@ -9,6 +9,7 @@ import { MySelect } from './MySelect/MySelect';
 import { MyCheckbox } from './MyCheckbox/MyCheckbox';
 import { MyPasswordInput } from './MyPasswordInput/MyPasswordInput';
 import { MyLoader } from './MyLoader/MyLoader';
+import { MySuccess } from './MySuccess/MySuccess';
 
 export {
   MyLogo,
@@ -22,4 +23,5 @@ export {
   MyCheckbox,
   MyPasswordInput,
   MyLoader,
+  MySuccess,
 };

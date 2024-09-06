@@ -1,10 +1,11 @@
+import { useAppSelector } from 'src/shared/lib/hooks/reduxHooks';
 import './CatalogPage.scss';
-import { SearchBar } from '../../../widgets/SearchBar';
-import { useAppSelector } from '../../../shared/hooks/reduxHooks';
+
 import { BreadcrumbsCatalog } from './components/Breadcrumbs/BreadcrumbsCatalog';
 import { MonthEvents } from './components/MonthEvents/MonthEvents';
-import { EventType } from '../../../entities/Event/types';
-import { MyPagination } from '../../../shared/ui';
+import { EventType } from 'src/entities/Event/types';
+import { MyPagination } from 'src/shared/ui';
+import { SearchBar } from 'src/widgets/SearchBar';
 
 const events: EventType[] = [
   {

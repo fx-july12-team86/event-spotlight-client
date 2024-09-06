@@ -1,31 +1,32 @@
 import { useState } from 'react';
 import { isEmail } from 'validator';
 import cn from 'classnames';
-
 import './RegistrationForm.scss';
-import { MyLoader, MyPasswordInput } from '../../../shared/ui';
-import { ErrorType } from '../../../shared/types/errorTypes';
-import { validateField } from '../../../shared/helpers/validateFields';
-import { ERROR_MESSAGE } from '../../../shared/consts/errorMessage';
-import { userActions, userApi, userTypes } from '../../../entities/User';
-import { useAppDispatch } from '../../../shared/hooks/reduxHooks';
+
+import { useAppDispatch } from 'src/shared/lib/hooks/reduxHooks';
+import { userActions, userApi, userTypes } from 'src/entities/User';
+
+import { MyLoader, MyPasswordInput } from 'src/shared/ui';
+
+import { ErrorType } from 'src/shared/lib/types/errorTypes';
+import { validateField } from 'src/shared/lib/helpers/validateFields';
+import { ERROR_MESSAGE } from 'src/shared/lib/consts/errorMessage';
+import { FormType } from 'src/shared/lib/types/formTypes';
 
 type Props = {
   handleOnClose?: () => void;
-  setFormType?: (v: string) => void;
+  setFormType?: (v: FormType) => void;
 };
 
-export const RegistrationForm: React.FC<Props> = ({
-  handleOnClose,
-  setFormType = () => {},
-}) => {
+export const RegistrationForm: React.FC<Props> = (props) => {
+  const { setFormType = () => {} } = props;
   const dispatch = useAppDispatch();
   const [email, setEmail] = useState('');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<ErrorType>({});
-  const [loading, setLoaging] = useState(false);
-  const [reqErrror, setReqError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [reqError, setReqError] = useState('');
 
   const isFormValid = !errors.email && !errors.login && !errors.password;
 
@@ -84,7 +85,7 @@ export const RegistrationForm: React.FC<Props> = ({
     setErrors(errors);
 
     if (!Object.keys(errors).length) {
-      setLoaging(true);
+      setLoading(true);
 
       const data: userTypes.RegistrationRequest = {
         userName: login,
@@ -97,11 +98,17 @@ export const RegistrationForm: React.FC<Props> = ({
         .register(data)
         .then((res) => {
           dispatch(userActions.setUser(res));
+          setFormType(FormType.SUCCESS);
 
-          handleOnClose && handleOnClose();
+          setTimeout(() => {
+            setFormType(FormType.LOGIN);
+          }, 4000);
         })
-        .catch((err) => setReqError(err.message))
-        .finally(() => setLoaging(false));
+        .catch((err) => {
+          console.log(err);
+          setReqError(err.message);
+        })
+        .finally(() => setLoading(false));
     }
   }
 
@@ -168,18 +175,18 @@ export const RegistrationForm: React.FC<Props> = ({
         </button>
       )}
 
-      {reqErrror && (
+      {reqError && (
         <div className="RegistrationForm__errorbox scale-in-center">
           <img src="icons/warning_green.svg" alt="error" />
 
-          <p className="RegistrationForm__errorbox-text">{reqErrror}</p>
+          <p className="RegistrationForm__errorbox-text">{reqError}</p>
         </div>
       )}
 
       <div className="RegistrationForm__footer">
         <p
           className="RegistrationForm__footer-text"
-          onClick={() => setFormType('login')}
+          onClick={() => setFormType(FormType.LOGIN)}
         >
           Є обліковий запис? Увійти
         </p>

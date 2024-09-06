@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useAppSelector } from '../../../../../shared/hooks/reduxHooks';
+import { useAppSelector } from '../../../../../shared/lib/hooks/reduxHooks';
 import './BreadcrumbsCatalog.scss';
 
 export const BreadcrumbsCatalog = () => {

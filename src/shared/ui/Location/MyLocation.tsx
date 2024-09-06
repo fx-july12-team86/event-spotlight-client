@@ -2,8 +2,8 @@ import { useRef, useState } from 'react';
 import cn from 'classnames';
 
 import './MyLocation.scss';
-import { useGetHeight } from '../../hooks/useGetHeight';
-import { useHideDrop } from '../../hooks/useHideDrop';
+import { useGetHeight } from '../../lib/hooks/useGetHeight';
+import { useHideDrop } from '../../lib/hooks/useHideDrop';
 import { MyDialog } from '../MyDialog/MyDialog';
 import { SelectCity } from '../../../features/SelectCity';
 

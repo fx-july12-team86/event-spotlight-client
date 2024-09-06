@@ -2,7 +2,7 @@ import { useState } from 'react';
 import cn from 'classnames';
 
 import './MyPasswordInput.scss';
-import { ErrorType } from '../../types/errorTypes';
+import { ErrorType } from '../../lib/types/errorTypes';
 
 type Props = {
   handleSetPassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
