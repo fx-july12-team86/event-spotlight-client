@@ -51,16 +51,12 @@ export const LoginForm: React.FC<Props> = ({
   }
 
   function validate(e: React.FocusEvent<HTMLInputElement>) {
-    validateField({ id: e.target.id, password, errors, setErrors });
+    validateField({ id: e.target.id, errors, setErrors });
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const errors: ErrorType = {};
-
-    if (!password || password.length < 4) {
-      errors.password = ERROR_MESSAGE.WEAK_PASSWORD;
-    }
 
     if (!email || !isEmail(email)) {
       errors.email = ERROR_MESSAGE.WRONG_EMAIL;
