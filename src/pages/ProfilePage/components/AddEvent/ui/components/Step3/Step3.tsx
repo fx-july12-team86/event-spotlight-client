@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../../../../../../shared/hooks/reduxHooks';
+import { useAppSelector } from '../../../../../../../shared/lib/hooks/reduxHooks';
 import { DescriptionForm } from './components/DescriptionForm/DescriptionForm';
 import './Step3.scss';
 

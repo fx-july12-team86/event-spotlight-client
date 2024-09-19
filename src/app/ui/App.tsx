@@ -1,46 +1,34 @@
-import { useCallback, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-
 import './App.scss';
-import { Header } from '../../widgets/Header';
-import { Footer } from '../../widgets/Footer';
-import { SideBar } from '../../widgets/SideBar';
-import { LoginForm } from '../../features/Login';
-import { MyDialog } from '../../shared/ui';
+
 // import { useGetUserCity } from '../hooks/useGetUserCity';
-import { useAppDispatch, useAppSelector } from '../../shared/hooks/reduxHooks';
-import { dialogAction } from '../../shared/ui/MyDialog';
+
+import { Header } from 'src/widgets/Header';
+import { Footer } from 'src/widgets/Footer';
+import { SideBar } from 'src/widgets/SideBar';
+
+import { useAppSelector } from 'src/shared/lib/hooks/reduxHooks';
+
+import { useCheckAuth } from '../hooks/useCheckAuth';
 
 function App() {
-  const [showSidebar, setShowSidebar] = useState(false);
-  const { showDialog } = useAppSelector((state) => state.dialog);
-  const dispatch = useAppDispatch();
+  const { showSidebar } = useAppSelector((state) => state.sidebar);
 
-  // useGetUserCity();
+  useCheckAuth();
 
-  useCallback(setShowSidebar, []);
+  // useGetUserCity(); NOT IMPLEMENTED!!!
 
   return (
     <div className="App">
-      {showSidebar && <SideBar onClose={setShowSidebar} isOpen={showSidebar} />}
+      {showSidebar && <SideBar />}
 
-      <Header openSidebar={() => setShowSidebar(true)} />
+      <Header />
 
       <main className="App__main container">
         <Outlet />
       </main>
 
       <Footer />
-
-      {showDialog && (
-        <MyDialog
-          onClose={() => {
-            dispatch(dialogAction.setShowDialog(false));
-          }}
-        >
-          <LoginForm />
-        </MyDialog>
-      )}
     </div>
   );
 }

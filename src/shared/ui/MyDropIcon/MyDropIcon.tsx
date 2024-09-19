@@ -1,8 +1,8 @@
 import { Children, cloneElement, useRef, useState } from 'react';
 
 import './MyDropIcon.scss';
-import { useGetHeight } from '../../hooks/useGetHeight';
-import { useHideDrop } from '../../hooks/useHideDrop';
+import { useGetHeight } from '../../lib/hooks/useGetHeight';
+import { useHideDrop } from '../../lib/hooks/useHideDrop';
 
 type Props = {
   children: React.ReactNode;

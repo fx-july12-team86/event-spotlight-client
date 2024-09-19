@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 import './Step4.scss';
-import { useAppSelector } from '../../../../../../../shared/hooks/reduxHooks';
+import { useAppSelector } from 'src/shared/lib/hooks/reduxHooks';
 import { ContactsForm } from './components/ContactForm/ContactsForm';
-import { MyDialog } from '../../../../../../../shared/ui';
+import { MyDialog, MySuccess } from 'src/shared/ui';
 import { eventApi } from '../../..';
 
 type Props = {
@@ -84,14 +84,11 @@ export const Step4: React.FC<Props> = ({ setStep }) => {
 
       {showDialog && (
         <MyDialog onClose={setShowDialog}>
-          <div className="Step4__success">
-            <h3 className="Step4__success--title">ВІТАЄМО</h3>
-
-            <p className="Step4__success--text">
-              Твоя подія збережена та буде опублікована на сайті після перевірки
-              адміністрацією.
-            </p>
-          </div>
+          <MySuccess
+            title="ВІТАЄМО"
+            text=" Твоя подія збережена та буде опублікована на сайті після перевірки
+              адміністрацією."
+          />
         </MyDialog>
       )}
     </section>

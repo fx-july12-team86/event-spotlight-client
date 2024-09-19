@@ -3,12 +3,12 @@ import cn from 'classnames';
 import {
   useAppDispatch,
   useAppSelector,
-} from '../../../../../../../../../shared/hooks/reduxHooks';
+} from '../../../../../../../../../shared/lib/hooks/reduxHooks';
 import './ContactsForm.scss';
 import { eventActions } from '../../../../../../../../../entities/Event';
 import { useState } from 'react';
-import { validateField } from '../../../../../../../../../shared/helpers/validateFields';
-import { ErrorType } from '../../../../../../../../../shared/types/errorTypes';
+import { validateField } from '../../../../../../../../../shared/lib/helpers/validateFields';
+import { ErrorType } from '../../../../../../../../../shared/lib/types/errorTypes';
 import { EventState } from '../../../../../../../../../entities/Event/store/eventSlice';
 
 export const ContactsForm = () => {

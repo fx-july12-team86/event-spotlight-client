@@ -4,7 +4,7 @@ import { useGetImageURL } from './hooks/useGetImageURL';
 import {
   useAppDispatch,
   useAppSelector,
-} from '../../../../../../../shared/hooks/reduxHooks';
+} from '../../../../../../../shared/lib/hooks/reduxHooks';
 import { eventActions } from '../../../../../../../entities/Event';
 
 type Props = {

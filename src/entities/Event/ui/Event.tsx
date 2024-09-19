@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { EventType } from '../types';
+
 import './Event.scss';
 import { EventSceleton } from './EventSceleton';
 

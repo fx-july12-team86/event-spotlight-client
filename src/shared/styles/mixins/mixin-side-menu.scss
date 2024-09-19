@@ -1,0 +1,36 @@
+@import './mixins.scss';
+
+@mixin side-menu {
+  position: relative;
+  width: 375px;
+  height: 100vh;
+  background-color: $color-white;
+  animation: exit $transition-duration ease forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-left: 60px;
+  padding-right: 22px;
+
+  &__close {
+    @include side-menu-close;
+  }
+
+  &__logo {
+    @include side-menu-logo;
+  }
+}
+
+@mixin side-menu-close {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 12px;
+  border: none;
+
+  @include on-hover(transform, scale(1.2));
+}
+
+@mixin side-menu-logo {
+  margin-left: 30px;
+}

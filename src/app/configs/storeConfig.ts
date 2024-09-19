@@ -1,14 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { userReducer } from '../../entities/User';
-import { eventReducer } from '../../entities/Event';
-import dialogReducer from '../../shared/ui/MyDialog/store/dialogReducer';
+import { userReducer } from 'src/entities/User';
+import { eventReducer } from 'src/entities/Event';
+import dialogReducer from 'src/shared/store/dialogReducer';
+import sideBarSlice from 'src/shared/store/sideBarReducer';
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
     event: eventReducer,
     dialog: dialogReducer,
+    sidebar: sideBarSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -19,7 +21,5 @@ export const store = configureStore({
     }),
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;

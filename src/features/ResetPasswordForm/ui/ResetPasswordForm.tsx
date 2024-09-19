@@ -4,8 +4,8 @@ import cn from 'classnames';
 
 import './ResetPasswordForm.scss';
 import { MyLoader } from '../../../shared/ui';
-import { ErrorType } from '../../../shared/types/errorTypes';
-import { ERROR_MESSAGE } from '../../../shared/consts/errorMessage';
+import { ErrorType } from '../../../shared/lib/types/errorTypes';
+import { ERROR_MESSAGE } from '../../../shared/lib/consts/errorMessage';
 
 type Props = {
   handleOnClose?: () => void;

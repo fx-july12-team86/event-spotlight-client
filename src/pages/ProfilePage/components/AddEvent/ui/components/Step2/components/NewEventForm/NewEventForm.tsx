@@ -3,11 +3,10 @@ import { useEffect, useState } from 'react';
 
 import './NewEventForm.scss';
 import { MyCheckbox, MySelect } from '../../../../../../../../../shared/ui';
-import { EVENT_TYPES } from '../../../../../../../../../widgets/SearchBar/consts';
 import {
   useAppDispatch,
   useAppSelector,
-} from '../../../../../../../../../shared/hooks/reduxHooks';
+} from '../../../../../../../../../shared/lib/hooks/reduxHooks';
 import { eventActions } from '../../../../../../../../../entities/Event';
 import { CategoryType } from '../../../../../../../../../entities/Category/types';
 import { categoryApi } from '../../../../../../../../../entities/Category';
@@ -54,11 +53,11 @@ export const NewEventForm = () => {
     dispatch(eventActions.updateProperty({ field: 'title', value }));
   }
 
-  function setCategory(value: string) {
+  function setCategory(value: CategoryType) {
     dispatch(eventActions.updateProperty({ field: 'category', value }));
   }
 
-  function setSubCategory(value: string) {
+  function setSubCategory(value: CategoryType) {
     dispatch(eventActions.updateProperty({ field: 'subCategory', value }));
   }
 

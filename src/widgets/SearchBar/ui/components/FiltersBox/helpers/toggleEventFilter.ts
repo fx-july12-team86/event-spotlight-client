@@ -1,4 +1,4 @@
-import { getSearchParamsWith } from '../../../../../../shared/helpers/getSearchParamsWith';
+import { getSearchParamsWith } from '../../../../../../shared/lib/helpers/getSearchParamsWith';
 import { REGEXP_DAY_RANGE } from '../../../../../DataRangePicker/consts/calendar';
 
 export function toggleEventFilter(

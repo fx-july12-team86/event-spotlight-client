@@ -1,0 +1,31 @@
+@import '@styles';
+
+.OtherCategory {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.lable {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 16px 20px;
+  background-color: $color-white;
+  position: relative;
+
+  @include on-hover(color, $color-purple);
+
+  &:after {
+    position: absolute;
+    content: '';
+    display: block;
+    background-color: #fff;
+    height: 33px;
+    width: 115px;
+    top: 41px;
+    z-index: 2;
+    left: 1px;
+  }
+}

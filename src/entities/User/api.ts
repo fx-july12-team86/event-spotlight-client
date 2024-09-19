@@ -4,7 +4,7 @@ import {
   USER_LOGIN,
   USER_POSITION_API,
   USER_REGISTRATION,
-} from '../../shared/consts/url';
+} from '../../shared/lib/consts/url';
 
 class UserApi {
   getUserCity(): Promise<{ city: string; stateProv: string }> {

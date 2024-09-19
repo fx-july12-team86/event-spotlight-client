@@ -3,11 +3,11 @@ import cn from 'classnames';
 import {
   useAppDispatch,
   useAppSelector,
-} from '../../../../../../../../../shared/hooks/reduxHooks';
+} from '../../../../../../../../../shared/lib/hooks/reduxHooks';
 import './DescriptionForm.scss';
 import { eventActions } from '../../../../../../../../../entities/Event';
 
-const DESCRIPTION_MAX_LENGTH = 10;
+const DESCRIPTION_MAX_LENGTH = 1000;
 
 export const DescriptionForm = () => {
   const dispatch = useAppDispatch();

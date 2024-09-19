@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { CategoryType } from '../../Category/types';
 
 export interface EventState {
   eventImages: (Blob | string)[];
   title: string;
-  category: string;
-  subCategory: string;
+  category: CategoryType | null;
+  subCategory: CategoryType | null;
   address: string;
   price: string;
   date: string;
@@ -23,8 +24,8 @@ export interface EventState {
 export const initialState: EventState = {
   eventImages: [],
   title: '',
-  category: '',
-  subCategory: '',
+  category: null,
+  subCategory: null,
   address: '',
   price: '',
   date: '',
@@ -53,7 +54,7 @@ export const eventSlice = createSlice({
       state,
       action: PayloadAction<{
         field: keyof EventState;
-        value: string | boolean | number;
+        value: CategoryType | string | boolean | number;
       }>
     ) => {
       state[action.payload.field] = action.payload.value as never;

@@ -1,10 +1,12 @@
 // import { useState } from 'react';
-import { ProductList } from '../../../widgets/ProductList';
-import { SearchBar } from '../../../widgets/SearchBar';
-import { Slider } from '../../../widgets/Slider';
+import { useNavigate } from 'react-router-dom';
+
 import './HomePage.scss';
-import { EventType } from '../../../entities/Event/types';
-import { MyButtonLarge } from '../../../shared/ui/MyButtonLarge/MyButtonLarge';
+import { ProductList } from 'src/widgets/ProductList';
+import { SearchBar } from 'src/widgets/SearchBar';
+import { Slider } from 'src/widgets/Slider';
+import { EventType } from 'src/entities/Event/types';
+import { MyButtonLarge } from 'src/shared/ui/MyButtonLarge/MyButtonLarge';
 import { Organizator } from './components/Organizator/Organizator';
 
 const events: EventType[] = [
@@ -183,6 +185,7 @@ const eventsToр: EventType[] = [
 
 export const HomePage = () => {
   // const [events, setEvents] = useState([]);
+  const navigate = useNavigate();
   return (
     <div className="HomePage">
       <Slider />
@@ -206,7 +209,10 @@ export const HomePage = () => {
 
         <ProductList events={eventsToр} />
 
-        <MyButtonLarge className="HomePage__btn--purple">
+        <MyButtonLarge
+          className="HomePage__btn--purple"
+          onClick={() => navigate('/catalog')}
+        >
           Більше подій
         </MyButtonLarge>
       </section>
@@ -218,7 +224,10 @@ export const HomePage = () => {
 
         <ProductList events={eventsToр} />
 
-        <MyButtonLarge className="HomePage__btn--purple">
+        <MyButtonLarge
+          className="HomePage__btn--purple"
+          onClick={() => navigate('/catalog')}
+        >
           Більше подій
         </MyButtonLarge>
       </section>
@@ -232,7 +241,10 @@ export const HomePage = () => {
 
         <ProductList events={eventsToр} />
 
-        <MyButtonLarge className="HomePage__btn--purple">
+        <MyButtonLarge
+          className="HomePage__btn--purple"
+          onClick={() => navigate('/catalog')}
+        >
           Більше подій
         </MyButtonLarge>
       </section>

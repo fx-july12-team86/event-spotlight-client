@@ -11,7 +11,7 @@ import { changeMonth } from '../helpers/changeMonth';
 import { changeRange } from '../helpers/changeRange';
 import { useRenderCalendar } from '../hooks/useRenderCalendar';
 import { useSearchParams } from 'react-router-dom';
-import { getSearchParamsWith } from '../../../shared/helpers/getSearchParamsWith';
+import { getSearchParamsWith } from '../../../shared/lib/helpers/getSearchParamsWith';
 import { formatDate } from '../helpers/formatDate';
 
 type Range = Day[];

@@ -7,7 +7,7 @@ import './FiltersBox.scss';
 import { useSearchParams } from 'react-router-dom';
 import { toggleEventFilter } from '../helpers/toggleEventFilter';
 import { useSetRangeFilter } from '../hooks/useSetRangeFilter';
-import { useGetHeight } from '../../../../../../shared/hooks/useGetHeight';
+import { useGetHeight } from '../../../../../../shared/lib/hooks/useGetHeight';
 
 type Props = {
   showFilters: boolean;

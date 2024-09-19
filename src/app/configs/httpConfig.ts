@@ -3,7 +3,7 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from 'axios';
-import localStorageServise from '../../shared/servises/localStorage.servise';
+import localStorageServise from '../../shared/lib/servises/localStorage.servise';
 // import { userAPI } from '../../entities/User/api';
 // import localStorageService from '../../shared/services/localStorageService';
 
@@ -20,7 +20,7 @@ function onRequest(req: InternalAxiosRequestConfig<any>) {
   const accessToken = localStorage.getItem('accessToken');
 
   if (accessToken) {
-    req.headers['Authorization'] = `Bearer ${accessToken}`;
+    req.headers['Authorization'] = `Bearer ${JSON.parse(accessToken)}`;
   }
 
   return req;
@@ -35,7 +35,8 @@ async function onResponseError(error: any) {
   // const originalRequest = error.config;
 
   if (error.response.status !== 401) {
-    localStorageServise.set('accessTocken', null) //  !!TEMPORARY SOLUTION: WAIT REFRESH POINT
+    localStorageServise.remove('accessTocken') //  !!TEMPORARY SOLUTION: WAIT REFRESH POINT!!
+
     throw error;
   }
 

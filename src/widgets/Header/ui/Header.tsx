@@ -1,30 +1,24 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useRef, useState } from 'react';
-import { useAppSelector } from '../../../shared/hooks/reduxHooks';
-
 import './Header.scss';
-import { MyButton, MyLocation, MyLogo, MyDropIcon } from '../../../shared/ui';
+
+import {
+  useAppDispatch,
+  useAppSelector,
+} from 'src/shared/lib/hooks/reduxHooks';
+import * as sidebarAction from 'src/shared/store/sideBarReducer';
+
+import { MyButton, MyLocation, MyLogo, MyDropIcon } from 'src/shared/ui';
 import { HeaderNavList } from './components/HeaderNavList/HeaderNavList';
 import { HeaderSearch } from './components/HeaderSearch/HeaderSearch';
-import { useHideDrop } from '../../../shared/hooks/useHideDrop';
-import { useGetHeight } from '../../../shared/hooks/useGetHeight';
 import { ProfileDrop } from './components/ProfileDrop/ProfileDrop';
-import { DateRangePicker } from '../../DataRangePicker';
+import { DateRangePicker } from 'src/widgets/DataRangePicker';
+import { OtherCategory } from './components/OtherCategory/OtherCategory';
 
-const OTHER_CATEGORY = ['Вечірки', 'Театр', 'Кіно', 'Спорт', 'Конференції'];
-type Props = {
-  openSidebar: () => void;
-};
-export const Header: React.FC<Props> = ({ openSidebar }) => {
-  const { location } = useAppSelector((state) => state.user);
+type Props = {};
+export const Header: React.FC<Props> = () => {
+  const { location, user } = useAppSelector((state) => state.user);
   const { pathname } = useLocation();
-  const [showOther, setShowOther] = useState(false);
-  const [otherHeight, setOtherHeight] = useState(300);
-  const otherList = useRef<HTMLDivElement | null>(null);
-  const otherBtn = useRef<HTMLDivElement | null>(null);
-
-  useGetHeight(otherList, setOtherHeight);
-  useHideDrop(otherBtn, setShowOther);
+  const dispatch = useAppDispatch();
 
   return (
     <header className="Header">
@@ -37,7 +31,9 @@ export const Header: React.FC<Props> = ({ openSidebar }) => {
                 alt="бокове меню"
                 width={24}
                 height={24}
-                onClick={() => openSidebar()}
+                onClick={() => {
+                  dispatch(sidebarAction.setShowSitebar(true));
+                }}
               />
             </button>
 
@@ -64,9 +60,11 @@ export const Header: React.FC<Props> = ({ openSidebar }) => {
                 <ProfileDrop />
               </MyDropIcon>
 
-              <Link to="profile/add-event" className="Header__addBtn">
-                <MyButton>Додати подію</MyButton>
-              </Link>
+              {user?.token && (
+                <Link to="profile/add-event" className="Header__addBtn">
+                  <MyButton>Додати подію</MyButton>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -78,50 +76,7 @@ export const Header: React.FC<Props> = ({ openSidebar }) => {
             <nav className="Header__nav">
               <HeaderNavList />
 
-              <div className="Header__other">
-                <div
-                  ref={otherBtn}
-                  className="Header__other-lable"
-                  onClick={() => setShowOther(!showOther)}
-                  style={{
-                    transition: 'box-shadow ease-in-out 500ms',
-                    boxShadow: showOther
-                      ? '-1px 0px 21px -6px rgba(0, 0, 0, 0.75)'
-                      : '-1px 0px 0px -6px rgba(0, 0, 0, 0.75)',
-                  }}
-                >
-                  <p>Інше</p>
-
-                  <img src="icons/arrow-down.svg" alt="їнше" />
-
-                  <div
-                    className="Header__other-drop"
-                    style={{
-                      height: showOther ? `${otherHeight}px` : '0',
-                    }}
-                  >
-                    <nav
-                      ref={otherList}
-                      className="Header__other-list"
-                      style={{
-                        transform: showOther
-                          ? 'translateY(0)'
-                          : 'translateY(-100%)',
-                      }}
-                    >
-                      {OTHER_CATEGORY.map((cat) => (
-                        <Link
-                          to={`catalog?category=${cat}`}
-                          className="Header__other-item"
-                          key={cat}
-                        >
-                          {cat}
-                        </Link>
-                      ))}
-                    </nav>
-                  </div>
-                </div>
-              </div>
+              <OtherCategory />
             </nav>
           </div>
         </div>

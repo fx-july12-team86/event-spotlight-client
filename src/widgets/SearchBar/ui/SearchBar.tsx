@@ -8,7 +8,11 @@ export const SearchBar = () => {
 
   return (
     <div className="SearchBar">
-      <SearchEvent setShowFilters={setShowFilters} showFilters={showFilters} />
+      <SearchEvent
+        setShowFilters={setShowFilters}
+        showFilters={showFilters}
+        style={{ marginBottom: showFilters ? '24px' : '0' }}
+      />
 
       <FiltersBox setShowFilters={setShowFilters} showFilters={showFilters} />
     </div>

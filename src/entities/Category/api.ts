@@ -1,5 +1,5 @@
 import { httpClient } from "../../app/configs/httpConfig";
-import { CATEGORY_GET_ALL } from "../../shared/consts/url";
+import { CATEGORY_GET_ALL } from "../../shared/lib/consts/url";
 import { CategoryType } from "./types";
 
 class Category {

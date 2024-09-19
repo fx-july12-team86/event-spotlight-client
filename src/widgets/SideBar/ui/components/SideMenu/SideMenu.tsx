@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
-import './SideMenu.scss';
 
-import { MyLogo } from '../../../../../shared/ui';
+import './SideMenu.scss';
+import { MyLogo } from 'src/shared/ui';
+import * as dialogAction from 'src/shared/store/dialogReducer';
+import { ProfileDrop } from 'src/widgets/Header/ui/components/ProfileDrop/ProfileDrop';
 import {
   useAppDispatch,
   useAppSelector,
-} from '../../../../../shared/hooks/reduxHooks';
-import { dialogAction } from '../../../../../shared/ui/MyDialog';
-import { ProfileDrop } from '../../../../Header/ui/components/ProfileDrop/ProfileDrop';
+} from 'src/shared/lib/hooks/reduxHooks';
 
 type Props = {
   isOpen: boolean;

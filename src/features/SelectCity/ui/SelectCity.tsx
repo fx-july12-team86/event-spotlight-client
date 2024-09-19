@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import { MySearch } from '../../../shared/ui';
 import './SelectCity.scss';
-import { useAppDispatch } from '../../../shared/hooks/reduxHooks';
+import { useAppDispatch } from '../../../shared/lib/hooks/reduxHooks';
 import { userActions } from '../../../entities/User';
 
 const cities = [
