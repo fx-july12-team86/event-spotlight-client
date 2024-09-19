@@ -14,8 +14,7 @@
 
   @include on-hover(background-color, $color-grey-70);
 
-  &::before {
-    content: url(/icons/location.svg);
+  &__icon {
     height: 24px;
     width: 24px;
     margin-right: 5px;

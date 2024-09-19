@@ -12,12 +12,8 @@ type Props = {
   placeholder: string;
 };
 
-export const MySelect: React.FC<Props> = ({
-  list,
-  setter,
-  value,
-  placeholder,
-}) => {
+export const MySelect: React.FC<Props> = (props) => {
+  const { list, setter, value, placeholder } = props;
   const [showDrop, setShowDrop] = useState(false);
   const [dropHeight, setDropHeight] = useState(0);
 

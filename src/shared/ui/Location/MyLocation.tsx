@@ -6,12 +6,15 @@ import { useGetHeight } from '../../lib/hooks/useGetHeight';
 import { useHideDrop } from '../../lib/hooks/useHideDrop';
 import { MyDialog } from '../MyDialog/MyDialog';
 import { SelectCity } from '../../../features/SelectCity';
+import { THEME } from 'src/shared/lib/types/themesTypes';
 
 type Props = {
-  city: string;
+  city?: string;
+  theme?: THEME;
 };
 
-export const MyLocation: React.FC<Props> = ({ city = '' }) => {
+export const MyLocation: React.FC<Props> = (props) => {
+  const { city = '', theme = THEME.LIGHT } = props;
   const [showDrop, setShowDrop] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const [dropHeight, setDropHeight] = useState(0);
@@ -27,6 +30,12 @@ export const MyLocation: React.FC<Props> = ({ city = '' }) => {
       onClick={() => setShowDrop(!showDrop)}
       ref={dropRef}
     >
+      <img
+        src={`icons/location${theme === THEME.LIGHT ? '' : '_black'}.svg`}
+        alt="місто"
+        height={24}
+        width={24}
+      />
       <p className="MyLocation__header-text">{city}</p>
 
       <div

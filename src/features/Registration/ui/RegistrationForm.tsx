@@ -12,6 +12,7 @@ import { ErrorType } from 'src/shared/lib/types/errorTypes';
 import { validateField } from 'src/shared/lib/helpers/validateFields';
 import { ERROR_MESSAGE } from 'src/shared/lib/consts/errorMessage';
 import { FormType } from 'src/shared/lib/types/formTypes';
+import { User } from 'src/entities/User/types';
 
 type Props = {
   handleOnClose?: () => void;
@@ -97,7 +98,7 @@ export const RegistrationForm: React.FC<Props> = (props) => {
       userApi
         .register(data)
         .then((res) => {
-          dispatch(userActions.setUser(res));
+          dispatch(userActions.setUser(res as unknown as User)); // check types
           setFormType(FormType.SUCCESS);
 
           setTimeout(() => {

@@ -12,7 +12,7 @@ export function useCheckAuth() {
 
   useEffect(() => {
     const token = localStorageServise.get(ACCESS_TOKEN) as string;
-
+    console.log(token)
     if (token) {
       const decoded = jwtDecode(token);
       dispatch(userActions.setUser({ token, email: decoded.sub || '' }));

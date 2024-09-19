@@ -11,6 +11,7 @@ import { userActions, userApi } from 'src/entities/User';
 import { useAppDispatch } from 'src/shared/lib/hooks/reduxHooks';
 import localStorageServise from 'src/shared/lib/servises/localStorage.servise';
 import { FormType } from 'src/shared/lib/types/formTypes';
+import { User } from 'src/entities/User/types';
 
 type Props = {
   handleOnClose?: () => void;
@@ -70,7 +71,7 @@ export const LoginForm: React.FC<Props> = ({
       userApi
         .login({ password, email })
         .then((res) => {
-          dispatch(userActions.setUser(res));
+          dispatch(userActions.setUser(res as User));
           localStorageServise.set('accessToken', res.token);
           handleOnClose && handleOnClose();
         })

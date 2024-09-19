@@ -2,4 +2,18 @@
 
 .filters {
   background-color: $color-white;
+  @include side-menu;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.close {
+  @include side-menu-close;
+}
+
+.logo {
+  @include side-menu-logo;
 }
